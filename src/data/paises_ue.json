@@ -1,0 +1,137 @@
+[
+ {
+   "PAIS": "ALEMANIA",
+   "SIGLA": "DE",
+   "CODIGO": 4
+ },
+ {
+   "PAIS": "AUSTRIA",
+   "SIGLA": "AT",
+   "CODIGO": 38
+ },
+ {
+   "PAIS": "BELGICA",
+   "SIGLA": "BE",
+   "CODIGO": 17
+ },
+ {
+   "PAIS": "BULGARIA",
+   "SIGLA": "BG",
+   "CODIGO": 68
+ },
+ {
+   "PAIS": "CHIPRE",
+   "SIGLA": "CY",
+   "CODIGO": 600
+ },
+ {
+   "PAIS": "CROACIA",
+   "SIGLA": "HR",
+   "CODIGO": 92
+ },
+ {
+   "PAIS": "DINAMARCA",
+   "SIGLA": "DK",
+   "CODIGO": 8
+ },
+ {
+   "PAIS": "ESLOVAQUIA",
+   "SIGLA": "SK",
+   "CODIGO": 63
+ },
+ {
+   "PAIS": "ESLOVENIA",
+   "SIGLA": "SI ",
+   "CODIGO": 91
+ },
+ {
+   "PAIS": "ESPAÑA",
+   "SIGLA": "ES",
+   "CODIGO": 11
+ },
+ {
+   "PAIS": "ESTONIA",
+   "SIGLA": "EE",
+   "CODIGO": 53
+ },
+ {
+   "PAIS": "FINLANDIA",
+   "SIGLA": "FI",
+   "CODIGO": 32
+ },
+ {
+   "PAIS": "FRANCIA",
+   "SIGLA": "FR",
+   "CODIGO": 1
+ },
+ {
+   "PAIS": "GRECIA",
+   "SIGLA": "GR",
+   "CODIGO": 9
+ },
+ {
+   "PAIS": "HUNGRIA",
+   "SIGLA": "HU",
+   "CODIGO": 64
+ },
+ {
+   "PAIS": "IRLANDA",
+   "SIGLA": "IE",
+   "CODIGO": 7
+ },
+ {
+   "PAIS": "ITALIA",
+   "SIGLA": "IT",
+   "CODIGO": 5
+ },
+ {
+   "PAIS": "LETONIA",
+   "SIGLA": "LV",
+   "CODIGO": 54
+ },
+ {
+   "PAIS": "LITUANIA",
+   "SIGLA": "LT",
+   "CODIGO": 55
+ },
+ {
+   "PAIS": "LUXEMBURGO",
+   "SIGLA": "LU",
+   "CODIGO": 18
+ },
+ {
+   "PAIS": "MALTA",
+   "SIGLA": "MT",
+   "CODIGO": 46
+ },
+ {
+   "PAIS": "PAISES BAJOS (HOLANDA)",
+   "SIGLA": "NL",
+   "CODIGO": 3
+ },
+ {
+   "PAIS": "POLONIA",
+   "SIGLA": "PL",
+   "CODIGO": 60
+ },
+ {
+   "PAIS": "PORTUGAL",
+   "SIGLA": "PT",
+   "CODIGO": 10
+ },
+ {
+   "PAIS": "REINO UNIDO",
+   "SIGLA": "GB",
+   "CODIGO": 6
+ },
+ {
+   "PAIS": "REPUBLICA CHECA",
+   "SIGLA": "CZ",
+   "CODIGO": 61
+ },
+ {
+   "PAIS": "RUMANIA",
+   "SIGLA": "RO",
+   "CODIGO": 66
+ }
+]

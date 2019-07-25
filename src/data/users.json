@@ -1,0 +1,102 @@
+[
+    {
+        "id": "001",
+        "userName": "carlosescariobajo@gmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "002",
+        "userName": "iciargarciaochoa@gmail.com",
+        "psw": 12345,
+        "name": "Iciar",
+        "surname": "García Ochoa",
+        "col_id": 1105,
+        "col": "Avila",
+        "rol": "admin"
+    },
+    {
+        "id": "003",
+        "userName": "pedroescario@gmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "004",
+        "userName": "pablolarra21@gmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "005",
+        "userName": "samuelsanta@hotmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "006",
+        "userName": "cgcirujano@gmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "007",
+        "userName": "carolinagomez@gmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "008",
+        "userName": "sergiosanz@hotmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "009",
+        "userName": "laurapaz55@hotmail.com",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    },
+    {
+        "id": "010",
+        "userName": "soriano44@gmailcom",
+        "psw": 12345,
+        "name": "Carlos",
+        "surname": "Escario Bajo",
+        "col_id": 12345,
+        "col": "Madrid",
+        "rol": "admin"
+    }
+]
