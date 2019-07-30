@@ -9,7 +9,7 @@
             <div class="col-md-2">
               <input type="text" class="form-control-plaintext" readonly id="vetName" />
             </div>
-            <label for="vetSurname" class="col-form-label font-weight-bold">{{ apellidos }}:</label>
+            <label for="vetSurname" class="col-form-label font-weight-bold">{{ apellidos }}</label>
             <div class="col-md-2">
               <input type="text" class="form-control-plaintext" readonly id="vetSurname" />
             </div>
@@ -17,7 +17,7 @@
             <div class="col-md-1">
               <input type="text" class="form-control-plaintext" readonly id="vetNum" />
             </div>
-            <label for="vetCol" class="col-form-label font-weight-bold">{{ colegio }}:</label>
+            <label for="vetCol" class="col-form-label font-weight-bold">{{ colegio }}</label>
             <div class="col-md-2">
               <input class="form-control-plaintext" id="vetCol" readonly />
             </div>

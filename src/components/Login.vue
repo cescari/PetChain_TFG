@@ -43,6 +43,7 @@ import users from '../data/users.json';
 
 export default {
   name: 'Login',
+  
   data() {
     return {
       noUser: "Usuario no encontrado",

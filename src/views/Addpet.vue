@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <Menu />
     <div class="container">
       <h1 class="mt-5">Alta de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
@@ -27,12 +25,9 @@
       <Mascota />
       <Propietario />
     </div>
-    <Footer />
-  </div>
 </template>
 <script>
-import Menu from "@/components/Menu.vue";
-import Footer from "@/components/Footer.vue";
+
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
@@ -40,11 +35,12 @@ import Propietario from "@/components/Propietario.vue";
 export default {
   name: "addpet",
   components: {
-    Menu,
-    Footer,
     vetidentificador,
     Mascota,
     Propietario
+  },
+  mounted() {
+    this.$parent.mainView=true
   }
 };
 </script>

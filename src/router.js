@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Main from './views/Main.vue'
 import Addpet from './views/Addpet.vue'
+import Deletepet from './views/Deletepet.vue'
 import Contacto from './views/Contactoview.vue'
 import Licencia from './views/Licenciaview.vue'
 
@@ -28,6 +29,11 @@ export default new Router({
       component: Addpet
     },
     {
+      path: '/deletepet',
+      name: 'deletepet',
+      component: Deletepet
+    },
+    {
       path: '/contacto',
       name: 'contacto',
       component: Contacto
@@ -38,4 +44,4 @@ export default new Router({
       component: Licencia
     }
   ]
-})
+});

@@ -1,26 +1,23 @@
 <template>
-  <div>
-    <Menu />
-    <Header />
-    <Mainpage class="container"/> 
-    <footer />
-  </div>
+  <Mainpage class="container"/>
 </template>
 
 <script>
 // @ is an alias to /src
-import Menu from "@/components/Menu.vue";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
-import Mainpage from "@/components/Mainpage.vue"
-
+import Mainpage from "@/components/Mainpage.vue";
+ 
 export default {
   name: "Main",
+  data() {
+    return {
+      mainView: true
+    };
+  },
   components: {
-    Menu,
-    Header,
-    Footer,
     Mainpage
+  },
+  mounted() {
+    this.$parent.mainView=true
   }
 };
 </script>

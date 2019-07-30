@@ -1,21 +1,23 @@
 <template>
-    <div>
+<div>
     <Menu />
-    <Licencia /> 
-    <Footer />
-  </div>
+    <Licencia />
+</div>
+     
 </template>
 <script>
 import Menu from "@/components/Menu.vue";
-import Footer from "@/components/Footer.vue";
 import Licencia from "@/components/Licencia.vue";
 
 name: 'Licenciaview';
 
 export default {
     components: {
-        Menu, Footer, Licencia
-    }
+        Menu, Licencia
+    },
+  mounted() {
+    this.$parent.mainView=true
+  }
 
 }
 </script>
