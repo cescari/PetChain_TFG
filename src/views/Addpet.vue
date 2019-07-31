@@ -24,13 +24,17 @@
       <vetidentificador />
       <Mascota />
       <Propietario />
+      <button @click="setData()">Guardar</button>
     </div>
+    
 </template>
 <script>
 
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
+import { setDataToJSON } from '../../public/js/services/setDataToJSON.js'
+
 
 export default {
   name: "addpet",
@@ -41,6 +45,12 @@ export default {
   },
   mounted() {
     this.$parent.mainView=true
+  },
+  methods: {
+    setData: function(){
+      const data = JSON.stringify({ variable: '12', variable2: '22' });
+      setDataToJSON(data);
+    }
   }
 };
 </script>
