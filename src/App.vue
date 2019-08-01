@@ -8,6 +8,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import accounts from "../public/js/services/getAccounts.js"
 
 export default {
     data(){
