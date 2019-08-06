@@ -7,19 +7,19 @@
           <div class="form-group row pl-4">
             <label for="vetName" class="col-form-label font-weight-bold">{{ nombre }}</label>
             <div class="col-md-2">
-              <input type="text" class="form-control-plaintext" readonly id="vetName" />
+              <input type="text" class="form-control-plaintext" readonly id="vetName" v-model="vetName"/>
             </div>
             <label for="vetSurname" class="col-form-label font-weight-bold">{{ apellidos }}</label>
             <div class="col-md-2">
-              <input type="text" class="form-control-plaintext" readonly id="vetSurname" />
+              <input type="text" class="form-control-plaintext" readonly id="vetSurname" v-model="vetSurname"/>
             </div>
             <label for="vetNum" class="col-form-label font-weight-bold">{{ num_col }}</label>
             <div class="col-md-1">
-              <input type="text" class="form-control-plaintext" readonly id="vetNum" />
+              <input type="text" class="form-control-plaintext" readonly id="vetNum" v-model="vetId"/>
             </div>
             <label for="vetCol" class="col-form-label font-weight-bold">{{ colegio }}</label>
             <div class="col-md-2">
-              <input class="form-control-plaintext" id="vetCol" readonly />
+              <input class="form-control-plaintext" id="vetCol" readonly v-model="vetCol"/>
             </div>
           </div>
         </div>
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+var user = JSON.parse(sessionStorage.getItem('sessionUser'));
 export default {
   name: 'vetidentificador',
   data() {
@@ -36,7 +37,11 @@ export default {
       nombre: "Nombre: ",
       apellidos: "Apellidos: ",
       num_col: "Nº de colegiado: ",
-      colegio: "Colegio: "
+      colegio: "Colegio: ",
+      vetId: user.col_id,
+      vetName: user.name,
+      vetSurname: user.surname,
+      vetCol: user.col
     };
   }
 };

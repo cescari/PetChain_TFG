@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Mascota.vue                                    */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para gestion de datos del animal        */
+/********************************************************/
 <template>
   <div class="row">
     <div class="col-lg-12 mb-2">
@@ -7,22 +15,23 @@
           <div class="form-group">
             <div class="form-row mb-2">
               <div class="col-md-3">
-                <label for="petIdNumber">N&uacute;mero de identificaci&oacute;n:</label>
+                <label for="petIdNumber">Número de identificación:</label>
                 <input
                   type="text"
                   class="form-control"
                   id="petIdNumber"
-                  placeholder="N&uacute;mero de identificaci&oacute;n:"
+                  placeholder="Número de identificación:"
+                  v-model="petIdNumber"
                   required
                 />
               </div>
-              <div class="col-md-3">
-                <label for="fechImplantacion">Microchip implantado el d&iacute;a:</label>
-                <input type="date" id="fechImplantacion" class="form-control" required />
+              <div class="col-md-2">
+                <label for="fechImplantacion">Microchip fecha:</label>
+                <input type="date" id="fechImplantacion" class="form-control" v-model="fechImplantacion" required @change="checKDates()"/>
               </div>
-              <div class="col-md-3">
-                <label for="fechalta">Alta en la base de datos:</label>
-                <input type="date" id="fechalta" class="form-control" required />
+              <div class="col-md-2">
+                <label for="fechalta">Alta base de datos:</label>
+                <input type="date" id="fechalta" class="form-control" v-model="fechalta" required @change="checKDates()"/>
               </div>
             </div>
             <div class="form-row mb-2">
@@ -32,6 +41,7 @@
                   type="text"
                   class="form-control"
                   id="petName"
+                  v-model="petName"
                   placeholder="Nombre del animal"
                   required
                 />
@@ -42,18 +52,18 @@
               <h5 class="card-header border-primary">Raza</h5>
               <div class="ml-4 mr-4 mt-2 mb-2">
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="raza" name="razaCan" class="custom-control-input" />
+                  <input type="radio" id="raza" name="razaCan" class="custom-control-input" v-model="raza" />
                   <label class="custom-control-label" for="raza">Raza canina pura.</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="cruceDesc" name="razaCan" class="custom-control-input" />
+                  <input type="radio" id="cruceDesc" name="razaCan" class="custom-control-input" v-model="raza"/>
                   <label class="custom-control-label" for="cruceDesc">
                     Cruce de razas caninas
                     desconocidas.
                   </label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input type="radio" id="cruceCon" name="razaCan" class="custom-control-input" />
+                  <input type="radio" id="cruceCon" name="razaCan" class="custom-control-input" v-model="cruceCon"/>
                   <label class="custom-control-label" for="cruceCon">
                     Cruce de razas caninas,
                     al menos una conocida.
@@ -63,7 +73,7 @@
                 <div class="form-row mt-2">
                   <div class="col-md-3">
                     <label for="razaPet">Raza:</label>
-                    <select class="custom-select" id="razaPet" required>
+                    <select class="custom-select" id="razaPet" v-model="razaPet" required>
                       <option selected>Seleccione una raza</option>
                       <option value="Dogo aleman">Dogo alem&aacute;n</option>
                       <option value="Bull terrier">Bull terrier</option>
@@ -89,6 +99,7 @@
                       id="razaOtra"
                       placeholder="Raza del animal"
                       required
+                      v-model="razaOtra"
                       size="10"
                     />
                   </div>
@@ -111,6 +122,7 @@
                     id="rdoYes"
                     name="danger"
                     value="1"
+                    v-model="danger"
                     class="custom-control-input"
                   />
                   <label class="custom-control-label" for="rdoYes">Si</label>
@@ -121,6 +133,7 @@
                     id="rdoNo"
                     name="danger"
                     value="0"
+                    v-model="danger"
                     class="custom-control-input"
                   />
                   <label class="custom-control-label" for="rdoNo">No</label>
@@ -153,20 +166,20 @@
               </div>
             </div>
             <div class="form-row mb-2">
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <label for="fechNac">Fecha de nacimiento:</label>
-                <input type="date" id="fechNac" class="form-control" required />
+                <input type="date" id="fechNac" class="form-control" v-model="fechNac" required @change="checKDates()"/>
               </div>
             </div>
             <div class="form-row mb-2">
               <div class="col-md-3">
                 <label for="capa">Capa:</label>
-                <input type="text" id="capa" class="form-control" required />
+                <input type="text" id="capa" class="form-control" v-model="capa" required />
               </div>
 
               <div class="col-md-2">
                 <label for="pelo">Pelo:</label>
-                <select class="custom-select" id="pelo" required>
+                <select class="custom-select" id="pelo" v-model="pelo" required>
                   <option selected>Seleccione pelo</option>
                   <option value="alava">Corto</option>
                   <option value="albacete">Medio</option>
@@ -178,11 +191,11 @@
               <div class="col-md-3">
                 <label for="genero">G&eacute;nero:</label>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="rdoMacho" name="genero" class="custom-control-input" />
+                  <input type="radio" id="rdoMacho" name="genero" value="macho" v-model="genero" class="custom-control-input" />
                   <label class="custom-control-label" for="rdoMacho">Macho</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="rdoHembra" name="genero" class="custom-control-input" />
+                  <input type="radio" id="rdoHembra" name="genero" value="hembra" v-model="genero" class="custom-control-input" />
                   <label class="custom-control-label" for="rdoHembra">Hembra</label>
                 </div>
               </div>
@@ -190,12 +203,12 @@
             <div class="form-row mb-2">
               <div class="col-md-3">
                 <label for="capa">Nº de pasaporte animal:</label>
-                <input type="text" id="passport" class="form-control" maxlength="11" />
+                <input type="text" id="passport" class="form-control" maxlength="11" v-model="passport" />
               </div>
 
               <div class="col-md-3">
                 <label for="aptitud">Aptitud:</label>
-                <select class="custom-select" id="aptitud" required>
+                <select class="custom-select" id="aptitud" v-model="aptitud" required>
                   <option selected>Seleccione aptitud</option>
                   <option value="Compania">Compañ&iacute;a</option>
                   <option value="Deportivo">Deportivo</option>
@@ -212,7 +225,38 @@
 
 <script>
 export default {
-  name: 'Mascota'
+  name: 'Mascota',
+  data(){
+    return {
+      petIdNumber:'',
+      fechImplantacion:'',
+      fechNac: '',
+      petName: '',
+      raza:'',
+      cruceCon: '',
+      razaPet: '',
+      razaOtra: '',
+      danger: '',
+      capa:'',
+      pelo: '',
+      genero: '',
+      passport: '',
+      aptitud: '',
+      fechalta: ''
+    }
+  },
+  methods:{
+    checKDates() {
+      var dateImpl = new Date(this.fechImplantacion);
+      var dateNac = new Date(this.fechNac);
+      var dateAlta = new Date(this.fechalta);
+
+      console.log('dateImpl ' + dateImpl < dateAlta);
+      console.log('dateNac ' + dateNac);
+      console.log('dateAlta ' + dateAlta);
+
+    }
+  }
 };
 </script>
 <style>

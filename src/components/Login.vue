@@ -1,10 +1,10 @@
 /********************************************************/
-/* File: login.js                                       */
+/* File: login.vue                                      */
 /* Author: Carlos Escario Bajo                          */
 /* Proyecto: TFG UNIR                                   */
 /* Date: 01/05/2019                                     */
 /* Version: 1.0                                         */
-/* Fichero js de implementación del acceso              */
+/* Webcomponent de implementación del acceso            */
 /********************************************************/
 <template>
   <div class="wrapper fadeInDown">
