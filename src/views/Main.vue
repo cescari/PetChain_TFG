@@ -1,5 +1,5 @@
 <template>
-  <Mainpage class="container"/>
+    <Mainpage class="container"/>
 </template>
 
 <script>

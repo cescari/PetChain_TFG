@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Propietario.vue                                */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para gestion de propietarios del animal */
+/********************************************************/
 <template>
   <div class="row">
     <div class="col-lg-12 mb-2">
@@ -95,7 +103,7 @@
                 <label for="propPais">Pa&iacute;s:</label>
                 <select class="custom-select" id="propPais" v-model="propPais" required>
                   <option selected>Seleccione un pa&iacute;s</option>
-                  <option v-for="pais in paises" value="pais.code" :key="pais.CODIGO">{{ pais.PAIS}}</option>
+                  <option v-for="pais in paisesProp" :key="pais.CODIGO">{{ pais.PAIS }}</option>
                 </select>
               </div>
             </div>
@@ -107,22 +115,24 @@
 </template>
 <script>
 import provincias from '../data/provincias_es.json';
-import paises from '../data/paises_ue.json';
+import paisesProp from '../data/paises_ue.json';
 
 export default {
     name: 'propietario',
     data(){
       return {
-        propName: '',
-        propSurname: '',
-        propId: '',
-        propPhone: '',
-        provProp: '',
-        ciudadProp: '',
-        cp: '',
-        propPais: '',
-        provincias:'',
-        paises: ''
+        propName: null,
+        propSurname: null,
+        propId: null,
+        propPhone: null,
+        provProp: null,
+        ciudadProp: null,
+        cp: null,
+        propPais: null,
+        provincias: provincias,
+        paises: null,
+        pais: null,
+        paisesProp: paisesProp
       }
     }
 }

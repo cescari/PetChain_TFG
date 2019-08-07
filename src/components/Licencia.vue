@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Licencia.vue                                   */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/08/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent tipo de licencia                        */
+/********************************************************/
 <template>
   <div class="container">
     <h1 class="my-4">Licencia</h1>

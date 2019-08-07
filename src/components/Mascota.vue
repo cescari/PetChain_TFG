@@ -228,21 +228,21 @@ export default {
   name: 'Mascota',
   data(){
     return {
-      petIdNumber:'',
-      fechImplantacion:'',
-      fechNac: '',
-      petName: '',
-      raza:'',
-      cruceCon: '',
-      razaPet: '',
-      razaOtra: '',
-      danger: '',
-      capa:'',
-      pelo: '',
-      genero: '',
-      passport: '',
-      aptitud: '',
-      fechalta: ''
+      petIdNumber:null,
+      fechImplantacion:null,
+      fechNac: null,
+      petName: null,
+      raza:null,
+      cruceCon: null,
+      razaPet: null,
+      razaOtra: null,
+      danger: null,
+      capa:null,
+      pelo: null,
+      genero: null,
+      passport: null,
+      aptitud: null,
+      fechalta: null
     }
   },
   methods:{

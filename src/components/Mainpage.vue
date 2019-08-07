@@ -14,11 +14,11 @@
         <div class="card">
           <div class="card-body text-center">
             <h6>
-              <a href="/altaMascota">Alta de mascotas</a>
+              <a href="/addpet">Alta de mascotas</a>
             </h6>
             <p class="card-text">
-              <a href="/altaMascota">
-                <img src="../../public/img/collar.svg" alt width="50%" height="50%" />
+              <a href="/addpet">
+                <img src="../../public/img/collar.svg" alt="Alta mascotas"  style="width:50%;" />
               </a>
             </p>
           </div>
@@ -35,8 +35,7 @@
                 <img
                   src="../../public/img/pet.svg"
                   alt="Modificaci&oacute;n de datos de mascotas"
-                  width="40%"
-                  height="40%"
+                  style="width:50%;"
                 />
               </a>
             </p>
@@ -47,11 +46,11 @@
         <div class="card">
           <div class="card-body text-center">
             <h6>
-              <a href="/deletePet">Baja de mascotas</a>
+              <a href="/deletepet">Baja de mascotas</a>
             </h6>
             <p class="card-text">
-              <a href="/deletePet">
-                <img src="../../public/img/love.svg" alt width="50%" height="50%" />
+              <a href="/deletepet">
+                <img src="../../public/img/love.svg" alt style="width:50%;" />
               </a>
             </p>
           </div>

@@ -1,5 +1,5 @@
 <template>
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark" style="background-color:#007bff !important">
             <p class="m-0 text-left text-white">
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
                     <img alt="Licencia de Creative Commons" style="border-width:0"

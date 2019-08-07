@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Vet_identificador.vue                                     */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent datos del veterinario identificador     */
+/********************************************************/
 <template>
   <div class="row">
     <div class="col-lg-12 mb-2">
