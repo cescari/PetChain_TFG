@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item" v-show="addPet"><a class="nav-link" href="/addpet">Alta de mascotas</a></li>
-                    <li class="nav-item" v-show="updatePet"><a class="nav-link" href="/updatePet">Modificaci&oacute;n de mascotas</a></li>
+                    <li class="nav-item" v-show="updatePet"><a class="nav-link" href="/updatepet">Modificaci&oacute;n de mascotas</a></li>
                     <li class="nav-item" v-show="deletePet"><a class="nav-link" href="/deletepet">Baja de mascotas</a></li>
                     <li class="nav-item" v-show="contacto"><a class="nav-link" href="/contacto">Contacto</a></li>
                     <li class="nav-item" v-show="licencia"><a class="nav-link" href="/licencia">Licencia</a></li>

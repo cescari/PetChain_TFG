@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Main from './views/Mainview.vue'
 import Addpet from './views/AddPetview.vue'
+import Updatepet from './views/UpdatePetview.vue'
 import Deletepet from './views/DeletePetview.vue'
 import Contacto from './views/Contactoview.vue'
 import Licencia from './views/Licenciaview.vue'
@@ -27,6 +28,11 @@ export default new Router({
       path: '/addpet',
       name: 'addpet',
       component: Addpet
+    },
+    {
+      path: '/updatepet',
+      name: 'updatepet',
+      component: Updatepet
     },
     {
       path: '/deletepet',
