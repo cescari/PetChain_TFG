@@ -70,7 +70,7 @@
               <div class="col-md-3 mb-2">
                 <label for="provProp">Provincia:</label>
                 <select class="custom-select" id="provProp" v-model="provProp" required>
-                  <option selected>Seleccione una provincia</option>
+                  <option selected value="">Seleccione una provincia</option>
                   <option v-for="prov in provincias" value="prov.code" :key="prov.code">{{ prov.name}}</option>
                 </select>
               </div>
@@ -102,7 +102,7 @@
               <div class="col-md-3">
                 <label for="propPais">Pa&iacute;s:</label>
                 <select class="custom-select" id="propPais" v-model="propPais" required>
-                  <option selected>Seleccione un pa&iacute;s</option>
+                  <option selected value="">Seleccione un pa&iacute;s</option>
                   <option v-for="pais in paisesProp" :key="pais.CODIGO">{{ pais.PAIS }}</option>
                 </select>
               </div>

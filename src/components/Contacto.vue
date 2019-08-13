@@ -61,6 +61,9 @@ export default {
   name: "Contacto",
   mounted() {
     this.$parent.mainView = true;
+  },
+  props: {
+    headerVisible: false
   }
 };
 </script>

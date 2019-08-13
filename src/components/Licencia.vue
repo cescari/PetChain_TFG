@@ -43,10 +43,7 @@
 </template>
 <script>
 export default {
-  name: "Licencia",
-  mounted() {
-    this.$parent.mainView = true;
-  }
+  name: "Licencia"
 };
 </script>
 <style>

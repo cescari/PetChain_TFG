@@ -66,13 +66,13 @@ import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 
 export default {
-  name: "deletepet",
+  name: "Deletepet",
   components: {
     vetidentificador,
     Mascota
   },
-  mounted() {
-    this.$parent.mainView=true
+  props: {
+    headerVisible: false
   }
 };
 </script>

@@ -1,19 +1,17 @@
 <template>
   <div>
     <Menu />
-    <Licencia />
+    <Deletepet />
   </div>
 </template>
 <script>
 import Menu from "@/components/Menu.vue";
-import Licencia from "@/components/Licencia.vue";
-
-name: "Licenciaview";
+import Deletepet from "@/components/Deletepet.vue";
 
 export default {
   components: {
     Menu,
-    Licencia
+    Deletepet
   },
   props: {
     headerVisible: false

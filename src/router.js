@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Main from './views/Main.vue'
-import Addpet from './views/Addpet.vue'
-import Deletepet from './views/Deletepet.vue'
+import Main from './views/Mainview.vue'
+import Addpet from './views/AddPetview.vue'
+import Deletepet from './views/DeletePetview.vue'
 import Contacto from './views/Contactoview.vue'
 import Licencia from './views/Licenciaview.vue'
 

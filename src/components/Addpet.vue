@@ -18,8 +18,7 @@
               class="card-img-top"
               src="../../public/img/collar.svg"
               alt
-              width="75%"
-              height="75%"
+               style="width:75%;"
             />
           </div>
         </div>
@@ -47,7 +46,7 @@ import { setIPFSdata } from '../../public/js/services/setIPFSFile.js'
 
 
 export default {
-  name: "addpet",
+  name: "Addpet",
   components: {
     vetidentificador,
     Mascota,
@@ -68,6 +67,9 @@ export default {
       
       setIPFSdata(JSON.stringify(data));
     }
+  },
+  props: {
+    headerVisible: false
   }
 };
 </script>

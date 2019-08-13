@@ -1,7 +1,7 @@
 <template>
   <div>
     <Menu id="myMenu" ref="myMenu"/>
-    <header id="myHeader" ref="myHeader" style="border-bottom: 2px solid silver;">
+    <header id="myHeader" ref="myHeader" v-show="headerVisible" style="border-bottom: 2px solid silver;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -76,6 +76,11 @@ export default {
   name: "Header",
   components: {
     Menu
+  },
+  data(){
+    return {
+      headerVisible: true
+    }
   }
 };
 </script>

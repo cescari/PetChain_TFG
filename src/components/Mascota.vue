@@ -74,7 +74,7 @@
                   <div class="col-md-3">
                     <label for="razaPet">Raza:</label>
                     <select class="custom-select" id="razaPet" v-model="razaPet" required>
-                      <option selected>Seleccione una raza</option>
+                      <option selected value = "">Seleccione una raza</option>
                       <option value="Dogo aleman">Dogo alem&aacute;n</option>
                       <option value="Bull terrier">Bull terrier</option>
                       <option value="Pastor aleman">Pastor alem&aacute;n</option>
@@ -114,7 +114,7 @@
               </div>
             </div>
             <div class="form-row mb-2">
-              <label for="dangerous">Potencialmente peligroso:</label>
+              <label>Potencialmente peligroso:</label>
               <div class="col-md-4" id="dangerous">
                 <div class="custom-control custom-radio custom-control-inline">
                   <input
@@ -180,7 +180,7 @@
               <div class="col-md-2">
                 <label for="pelo">Pelo:</label>
                 <select class="custom-select" id="pelo" v-model="pelo" required>
-                  <option selected>Seleccione pelo</option>
+                  <option selected value="">Seleccione pelo</option>
                   <option value="alava">Corto</option>
                   <option value="albacete">Medio</option>
                   <option value="alicante">Largo</option>
@@ -189,7 +189,7 @@
             </div>
             <div class="form-row mb-3">
               <div class="col-md-3">
-                <label for="genero">G&eacute;nero:</label>
+                <label>G&eacute;nero:</label>
                 <div class="custom-control custom-radio custom-control-inline">
                   <input type="radio" id="rdoMacho" name="genero" value="macho" v-model="genero" class="custom-control-input" />
                   <label class="custom-control-label" for="rdoMacho">Macho</label>
@@ -209,7 +209,7 @@
               <div class="col-md-3">
                 <label for="aptitud">Aptitud:</label>
                 <select class="custom-select" id="aptitud" v-model="aptitud" required>
-                  <option selected>Seleccione aptitud</option>
+                  <option selected value="">Seleccione aptitud</option>
                   <option value="Compania">Compañ&iacute;a</option>
                   <option value="Deportivo">Deportivo</option>
                   <option value="Acompañamiento">Acompañamiento</option>
