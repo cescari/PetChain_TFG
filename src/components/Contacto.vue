@@ -58,13 +58,7 @@
 </template>
 <script>
 export default {
-  name: "Contacto",
-  mounted() {
-    this.$parent.mainView = true;
-  },
-  props: {
-    headerVisible: false
-  }
+  name: "Contacto"
 };
 </script>
 <style>

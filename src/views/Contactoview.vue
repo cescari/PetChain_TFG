@@ -14,8 +14,8 @@ export default {
     components: {
         Menu, Contacto
     },
-  mounted() {
-    this.$parent.mainView=true
+  props: {
+    headerVisible: false
   }
 }
 </script>
