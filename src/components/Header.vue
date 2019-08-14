@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Header.vue                                    */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/08/2019                                     */
+/* Version: 2.0                                         */
+/* Webcomponent cabecera						        */
+/********************************************************/
 <template>
   <div>
     <Menu id="myMenu" ref="myMenu" />

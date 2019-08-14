@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Menu.vue                                       */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/08/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para gestion del menu de PetChain       */
+/********************************************************/
 <template>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color:#007bff!important;">
     <div class="container mr-0">

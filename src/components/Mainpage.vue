@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Mainpage.vue                                   */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent de la pagina inicial de PetChain        */
+/********************************************************/
 <template>
   <!-- Page Content -->
   <div>
