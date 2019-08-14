@@ -1,8 +1,18 @@
 <template>
   <div>
-    <Menu id="myMenu" ref="myMenu"/>
-    <header id="myHeader" ref="myHeader" v-show="headerVisible" style="border-bottom: 2px solid silver;">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <Menu id="myMenu" ref="myMenu" />
+    <header
+      id="myHeader"
+      ref="myHeader"
+      v-show="headerVisible"
+      style="border-bottom: 2px solid silver;"
+    >
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-ride="carousel"
+        data-interval="3000"
+      >
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -77,12 +87,30 @@ export default {
   components: {
     Menu
   },
-  data(){
+  data() {
     return {
       headerVisible: true
-    }
+    };
   }
 };
 </script>
 <style>
+/* Small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  header {
+    display: none !important;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  header {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .carousel-item {
+    max-height: 200px !important;
+  }
+}
 </style>

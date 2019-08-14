@@ -6,7 +6,7 @@
 body {
   padding-top: 56px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1199.98px) {
   nav.bg-dark {
     background: url('../img/logo_min.png') no-repeat center left !important;
     background-color:#007bff!important;

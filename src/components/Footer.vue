@@ -1,3 +1,11 @@
+/***********************************************************/
+/* File: Footer.vue                                        */
+/* Author: Carlos Escario Bajo                             */
+/* Proyecto: TFG UNIR                                      */
+/* Date: 01/05/2019                                        */
+/* Version: 1.0                                            */
+/* Webcomponent para la visualizacion del pie de pagina    */
+/***********************************************************/
 <template>
     <footer class="py-5 bg-dark" style="background-color:#007bff !important">
             <p class="m-0 text-left text-white">

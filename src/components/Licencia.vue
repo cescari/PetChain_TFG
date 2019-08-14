@@ -39,6 +39,11 @@
         </a>.
       </div>
     </div>
+    <div class="row mt-5 mb-5 p-3 bg-primary text-white rounded">
+		Esta web está destinada exclusivamente para la realización del Trabajo de Fin de Grado de
+		la Escuela Superior de Ing. Informática de la UNIR. Su uso es exclusivo para fines académicos
+		y queda prohibida su reproducción o difusión sin el consentimiento del autor o de la UNIR.
+	</div>
   </div>
 </template>
 <script>

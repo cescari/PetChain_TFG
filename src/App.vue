@@ -10,7 +10,7 @@
   <div>
     <Header v-show="mainView"/>
     <router-view />
-    <Footer id="myFooter" ref="myFooter"/>
+    <Footer />
   </div>
 </template>
 <script>
@@ -26,10 +26,7 @@ export default {
     },
     components: {
         Header, Footer
-    },
-  mounted() {
-    this.$parent.mainView=false
-  }
+    }
 }
 </script>
 

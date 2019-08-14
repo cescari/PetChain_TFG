@@ -1,3 +1,11 @@
+/**************************************************************/
+/* File: Licenciaview.vue                                     */
+/* Author: Carlos Escario Bajo                                */
+/* Proyecto: TFG UNIR                                         */
+/* Date: 01/05/2019                                           */
+/* Version: 1.0                                               */
+/* Webcomponent para la visualizacion del tipo de licencia    */
+/**************************************************************/
 <template>
   <div>
     <Menu />
@@ -14,9 +22,6 @@ export default {
   components: {
     Menu,
     Licencia
-  },
-  props: {
-    headerVisible: false
   }
 };
 </script>

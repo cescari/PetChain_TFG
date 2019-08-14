@@ -7,7 +7,7 @@
 /* Webcomponent para la modificacion de la mascota      */
 /********************************************************/
 <template>
-    <div class="container">
+    <div class="container pb-5">
       <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
       <h1 class="mt-5">Modificaci&oacute;n de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
@@ -30,9 +30,11 @@
         <li class="breadcrumb-item active">Modificaci&oacute;n de mascotas</li>
       </ol>
       <vetidentificador />
-      <Mascota />
+      <Mascota :update="true"/>
       <Propietario />
-      <input type="submit" value="Modificar datos" />
+      <div class="text-right">
+        <button type="submit" class="btn btn-primary" >Modificar datos</button>
+      </div>
       </form>
     </div>
     
@@ -67,9 +69,6 @@ export default {
       
       setIPFSdata(JSON.stringify(data));
     }
-  },
-  props: {
-    headerVisible: false
   }
 };
 </script>

@@ -9,8 +9,8 @@
     </ol>
 
     <!-- Portfolio Section -->
-    <div class="row mb-4 portfolio d-flex justify-content-center">
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="row portfolio d-flex justify-content-center">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
         <div class="card">
           <div class="card-body text-center">
             <h6>
@@ -18,13 +18,13 @@
             </h6>
             <p class="card-text">
               <a href="/addpet">
-                <img src="../../public/img/collar.svg" alt="Alta mascotas"  style="width:50%;" />
+                <img class="imgMenu" src="../../public/img/collar.svg" alt="Alta mascotas" />
               </a>
             </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
         <div class="card">
           <div class="card-body text-center">
             <h6>
@@ -32,17 +32,13 @@
             </h6>
             <p class="card-text">
               <a href="/updatePet">
-                <img
-                  src="../../public/img/pet.svg"
-                  alt="Modificaci&oacute;n de datos de mascotas"
-                  style="width:50%;"
-                />
+                <img class="imgMenu" src="../../public/img/pet.svg" alt="Modificaci&oacute;n de datos de mascotas" />
               </a>
             </p>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
         <div class="card">
           <div class="card-body text-center">
             <h6>
@@ -50,7 +46,7 @@
             </h6>
             <p class="card-text">
               <a href="/deletepet">
-                <img src="../../public/img/love.svg" alt style="width:50%;" />
+                <img class="imgMenu" src="../../public/img/love.svg" alt="Baja de mascotas"/>
               </a>
             </p>
           </div>
@@ -60,47 +56,39 @@
     <!-- /.row -->
 
     <!-- Features Section -->
-    <div class="row">
+    <div class="row mt-5 mb-4">
       <div class="col-lg-6">
-        <h2>Modern Business Features</h2>
-        <p>The Modern Business template by Start Bootstrap includes:</p>
+        <!-- <h2>Modern Business Features</h2> -->
+        <h2>Petchain 1.0 le ofrece:</h2>
         <ul>
           <li>
-            <strong>Bootstrap v4</strong>
+            <strong>Dar de alta las mascotas</strong>
           </li>
-          <li>jQuery</li>
-          <li>Font Awesome</li>
-          <li>Working contact form with validation</li>
-          <li>Unstyled page elements for easy customization</li>
+          <li>
+            <strong>Modificar los datos de mascotas y propietarios</strong>
+          </li>
+          <li>
+            <strong>Dar de baja mascotas del sistema</strong>
+          </li>
+          <li>
+            <strong>Visualizar el hist&oacute;rico de transacciones realizadas</strong>
+          </li>
         </ul>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
-          reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia
-          dolorum
-          ducimus unde.
-        </p>
+        <p>Mant&eacute;gase atento pronto llegar&aacute;n nuevas versiones!!</p>
       </div>
+      <!-- <div class="col-lg-4 mb-4">
+        <div class="p-3 bg-primary text-white rounded">
+          <p>
+            El primer sistema de gesti&oacute;n sanitaria animal basado en la Blockchain de Ethereum. Aqu&iacute;
+            tendr&aacute; toda la privacidad e inmutamilidad que le ofrece esta tecnolog&iacute;a. 
+          </p>
+        </div>
+      </div>-->
       <div class="col-lg-6">
         <img class="img-fluid rounded" src="http://placehold.it/700x450" alt />
       </div>
     </div>
     <!-- /.row -->
-
-    <hr />
-
-    <!-- Call to Action Section -->
-    <div class="row mb-4">
-      <div class="col-md-8">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum
-          deleniti
-          beatae veniam harum neque nemo praesentium cum alias asperiores commodi.
-        </p>
-      </div>
-      <div class="col-md-4">
-        <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-      </div>
-    </div>
   </div>
   <!-- /.container -->
 </template>
@@ -112,4 +100,23 @@ export default {
 </script>
 
 <style>
+/* Small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+  .imgMenu {
+    width: 25% !important;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px)*/
+@media (min-width: 576px) and (max-width: 1199.98px) {
+  .imgMenu {
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .imgMenu {
+    width: 60% !important;
+  }
+}
 </style>
