@@ -1,4 +1,10 @@
-# petchain
+![node](https://img.shields.io/node/v/bootstrap?label=Node.js&style=plastic)
+
+# PetChain
+```
+
+Sistema para la gestión de mascotas
+```
 
 ## Project setup
 ```
