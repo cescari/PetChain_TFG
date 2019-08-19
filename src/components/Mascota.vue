@@ -375,12 +375,14 @@
         </div>
       </div>
     </div>
+    <Modal v-if="myModal" :msgModal="modalMsg" @close="myModal=false"/>
   </div>
   <!-- Fin datos última revisión -->
 </template>
 
 <script>
-import { getValidDate } from "../../public/js/services/setValidDate";
+import Modal from './Modal.vue'
+import { getValidDate } from "../../public/js/services/setValidDate.js";
 
 export default {
   name: "Mascota",
@@ -400,8 +402,13 @@ export default {
       genero: null,
       passport: null,
       aptitud: null,
-      fechalta: new Date().toISOString().slice(0,10)
+      fechalta: new Date().toISOString().slice(0,10),
+      myModal: false,
+      modalMsg: 'La fecha de nacimiento debe ser anterior a la fecha de implantación del chip y de alta en la BBDD.'
     };
+  },
+  components: {
+    Modal
   },
   methods: {
     checKDates() {
@@ -411,7 +418,8 @@ export default {
       
       if(dateNac && dateImpl && dateAlta){
         var validDate = getValidDate(dateNac, dateAlta, dateImpl);
-        console.log('Fecha valida: ' + validDate);
+        //console.log('Fecha valida: ' + validDate);
+        this.myModal = true;
       }
     }
   },
