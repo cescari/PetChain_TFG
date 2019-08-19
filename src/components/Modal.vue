@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Modal.vue                                      */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 18/08/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para ventanas modales                   */
+/********************************************************/
 <template>
   <div class="modal-mask">
     <div class="modal-wrapper">
@@ -18,7 +26,7 @@
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-info" @click="$emit('close')">Cerrar</button>
+            <button class="btn btn-primary" @click="$emit('close')">Cerrar</button>
           </slot>
         </div>
       </div>

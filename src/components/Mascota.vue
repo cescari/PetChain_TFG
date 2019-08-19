@@ -416,11 +416,7 @@ export default {
       var dateNac = this.fechNac;
       var dateAlta = this.fechalta;
       
-      if(dateNac && dateImpl && dateAlta){
-        var validDate = getValidDate(dateNac, dateAlta, dateImpl);
-        //console.log('Fecha valida: ' + validDate);
-        this.myModal = true;
-      }
+      this.myModal = !getValidDate(dateNac, dateAlta, dateImpl);
     }
   },
   props: ['update']
