@@ -1,4 +1,4 @@
-![node](https://img.shields.io/node/v/bootstrap?label=Node.js&style=plastic)
+![node](https://img.shields.io/badge/NodeJS-%3E%208.9.0-green&style=plastic) ![node](https://img.shields.io/badge/Bootstrap-%20ver.4-&style=plastic?labelColor=#8934d9)
 
 # PetChain
 ```

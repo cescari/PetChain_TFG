@@ -54,9 +54,6 @@ export default {
     Mascota,
     Propietario
   },
-  mounted() {
-    this.$parent.mainView = true;
-  },
   methods: {
     onSubmit(){
       const data = {vetidentificador:{},mascota:{},propietario:{}};

@@ -35,6 +35,7 @@
                     v-model="fechImplantacion"
                     required
                     @change="checKDates()"
+                    
                   />
                 </div>
                 <div class="col-md-2">
@@ -106,7 +107,7 @@
                   <div class="form-row mt-2">
                     <div class="col-md-3">
                       <label for="razaPet">Raza:</label>
-                      <select class="custom-select" id="razaPet" v-model="razaPet" required>
+                      <select class="custom-select" id="razaPet" v-model="razaPet" required :disabled="update">
                         <option selected value>Seleccione una raza</option>
                         <option value="Dogo aleman">Dogo alem&aacute;n</option>
                         <option value="Bull terrier">Bull terrier</option>
@@ -134,6 +135,7 @@
                         required
                         v-model="razaOtra"
                         size="10"
+                        :disabled="update"
                       />
                     </div>
                     <div class="col-md-12 mt-2">
@@ -157,6 +159,7 @@
                       value="1"
                       v-model="danger"
                       class="custom-control-input"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="rdoYes">Si</label>
                   </div>
@@ -168,6 +171,7 @@
                       value="0"
                       v-model="danger"
                       class="custom-control-input"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="rdoNo">No</label>
                   </div>
@@ -208,18 +212,19 @@
                     v-model="fechNac"
                     required
                     @change="checKDates()"
+                    :disabled="update"
                   />
                 </div>
               </div>
               <div class="form-row mb-2">
                 <div class="col-md-3">
                   <label for="capa">Capa:</label>
-                  <input type="text" id="capa" class="form-control" v-model="capa" required />
+                  <input type="text" id="capa" class="form-control" v-model="capa" required :disabled="update"/>
                 </div>
 
                 <div class="col-md-2">
                   <label for="pelo">Pelo:</label>
-                  <select class="custom-select" id="pelo" v-model="pelo" required>
+                  <select class="custom-select" id="pelo" v-model="pelo" required :disabled="update">
                     <option selected value>Seleccione pelo</option>
                     <option value="alava">Corto</option>
                     <option value="albacete">Medio</option>
@@ -238,6 +243,7 @@
                       value="macho"
                       v-model="genero"
                       class="custom-control-input"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="rdoMacho">Macho</label>
                   </div>
@@ -249,6 +255,7 @@
                       value="hembra"
                       v-model="genero"
                       class="custom-control-input"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="rdoHembra">Hembra</label>
                   </div>
@@ -268,7 +275,7 @@
 
                 <div class="col-md-3">
                   <label for="aptitud">Aptitud:</label>
-                  <select class="custom-select" id="aptitud" v-model="aptitud" required>
+                  <select class="custom-select" id="aptitud" v-model="aptitud" required :disabled="update">
                     <option selected value>Seleccione aptitud</option>
                     <option value="Compania">Compañ&iacute;a</option>
                     <option value="Deportivo">Deportivo</option>
@@ -303,7 +310,6 @@
                         class="form-control"
                         id="vetNameUpdate"
                         placeholder="Nombre del colegiado"
-                        disabled
                       />
                     </div>
                     <div class="col-md-3 mb-2">
@@ -313,7 +319,6 @@
                         class="form-control"
                         id="vetSurnameUpDate"
                         placeholder="Apellidos del colegiado"
-                        disabled
                       />
                     </div>
                   </div>
@@ -324,8 +329,7 @@
                         type="text"
                         class="form-control"
                         id="vetNumUpdate"
-                        placeholder="N&uacute;mero del colegiado"
-                        disabled
+                        placeholder="Número del colegiado"
                       />
                     </div>
                   </div>
@@ -376,12 +380,14 @@
 </template>
 
 <script>
+import { getValidDate } from "../../public/js/services/setValidDate";
+
 export default {
   name: "Mascota",
   data() {
     return {
       petIdNumber: null,
-      fechImplantacion: null,
+      fechImplantacion: new Date().toISOString().slice(0,10),
       fechNac: null,
       petName: null,
       raza: null,
@@ -394,18 +400,19 @@ export default {
       genero: null,
       passport: null,
       aptitud: null,
-      fechalta: null
+      fechalta: new Date().toISOString().slice(0,10)
     };
   },
   methods: {
     checKDates() {
-      var dateImpl = new Date(this.fechImplantacion);
-      var dateNac = new Date(this.fechNac);
-      var dateAlta = new Date(this.fechalta);
-
-      console.log("dateImpl " + dateImpl < dateAlta);
-      console.log("dateNac " + dateNac);
-      console.log("dateAlta " + dateAlta);
+      var dateImpl = this.fechImplantacion;
+      var dateNac = this.fechNac;
+      var dateAlta = this.fechalta;
+      
+      if(dateNac && dateImpl && dateAlta){
+        var validDate = getValidDate(dateNac, dateAlta, dateImpl);
+        console.log('Fecha valida: ' + validDate);
+      }
     }
   },
   props: ['update']
