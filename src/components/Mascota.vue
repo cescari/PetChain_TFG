@@ -72,8 +72,11 @@
                       type="radio"
                       id="raza"
                       name="razaCan"
+                      value="pura"
                       class="custom-control-input"
+                      @click="pura=true"
                       v-model="raza"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="raza">Raza canina pura.</label>
                   </div>
@@ -82,8 +85,11 @@
                       type="radio"
                       id="cruceDesc"
                       name="razaCan"
+                      value="cruce1"
                       class="custom-control-input"
+                      @click="pura=false"
                       v-model="raza"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="cruceDesc">
                       Cruce de razas caninas
@@ -95,8 +101,11 @@
                       type="radio"
                       id="cruceCon"
                       name="razaCan"
+                      value="cruce2"
                       class="custom-control-input"
-                      v-model="cruceCon"
+                      @click="pura=true"
+                      v-model="raza"
+                      :disabled="update"
                     />
                     <label class="custom-control-label" for="cruceCon">
                       Cruce de razas caninas,
@@ -107,7 +116,7 @@
                   <div class="form-row mt-2">
                     <div class="col-md-3">
                       <label for="razaPet">Raza:</label>
-                      <select class="custom-select" id="razaPet" v-model="razaPet" required :disabled="update">
+                      <select class="custom-select" id="razaPet" v-model="razaPet" required :disabled="update || !pura">
                         <option selected value>Seleccione una raza</option>
                         <option value="Dogo aleman">Dogo alem&aacute;n</option>
                         <option value="Bull terrier">Bull terrier</option>
@@ -135,7 +144,7 @@
                         required
                         v-model="razaOtra"
                         size="10"
-                        :disabled="update"
+                        :disabled="update || !pura"
                       />
                     </div>
                     <div class="col-md-12 mt-2">
@@ -156,7 +165,7 @@
                       type="radio"
                       id="rdoYes"
                       name="danger"
-                      value="1"
+                      value="dangerYes"
                       v-model="danger"
                       class="custom-control-input"
                       :disabled="update"
@@ -168,7 +177,7 @@
                       type="radio"
                       id="rdoNo"
                       name="danger"
-                      value="0"
+                      value="dangerNo"
                       v-model="danger"
                       class="custom-control-input"
                       :disabled="update"
@@ -294,9 +303,9 @@
         <div class="card border-primary h-100">
           <h5 class="card-header border-primary">Datos &uacute;ltima revisi&oacute;n</h5>
           <div class="card-body">
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <label for="fechaRev">Fecha:</label>
-              <input type="date" id="fechaRev" class="form-control" />
+              <input type="date" id="fechaRev" class="form-control" v-model="fechaUltRev"/>
             </div>
             <div class="form-group">
               <div class="card border-primary h-100">
@@ -309,6 +318,7 @@
                         type="text"
                         class="form-control"
                         id="vetNameUpdate"
+                        v-model="vetNameUpdate"
                         placeholder="Nombre del colegiado"
                       />
                     </div>
@@ -318,6 +328,7 @@
                         type="text"
                         class="form-control"
                         id="vetSurnameUpDate"
+                        v-model="vetSurnameUpDate"
                         placeholder="Apellidos del colegiado"
                       />
                     </div>
@@ -329,6 +340,7 @@
                         type="text"
                         class="form-control"
                         id="vetNumUpdate"
+                        v-model="vetNumUpdate"
                         placeholder="Número del colegiado"
                       />
                     </div>
@@ -336,8 +348,9 @@
                   <div class="form-row">
                     <div class="col-md-3 mb-2">
                       <label for="vetCol">Colegio:</label>
-                      <select class="custom-select" id="vetCol" required>
+                      <select class="custom-select" id="vetCol" required v-model="vetProvUpdate">
                         <option selected>Seleccione una provincia</option>
+                        <option v-for="prov in provincias" :key="prov.code" :value="prov.code">{{ prov.name }}</option>
                       </select>
                     </div>
                   </div>
@@ -346,7 +359,7 @@
             </div>
             <div class="form-group col-md-3">
               <label for="estado">Estado:</label>
-              <select class="custom-select" id="estado">
+              <select class="custom-select" id="estado" v-model="estado">
                 <option>Seleccione estado</option>
                 <option value="0">Bueno</option>
                 <option value="1">Malo</option>
@@ -355,21 +368,21 @@
             <div class="form-group col-md-6 mb-2" id="lesiones">
               <label for="lesion">Presenta cicatrices\lesiones:</label>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="rdoLesionSi" name="lesion" class="custom-control-input" />
+                <input type="radio" id="rdoLesionSi" name="lesion" v-model="lesion" value="true" class="custom-control-input" />
                 <label class="custom-control-label" for="rdoLesionSi">SI</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="rdoLesionNo" name="lesion" class="custom-control-input" />
+                <input type="radio" id="rdoLesionNo" name="lesion" v-model="lesion" value="false" class="custom-control-input" />
                 <label class="custom-control-label" for="rdoLesionNo">No</label>
               </div>
             </div>
             <div class="form-group col-md-3">
               <label for="numCertf">Nº certificado:</label>
-              <input type="text" id="numCertf" class="form-control" />
+              <input type="text" id="numCertf" class="form-control" v-model="numCertf" />
             </div>
             <div class="form-group col-md-12">
               <label for="obsTextArea">Observaciones</label>
-              <textarea class="form-control" id="obsTextArea" rows="3"></textarea>
+              <textarea class="form-control" id="obsTextArea" rows="3" v-model="observaciones"></textarea>
             </div>
           </div>
         </div>
@@ -382,7 +395,10 @@
 
 <script>
 import Modal from './Modal.vue'
+import provincias from '../data/provincias_es.json';
 import { getValidDate } from "../../public/js/services/setValidDate.js";
+
+var user = JSON.parse(sessionStorage.getItem('sessionUser'));
 
 export default {
   name: "Mascota",
@@ -392,18 +408,28 @@ export default {
       fechImplantacion: new Date().toISOString().slice(0,10),
       fechNac: null,
       petName: null,
-      raza: null,
-      cruceCon: null,
+      raza: 'pura',
       razaPet: null,
       razaOtra: null,
-      danger: null,
+      danger: 'dangerNo',
       capa: null,
       pelo: null,
       genero: null,
       passport: null,
       aptitud: null,
       fechalta: new Date().toISOString().slice(0,10),
+      fechaUltRev: new Date().toISOString().slice(0,10),
+      pura: true,
       myModal: false,
+      vetNameUpdate: user.name,
+      vetSurnameUpDate: user.surname,
+      vetNumUpdate: user.col_id,
+      vetProvUpdate: user.col,
+      provincias: provincias,
+      estado: null,
+      lesion: false,
+      numCertf: null,
+      observaciones:null,
       modalMsg: 'La fecha de nacimiento debe ser anterior a la fecha de implantación del chip y de alta en la BBDD.'
     };
   },

@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
+    <form name="mainFrm" id="addPetfrm" action="POST" @submit.prevent="onSubmit" novalidate>
       <h1 class="mt-5">Alta de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
@@ -37,6 +37,7 @@
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
+import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata } from "../../public/js/services/setIPFSFile.js";
 
 export default {
@@ -51,15 +52,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      const data = { vetidentificador: {}, mascota: {}, propietario: {} };
-      data["vetidentificador"].vetName = this.$children[0].$data.vetName;
-      data["vetidentificador"].vetId = this.$children[0].$data.vetId;
-      data["vetidentificador"].vetSurname = this.$children[0].$data.vetSurname;
-      data["vetidentificador"].vetCol = this.$children[0].$data.vetCol;
-      //data['mascota'] = this.$children[1].$data;
-      //data['propietario'] = this.$children[2].$data
-
-      setIPFSdata(JSON.stringify(data));
+      const data = {
+        vetidentificador: {},
+        mascota: { ultima_rev: [] },
+        propietario: {}
+      };
+      console.log(setDataToJSON(data, this, 1));
+      //setIPFSdata(JSON.stringify(data));
     }
   }
 };

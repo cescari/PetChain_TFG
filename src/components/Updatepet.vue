@@ -55,16 +55,14 @@ export default {
     Propietario
   },
   methods: {
-    onSubmit(){
-      const data = {vetidentificador:{},mascota:{},propietario:{}};
-      data['vetidentificador'].vetName = this.$children[0].$data.vetName;
-      data['vetidentificador'].vetId = this.$children[0].$data.vetId;
-      data['vetidentificador'].vetSurname = this.$children[0].$data.vetSurname;
-      data['vetidentificador'].vetCol = this.$children[0].$data.vetCol;
-      //data['mascota'] = this.$children[1].$data;
-      //data['propietario'] = this.$children[2].$data
-      
-      setIPFSdata(JSON.stringify(data));
+    onSubmit() {
+      const data = {
+        vetidentificador: {},
+        mascota: { ultima_rev: [] },
+        propietario: {}
+      };
+      console.log(setDataToJSON(data, this, 2));
+      //setIPFSdata(JSON.stringify(data));
     }
   }
 };
