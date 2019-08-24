@@ -1,4 +1,4 @@
-import { Promise, resolve } from 'q';
+import { Promise, resolve, reject } from 'q';
 
 /*********************************************************/
 /* File: setIPFSFile.js                                  */
@@ -12,7 +12,7 @@ const IPFS = require('ipfs-mini');
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 //const ipfs = new IPFS({ host: '127.0.0.1', port: 5001, protocol: 'http' });
 
-export function setIPFSdata (_data){
+export function setIPFSdata(_data) {
     ipfs.add(_data, (_error, _hash) => {
         if (_error) {
             return console.log(_error);
@@ -21,16 +21,18 @@ export function setIPFSdata (_data){
         }
     });
 }
-//https://ipfs.infura.io/ipfs/QmNwprouJRYqQhn7ApviCAukeef2KZmWB5u8XGKCcMU877
-export function getIPFSdata(){
-    return new Promise( 
-        resolve => {ipfs.cat('QmNwprouJRYqQhn7ApviCAukeef2KZmWB5u8XGKCcMU877', (_error, _result) => {
+//https://ipfs.infura.io/ipfs/QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5
+export var getIPFSdata = new Promise(
+    resolve => {
+        ipfs.cat('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5', (_error, _result) => {
             if (_error) {
-                resolve(_error);
+                console.log('No existe el fichero');
             } else {
                 resolve(_result);
             }
         });
+    }, reject => {
+        console.log('No existe el fichero');
     });
-}
+
 

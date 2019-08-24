@@ -7,19 +7,14 @@
 /* Webcomponent para la modificacion de la mascota      */
 /********************************************************/
 <template>
-    <div class="container pb-5">
-      <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
+  <div class="container pb-5">
+    <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
       <h1 class="mt-5">Modificaci&oacute;n de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
         <div class="col-lg-2 col-sm-2 col-xs-2 pb-2">
           <div class="h-100">
-            <img
-              class="card-img-top"
-              src="../../public/img/pet.svg"
-              alt
-               style="width:60%;"
-            />
+            <img class="card-img-top" src="../../public/img/pet.svg" alt style="width:60%;" />
           </div>
         </div>
       </div>
@@ -30,25 +25,21 @@
         <li class="breadcrumb-item active">Modificaci&oacute;n de mascotas</li>
       </ol>
       <vetidentificador />
-      <Mascota :update="true"/>
+      <Mascota :update="true" />
       <Propietario />
       <div class="text-right">
-        <button type="submit" class="btn btn-primary" >Modificar datos</button>
+        <button type="submit" class="btn btn-primary">Modificar datos</button>
       </div>
-      </form>
-    </div>
-    
+    </form>
+  </div>
 </template>
 <script>
-const parseJson = require('parse-json');
-
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
-import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
-import { setIPFSdata, getIPFSdata } from '../../public/js/services/setIPFSFile.js'
-import { isUndefined } from 'util';
-//import { getIPFSdata } from '../../public/js/services/setIPFSFile.js'
+import { setJSONToData } from "../../public/js/services/setDataToJSON.js";
+import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
+import { isUndefined } from "util";
 
 export default {
   name: "Updatepet",
@@ -58,11 +49,17 @@ export default {
     Propietario
   },
   methods: {
-    async onSubmit() {
-      var data = {};
-      var result = Object.create(JSON.parse(await getIPFSdata()));
-      console.log('pasa update ' + result.mascota.petName);
-    }
+    onSubmit: function() {}
+  },
+  mounted: function() {
+    getIPFSdata
+      .then((response)=> {
+        //console.log('respuesta ' + JSON.parse(response).mascota.petName);
+        setJSONToData(JSON.parse(response), this);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 };
 </script>
