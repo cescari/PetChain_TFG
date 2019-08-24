@@ -36,7 +36,6 @@
                     required
                     :disabled="update"
                     @change="checKDates()"
-                    
                   />
                 </div>
                 <div class="col-md-2">
@@ -118,8 +117,15 @@
                   <div class="form-row mt-2">
                     <div class="col-md-3">
                       <label for="razaPet">Raza:</label>
-                      <select class="custom-select" id="razaPet" v-model="razaPet" required :disabled="update || !pura">
-                        <option selected value>Seleccione una raza</option>
+                      <select
+                        class="custom-select"
+                        id="razaPet"
+                        @change="razaOtraDis = onChange($event)"
+                        v-model="razaPet"
+                        required
+                        :disabled="update || !pura"
+                      >
+                        <option selected value="0">Seleccione una raza</option>
                         <option value="Dogo aleman">Dogo alem&aacute;n</option>
                         <option value="Bull terrier">Bull terrier</option>
                         <option value="Pastor aleman">Pastor alem&aacute;n</option>
@@ -146,7 +152,7 @@
                         required
                         v-model="razaOtra"
                         size="10"
-                        :disabled="update || !pura"
+                        :disabled="update || !pura || razaOtraDis"
                       />
                     </div>
                     <div class="col-md-12 mt-2">
@@ -230,12 +236,25 @@
               <div class="form-row mb-2">
                 <div class="col-md-3">
                   <label for="capa">Capa:</label>
-                  <input type="text" id="capa" class="form-control" v-model="capa" required :disabled="update"/>
+                  <input
+                    type="text"
+                    id="capa"
+                    class="form-control"
+                    v-model="capa"
+                    required
+                    :disabled="update"
+                  />
                 </div>
 
                 <div class="col-md-2">
                   <label for="pelo">Pelo:</label>
-                  <select class="custom-select" id="pelo" v-model="pelo" required :disabled="update">
+                  <select
+                    class="custom-select"
+                    id="pelo"
+                    v-model="pelo"
+                    required
+                    :disabled="update"
+                  >
                     <option selected value>Seleccione pelo</option>
                     <option value="alava">Corto</option>
                     <option value="albacete">Medio</option>
@@ -286,7 +305,13 @@
 
                 <div class="col-md-3">
                   <label for="aptitud">Aptitud:</label>
-                  <select class="custom-select" id="aptitud" v-model="aptitud" required :disabled="update">
+                  <select
+                    class="custom-select"
+                    id="aptitud"
+                    v-model="aptitud"
+                    required
+                    :disabled="update"
+                  >
                     <option selected value>Seleccione aptitud</option>
                     <option value="Compania">Compañ&iacute;a</option>
                     <option value="Deportivo">Deportivo</option>
@@ -307,7 +332,7 @@
           <div class="card-body">
             <div class="form-group col-md-2">
               <label for="fechaRev">Fecha:</label>
-              <input type="date" id="fechaRev" class="form-control" v-model="fechaUltRev" disabled/>
+              <input type="date" id="fechaRev" class="form-control" v-model="fechaUltRev" disabled />
             </div>
             <div class="form-group">
               <div class="card border-primary h-100">
@@ -352,7 +377,11 @@
                       <label for="vetCol">Colegio:</label>
                       <select class="custom-select" id="vetCol" required v-model="vetProvUpdate">
                         <option selected>Seleccione una provincia</option>
-                        <option v-for="prov in provincias" :key="prov.code" :value="prov.code">{{ prov.name }}</option>
+                        <option
+                          v-for="prov in provincias"
+                          :key="prov.code"
+                          :value="prov.code"
+                        >{{ prov.name }}</option>
                       </select>
                     </div>
                   </div>
@@ -370,11 +399,25 @@
             <div class="form-group col-md-6 mb-2" id="lesiones">
               <label for="lesion">Presenta cicatrices\lesiones:</label>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="rdoLesionSi" name="lesion" v-model="lesion" value="true" class="custom-control-input" />
+                <input
+                  type="radio"
+                  id="rdoLesionSi"
+                  name="lesion"
+                  v-model="lesion"
+                  value="true"
+                  class="custom-control-input"
+                />
                 <label class="custom-control-label" for="rdoLesionSi">SI</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="rdoLesionNo" name="lesion" v-model="lesion" value="false" class="custom-control-input" />
+                <input
+                  type="radio"
+                  id="rdoLesionNo"
+                  name="lesion"
+                  v-model="lesion"
+                  value="false"
+                  class="custom-control-input"
+                />
                 <label class="custom-control-label" for="rdoLesionNo">No</label>
               </div>
             </div>
@@ -390,49 +433,51 @@
         </div>
       </div>
     </div>
-    <Modal v-if="myModal" :msgModal="modalMsg" @close="myModal=false"/>
+    <Modal v-if="myModal" :msgModal="modalMsg" @close="myModal=false" />
   </div>
   <!-- Fin datos última revisión -->
 </template>
 
 <script>
-import Modal from './Modal.vue'
-import provincias from '../data/provincias_es.json';
+import Modal from "./Modal.vue";
+import provincias from "../data/provincias_es.json";
 import { getValidDate } from "../../public/js/services/setValidDate.js";
 
-var user = JSON.parse(sessionStorage.getItem('sessionUser'));
+var user = JSON.parse(sessionStorage.getItem("sessionUser"));
 
 export default {
   name: "Mascota",
   data() {
     return {
       petIdNumber: null,
-      fechImplantacion: new Date().toISOString().slice(0,10),
+      fechImplantacion: new Date().toISOString().slice(0, 10),
       fechNac: null,
       petName: null,
-      raza: 'pura',
+      raza: "pura",
       razaPet: null,
       razaOtra: null,
-      danger: 'dangerNo',
+      razaOtraDis: false,
+      danger: "dangerNo",
       capa: null,
       pelo: null,
       genero: null,
       passport: null,
       aptitud: null,
-      fechalta: new Date().toISOString().slice(0,10),
-      fechaUltRev: new Date().toISOString().slice(0,10),
+      fechalta: new Date().toISOString().slice(0, 10),
+      fechaUltRev: new Date().toISOString().slice(0, 10),
       pura: true,
       myModal: false,
-      vetNameUpdate: user.name,
-      vetSurnameUpDate: user.surname,
-      vetNumUpdate: user.col_id,
-      vetProvUpdate: user.col,
-      provincias: provincias,
+      vetNameUpdate: null,
+      vetSurnameUpDate: null,
+      vetNumUpdate: null,
+      vetProvUpdate: null,
+      provincias: null,
       estado: null,
       lesion: false,
       numCertf: null,
-      observaciones:null,
-      modalMsg: 'La fecha de nacimiento debe ser anterior a la fecha de implantación del chip y de alta en la BBDD.'
+      observaciones: null,
+      modalMsg:
+        "La fecha de nacimiento debe ser anterior a la fecha de implantación del chip y de alta en la BBDD."
     };
   },
   components: {
@@ -443,11 +488,14 @@ export default {
       var dateImpl = this.fechImplantacion;
       var dateNac = this.fechNac;
       var dateAlta = this.fechalta;
-      
+
       this.myModal = !getValidDate(dateNac, dateAlta, dateImpl);
+    },
+    onChange(event) {
+      return event.target.value != 0;
     }
   },
-  props: ['update']
+  props: ["update"]
 };
 </script>
 <style>

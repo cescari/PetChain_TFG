@@ -22,9 +22,10 @@ export function setIPFSdata(_data) {
     });
 }
 //https://ipfs.infura.io/ipfs/QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5
-export var getIPFSdata = new Promise(
+
+/*export var getIPFSdata = new Promise(
     resolve => {
-        ipfs.cat('QmPyuLw1uxHyzXqxFgS7Zby5FjYpSsRv2ZXMXGyLMuTig6', (_error, _result) => {
+        ipfs.cat(hashCode(), (_error, _result) => {
             if (_error) {
                 console.log('No existe el fichero');
             } else {
@@ -33,6 +34,16 @@ export var getIPFSdata = new Promise(
         });
     }, reject => {
         console.log('No existe el fichero');
+    });*/
+
+export function getIPFSdata(_hash) {
+    return new Promise((resolve, reject) => {
+        ipfs.cat(_hash, (_error, _result) => {
+            if (_error) {
+                reject('No existe el fichero');
+            } else {
+                resolve(_result);
+            }
+        });
     });
-
-
+}

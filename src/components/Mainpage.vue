@@ -93,7 +93,7 @@
         </div>
       </div>-->
       <div class="col-lg-6">
-        <img class="img-fluid rounded" src="http://placehold.it/700x450" alt />
+        <img class="img-fluid rounded" src="../../public/img/veterinarian.png" alt="veterinarian" style="width:75%; border: 1px solid silver;" />
       </div>
     </div>
     <!-- /.row -->

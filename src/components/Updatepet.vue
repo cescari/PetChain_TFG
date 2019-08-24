@@ -56,7 +56,7 @@ export default {
     }
   },
   mounted: function() {
-    getIPFSdata
+    getIPFSdata ('QmPyuLw1uxHyzXqxFgS7Zby5FjYpSsRv2ZXMXGyLMuTig6')
       .then((response)=> {
         setJSONToData(JSON.parse(response), this);
         data = JSON.parse(response);
