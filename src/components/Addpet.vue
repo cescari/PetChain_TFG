@@ -58,7 +58,7 @@ export default {
         propietario: {}
       };
       console.log(setDataToJSON(data, this, 1));
-      //setIPFSdata(JSON.stringify(data));
+      setIPFSdata(JSON.stringify(data));
     }
   }
 };

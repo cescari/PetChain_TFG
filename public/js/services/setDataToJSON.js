@@ -1,16 +1,13 @@
-/********************************************************/
-/* File: setDataToJSON.js                               */
-/* Author: Carlos Escario Bajo                          */
-/* Proyecto: TFG UNIR                                   */
-/* Date: 21/08/2019                                     */
-/* Version: 1.0                                         */
-/* Javascript para la composici'on del objeto a enviar  */
-/********************************************************/
-
+/************************************************************/
+/* File: setDataToJSON.js                                   */
+/* Author: Carlos Escario Bajo                              */
+/* Proyecto: TFG UNIR                                       */
+/* Date: 21/08/2019                                         */
+/* Version: 1.0                                             */
+/* Javascript para la composicion del objeto JSON a enviar  */
+/************************************************************/
+var objectUpdate = {};
 export function setDataToJSON(_data, _this, _action) {
-
-    var objectUpdate = {}
-
 
     _data["vetidentificador"].vetName = _this.$children[0].$data.vetName;
     _data["vetidentificador"].vetId = _this.$children[0].$data.vetId;

@@ -11,6 +11,7 @@
     "file-saver": "^2.0.2",
     "ipfs-mini": "^1.1.5",
     "jquery": "^3.4.1",
+    "parse-json": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "web3": "^0.20.6"

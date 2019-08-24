@@ -40,12 +40,15 @@
     
 </template>
 <script>
+const parseJson = require('parse-json');
 
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
-import { setIPFSdata } from '../../public/js/services/setIPFSFile.js'
-
+import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
+import { setIPFSdata, getIPFSdata } from '../../public/js/services/setIPFSFile.js'
+import { isUndefined } from 'util';
+//import { getIPFSdata } from '../../public/js/services/setIPFSFile.js'
 
 export default {
   name: "Updatepet",
@@ -55,14 +58,10 @@ export default {
     Propietario
   },
   methods: {
-    onSubmit() {
-      const data = {
-        vetidentificador: {},
-        mascota: { ultima_rev: [] },
-        propietario: {}
-      };
-      console.log(setDataToJSON(data, this, 2));
-      //setIPFSdata(JSON.stringify(data));
+    async onSubmit() {
+      var data = {};
+      var result = Object.create(JSON.parse(await getIPFSdata()));
+      console.log('pasa update ' + result.mascota.petName);
     }
   }
 };
