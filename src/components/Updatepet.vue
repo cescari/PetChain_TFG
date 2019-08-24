@@ -37,9 +37,11 @@
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
-import { setJSONToData } from "../../public/js/services/setDataToJSON.js";
+import { setJSONToData, setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { isUndefined } from "util";
+
+var data = {};
 
 export default {
   name: "Updatepet",
@@ -49,13 +51,15 @@ export default {
     Propietario
   },
   methods: {
-    onSubmit: function() {}
+    onSubmit: function() {
+      setDataToJSON(data, this, 2)
+    }
   },
   mounted: function() {
     getIPFSdata
       .then((response)=> {
-        //console.log('respuesta ' + JSON.parse(response).mascota.petName);
         setJSONToData(JSON.parse(response), this);
+        data = JSON.parse(response);
       })
       .catch((error) => {
         console.log(error);

@@ -2,12 +2,13 @@
 /* File: setDataToJSON.js                                   */
 /* Author: Carlos Escario Bajo                              */
 /* Proyecto: TFG UNIR                                       */
-/* Date: 21/08/2019                                         */
-/* Version: 1.0                                             */
+/* Date: 24/08/2019                                         */
+/* Version: 2.0                                             */
 /* Javascript para la composicion del objeto JSON a enviar  */
 /************************************************************/
+var objectUpdate = {};
 
-export function setDataToJSON(_data, _this) {
+export function setDataToJSON(_data, _this, _action) {
     console.log(_data)
     _data["vetidentificador"].vetName = _this.$children[0].vetName;
     _data["vetidentificador"].vetId = _this.$children[0].vetId;
@@ -30,7 +31,7 @@ export function setDataToJSON(_data, _this) {
     _data["mascota"].aptitud = _this.$children[1].aptitud;
     
 
-    /* if (_action == 2){
+     if (_action == 2){
         objectUpdate.fechaUltRev = _this.$children[1].fechaUltRev;
         objectUpdate.vetNameUpdate = _this.$children[1].vetNameUpdate;
         objectUpdate.vetSurnameUpDate = _this.$children[1].vetSurnameUpDate;
@@ -41,8 +42,8 @@ export function setDataToJSON(_data, _this) {
         objectUpdate.numCertf = _this.$children[1].numCertf;
         objectUpdate.observaciones = _this.$children[1].observaciones;
 
-        _data["mascota"].ultima_rev.push(objectUpdate);
-    } */
+        _data["mascota"].ultima_rev[_data["mascota"].ultima_rev.length] = JSON.parse(JSON.stringify(objectUpdate));
+    }
 
     _data["propietario"].propName = _this.$children[2].propName;
     _data["propietario"].propSurname = _this.$children[2].propSurname;
@@ -57,7 +58,6 @@ export function setDataToJSON(_data, _this) {
 }
 
 export function setJSONToData(_data, _this){
-    console.log(_data)
     _this.$children[1].petName = _data["mascota"].petName;
     _this.$children[1].petIdNumber = _data["mascota"].petIdNumber
     _this.$children[1].fechImplantacion = _data["mascota"].fechImplantacion;
@@ -72,6 +72,8 @@ export function setJSONToData(_data, _this){
     _this.$children[1].genero = _data["mascota"].genero;
     _this.$children[1].passport = _data["mascota"].passport;
     _this.$children[1].aptitud = _data["mascota"].aptitud;
+
+   
 
     _this.$children[2].propName = _data["propietario"].propName;
     _this.$children[2].propSurname = _data["propietario"].propSurname;

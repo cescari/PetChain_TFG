@@ -24,7 +24,7 @@ export function setIPFSdata(_data) {
 //https://ipfs.infura.io/ipfs/QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5
 export var getIPFSdata = new Promise(
     resolve => {
-        ipfs.cat('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5', (_error, _result) => {
+        ipfs.cat('QmPyuLw1uxHyzXqxFgS7Zby5FjYpSsRv2ZXMXGyLMuTig6', (_error, _result) => {
             if (_error) {
                 console.log('No existe el fichero');
             } else {

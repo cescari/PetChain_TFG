@@ -34,6 +34,7 @@
                     class="form-control"
                     v-model="fechImplantacion"
                     required
+                    :disabled="update"
                     @change="checKDates()"
                     
                   />
@@ -46,6 +47,7 @@
                     class="form-control"
                     v-model="fechalta"
                     required
+                    :disabled="update"
                     @change="checKDates()"
                   />
                 </div>
@@ -305,7 +307,7 @@
           <div class="card-body">
             <div class="form-group col-md-2">
               <label for="fechaRev">Fecha:</label>
-              <input type="date" id="fechaRev" class="form-control" v-model="fechaUltRev"/>
+              <input type="date" id="fechaRev" class="form-control" v-model="fechaUltRev" disabled/>
             </div>
             <div class="form-group">
               <div class="card border-primary h-100">
