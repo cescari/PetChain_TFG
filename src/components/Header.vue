@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div>
-    <Menu id="myMenu" ref="myMenu" />
+   
     <header
       id="myHeader"
       ref="myHeader"
