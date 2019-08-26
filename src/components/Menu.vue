@@ -50,7 +50,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/licencia">Licencia</a>
           </li>
-          <li class="nav-item ml-3">
+          <li class="nav-item ml-5">
             <a class="nav-link" href="/">Cerrar sesi&oacute;n</a>
           </li>
         </ul>

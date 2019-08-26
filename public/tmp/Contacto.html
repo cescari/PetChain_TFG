@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Petchain</title>
+    <link href="/app.js" rel="preload" as="script">
+    <style>
+        .btn-secondary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+            font-weight: bold !important;
+        }
+
+        btn-secondary:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem #007bff !important;
+            box-shadow: 0 0 0 0.2rem #007bff !important;
+        }
+
+        .btn-secondary:hover {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .fas {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            nav {
+                background-color: #007bff !important;
+            }
+
+            .navbar-dark .navbar-nav .nav-link {
+                font-size: small;
+            }
+
+            .navbar-brand {
+                font-size: medium !important;
+            }
+        }
+    </style>
+    <style>
+        /* Small devices (portrait phones, less than 576px)*/
+        @media (max-width: 575.98px) {
+            header {
+                display: none !important;
+            }
+        }
+
+        /* Small devices (landscape phones, less than 768px)*/
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            header {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            .carousel-item {
+                max-height: 200px !important;
+            }
+        }
+    </style>
+    <style>
+        /* Small devices (portrait phones, less than 576px)*/
+        @media (max-width: 575.98px) {
+            .imgMenu {
+                width: 25% !important;
+            }
+        }
+
+        /* Small devices (landscape phones, less than 768px)*/
+        @media (min-width: 576px) and (max-width: 1199.98px) {
+            .imgMenu {
+                width: 50% !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .imgMenu {
+                width: 60% !important;
+            }
+        }
+    </style>
+    <style>
+        .modal-mask[data-v-701ac82d] {
+            position: fixed;
+            z-index: 9998;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: table;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-wrapper[data-v-701ac82d] {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .modal-container[data-v-701ac82d] {
+            width: 50%;
+            margin: 0px auto;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .modal-header[data-v-701ac82d] {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .modal-header h3[data-v-701ac82d] {
+            margin-top: 0;
+            color: #42b983;
+        }
+
+        .modal-body[data-v-701ac82d] {
+            margin: 5px 0;
+            padding: 0.5rem !important;
+        }
+
+        .modal-default-button[data-v-701ac82d] {
+            float: right;
+        }
+
+        /*
+       * The following styles are auto-applied to elements with
+       * transition="modal" when their visibility is toggled
+       * by Vue.js.
+       *
+       * You can easily play with the modal transition by editing
+       * these styles.
+       */
+        .modal-enter[data-v-701ac82d] {
+            opacity: 0;
+        }
+
+        .modal-leave-active[data-v-701ac82d] {
+            opacity: 0;
+        }
+
+        .modal-enter .modal-container[data-v-701ac82d],
+        .modal-leave-active .modal-container[data-v-701ac82d] {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top"
+                style="background-color: rgb(0, 123, 255) !important;">
+                <div class="container mr-0"><a href="/main" class="navbar-brand">PetChain - Home</a><button
+                        type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler navbar-toggler-right"><span class="navbar-toggler-icon"></span></button>
+                    <div id="navbarResponsive" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- <div class="dropdown"><button type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    class="btn btn-secondary dropdown-toggle">Gestión de mascotas</button>
+                                <div aria-labelledby="dropdownMenu2" class="dropdown-menu"><a href="/addpet"
+                                        class="dropdown-item">Alta de mascotas</a><a href="/updatepet"
+                                        class="dropdown-item">Modificación de mascotas</a><a href="/deletepet"
+                                        class="dropdown-item">Baja de mascotas</a></div>
+                            </div> -->
+                            <li class="nav-item"><a href="/contacto" class="nav-link">Transferencias</a></li>
+                            <li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>
+                            <li class="nav-item"><a href="/licencia" class="nav-link">Licencia</a></li>
+                            <li class="nav-item ml-5"><a href="/" class="nav-link">Cerrar sesión</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><i class="fas fa-sign-out-alt" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <h1 class="mt-4 mb-3">Contacto</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active">Contacto</li>
+                </ol>
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <iframe
+                            src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=40.4367252,-3.694797&amp;spn=56.506174,79.013672&amp;t=m&amp;z=11&amp;output=embed"
+                            style="width: 100%; height: 400px;"></iframe></div>
+                    <div class="col-lg-4 mb-4">
+                        <h3>Nuestra dirección central</h3>
+                        <p>
+                            1234 Calle del Pez
+                            <br>Madrid, Madrid 28200
+                            <br></p>
+                        <p><abbr title="Phone">P</abbr>: (123) 456-7890
+                        </p>
+                        <p><abbr title="Email">E</abbr>:
+                            <a href="mailto:name@example.com">name@example.com</a></p>
+                        <p><abbr title="Hours">H</abbr>: Lunes - Domingo: 24 x 7
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="py-5 pl-5 bg-dark" style="background-color: rgb(0, 123, 255) !important;">
+            <p class="m-0 text-left text-white"><a rel="license"
+                    href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons"
+                        src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+                        style="border-width: 0px;"></a>Copyright © Carlos Escario Bajo - 2019 <a href="./license.html"
+                    title="Licencia creative Commons" class="petfooter">Licencia Creative Commons</a></p>
+            <p class="m-0 text-left text-white">
+                Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+                    class="petfooter">Freepik</a>
+                from <a href="https://www.flaticon.com/" title="Flaticon" class="petfooter">www.flaticon.com</a> is
+                licensed by
+                <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"
+                    class="petfooter">CC 3.0 BY</a></p>
+        </footer>
+    </div>
+    <script src="/dist/build.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/modern-business.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/fbaee2798b.js"></script>
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css"
+        media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css"
+        media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <script type="text/javascript" src="/app.js"></script>
+
+</body>
+
+</html>

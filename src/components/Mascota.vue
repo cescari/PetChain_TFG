@@ -397,7 +397,7 @@
               </select>
             </div>
             <div class="form-group col-md-6 mb-2" id="lesiones">
-              <label for="lesion">Presenta cicatrices\lesiones:</label>
+              <label for="rdoLesionSi">Presenta cicatrices\lesiones:</label>
               <div class="custom-control custom-radio custom-control-inline">
                 <input
                   type="radio"

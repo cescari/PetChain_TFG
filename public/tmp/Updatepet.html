@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Petchain</title>
+    <link href="/app.js" rel="preload" as="script">
+    <style>
+        .btn-secondary {
+            color: #fff;
+            background-color: #007bff !important;
+            border-color: #007bff !important;
+            font-weight: bold !important;
+        }
+
+        btn-secondary:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem #007bff !important;
+            box-shadow: 0 0 0 0.2rem #007bff !important;
+        }
+
+        .btn-secondary:hover {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        .fas {
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            nav {
+                background-color: #007bff !important;
+            }
+
+            .navbar-dark .navbar-nav .nav-link {
+                font-size: small;
+            }
+
+            .navbar-brand {
+                font-size: medium !important;
+            }
+        }
+    </style>
+    <style>
+        /* Small devices (portrait phones, less than 576px)*/
+        @media (max-width: 575.98px) {
+            header {
+                display: none !important;
+            }
+        }
+
+        /* Small devices (landscape phones, less than 768px)*/
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            header {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1199.98px) {
+            .carousel-item {
+                max-height: 200px !important;
+            }
+        }
+    </style>
+    <style>
+        /* Small devices (portrait phones, less than 576px)*/
+        @media (max-width: 575.98px) {
+            .imgMenu {
+                width: 25% !important;
+            }
+        }
+
+        /* Small devices (landscape phones, less than 768px)*/
+        @media (min-width: 576px) and (max-width: 1199.98px) {
+            .imgMenu {
+                width: 50% !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .imgMenu {
+                width: 60% !important;
+            }
+        }
+    </style>
+    <style>
+        .modal-mask[data-v-701ac82d] {
+            position: fixed;
+            z-index: 9998;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: table;
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-wrapper[data-v-701ac82d] {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .modal-container[data-v-701ac82d] {
+            width: 50%;
+            margin: 0px auto;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .modal-header[data-v-701ac82d] {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .modal-header h3[data-v-701ac82d] {
+            margin-top: 0;
+            color: #42b983;
+        }
+
+        .modal-body[data-v-701ac82d] {
+            margin: 5px 0;
+            padding: 0.5rem !important;
+        }
+
+        .modal-default-button[data-v-701ac82d] {
+            float: right;
+        }
+
+        /*
+       * The following styles are auto-applied to elements with
+       * transition="modal" when their visibility is toggled
+       * by Vue.js.
+       *
+       * You can easily play with the modal transition by editing
+       * these styles.
+       */
+        .modal-enter[data-v-701ac82d] {
+            opacity: 0;
+        }
+
+        .modal-leave-active[data-v-701ac82d] {
+            opacity: 0;
+        }
+
+        .modal-enter .modal-container[data-v-701ac82d],
+        .modal-leave-active .modal-container[data-v-701ac82d] {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top"
+                style="background-color: rgb(0, 123, 255) !important;">
+                <div class="container mr-0"><a href="/main" class="navbar-brand">PetChain - Home</a><button
+                        type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                        class="navbar-toggler navbar-toggler-right"><span class="navbar-toggler-icon"></span></button>
+                    <div id="navbarResponsive" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- <div class="dropdown"><button type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    class="btn btn-secondary dropdown-toggle">Gestión de mascotas</button>
+                                <div aria-labelledby="dropdownMenu2" class="dropdown-menu"><a href="/addpet"
+                                        class="dropdown-item">Alta de mascotas</a><a href="/updatepet"
+                                        class="dropdown-item">Modificación de mascotas</a><a href="/deletepet"
+                                        class="dropdown-item">Baja de mascotas</a></div>
+                            </div> -->
+                            <li class="nav-item"><a href="/contacto" class="nav-link">Transferencias</a></li>
+                            <li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>
+                            <li class="nav-item"><a href="/licencia" class="nav-link">Licencia</a></li>
+                            <li class="nav-item ml-5"><a href="/" class="nav-link">Cerrar sesión</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><i class="fas fa-sign-out-alt" aria-hidden="true"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container pb-5">
+                <form name="mainFrm" action="POST" novalidate="novalidate">
+                    <h1 class="mt-5">Modificación de mascotas</h1>
+                    <div class="row">
+                        <div class="col-lg-2 col-sm-2 col-xs-2 pb-2">
+                            <div class="h-100"><img src="/img/pet.20608352.svg" alt="" class="card-img-top"
+                                    style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/main">Inicio</a></li>
+                        <li class="breadcrumb-item active">Modificación de mascotas</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-lg-12 mb-2">
+                            <div class="card border-primary h-100">
+                                <h4 class="card-header border-primary">Veterinario identificador</h4>
+                                <div class="card-body">
+                                    <div class="form-group row pl-4"><label for="vetName"
+                                            class="col-form-label font-weight-bold">Nombre: </label>
+                                        <div class="col-md-2"><input type="text" readonly="readonly" id="vetName"
+                                                class="form-control-plaintext"></div><label for="vetSurname"
+                                            class="col-form-label font-weight-bold">Apellidos: </label>
+                                        <div class="col-md-2"><input type="text" readonly="readonly" id="vetSurname"
+                                                class="form-control-plaintext"></div><label for="vetNum"
+                                            class="col-form-label font-weight-bold">Nº de colegiado: </label>
+                                        <div class="col-md-1"><input type="text" readonly="readonly" id="vetNum"
+                                                class="form-control-plaintext"></div><label for="vetColMod"
+                                            class="col-form-label font-weight-bold">Colegio: </label>
+                                        <div class="col-md-2"><input id="vetColMod" readonly="readonly"
+                                                class="form-control-plaintext"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-12 mb-2">
+                                <div class="card border-primary h-100">
+                                    <h4 class="card-header border-primary">Animal</h4>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="form-row mb-2">
+                                                <div class="col-md-3"><label for="petIdNumber">Número de
+                                                        identificación:</label><input type="text" id="petIdNumber"
+                                                        placeholder="Número de identificación:" required="required"
+                                                        class="form-control"></div>
+                                                <div class="col-md-2"><label for="fechImplantacion">Microchip
+                                                        fecha:</label><input type="date" id="fechImplantacion"
+                                                        required="required" disabled="disabled" class="form-control">
+                                                </div>
+                                                <div class="col-md-2"><label for="fechalta">Alta base de
+                                                        datos:</label><input type="date" id="fechalta"
+                                                        required="required" disabled="disabled" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-row mb-2">
+                                                <div class="col-md-3"><label for="petName">Nombre:</label><input
+                                                        type="text" id="petName" placeholder="Nombre del animal"
+                                                        required="required" class="form-control"></div>
+                                            </div>
+                                            <div class="card border-primary h-100 mb-4">
+                                                <h5 class="card-header border-primary">Raza</h5>
+                                                <div class="ml-4 mr-4 mt-2 mb-2">
+                                                    <div class="custom-control custom-radio"><input type="radio"
+                                                            id="raza" name="razaCan" value="pura" disabled="disabled"
+                                                            class="custom-control-input"><label for="raza"
+                                                            class="custom-control-label">Raza canina pura.</label></div>
+                                                    <div class="custom-control custom-radio"><input type="radio"
+                                                            id="cruceDesc" name="razaCan" value="cruce1"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="cruceDesc" class="custom-control-label">
+                                                            Cruce de razas caninas
+                                                            desconocidas.
+                                                        </label></div>
+                                                    <div class="custom-control custom-radio"><input type="radio"
+                                                            id="cruceCon" name="razaCan" value="cruce2"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="cruceCon" class="custom-control-label">
+                                                            Cruce de razas caninas,
+                                                            al menos una conocida.
+                                                        </label></div>
+                                                    <div class="form-row mt-2">
+                                                        <div class="col-md-3"><label for="razaPet">Raza:</label><select
+                                                                id="razaPet" required="required" disabled="disabled"
+                                                                class="custom-select">
+                                                                <option value="">Seleccione una raza</option>
+                                                                <option value="Dogo aleman">Dogo alemán</option>
+                                                                <option value="Bull terrier">Bull terrier</option>
+                                                                <option value="Pastor aleman">Pastor alemán</option>
+                                                                <option value="Yorkshire">Yorkshire</option>
+                                                                <option value="Collie">Collie</option>
+                                                                <option value="Chow chow">Chow chow</option>
+                                                                <option value="Siberian Huskie">Siberian Huskie</option>
+                                                                <option value="Alaskan malamuten">Alaskan malamuten
+                                                                </option>
+                                                                <option value="Perdiguero de Burgos">Perdiguero de
+                                                                    Burgos</option>
+                                                                <option value="Beagle">Beagle</option>
+                                                                <option value="Galgo">Galgo</option>
+                                                            </select></div>
+                                                        <div class="col-md-6"><label for="petName">
+                                                                Si la raza no figura entre las anteriores,
+                                                                indíquela:
+                                                            </label><input type="text" id="razaOtra"
+                                                                placeholder="Raza del animal" required="required"
+                                                                size="10" disabled="disabled" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-12 mt-2"><label>
+                                                                (Recuerde que si se trata de un cruce debe marcar la
+                                                                opción
+                                                                correspondiente.)
+                                                            </label></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row mb-2"><label>Potencialmente peligroso:</label>
+                                                <div id="dangerous" class="col-md-4">
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="rdoYes" name="danger" value="dangerYes"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="rdoYes" class="custom-control-label">Si</label></div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="rdoNo" name="danger" value="dangerNo"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="rdoNo" class="custom-control-label">No</label></div>
+                                                </div>
+                                                <div class="col-md-12"><label>
+                                                        Si la raza que indique para este animal está considerada
+                                                        potencialmente peligrosa según
+                                                        el RD 287/2002, debe forzosamente elegir el valor
+                                                        <strong>SI</strong> en
+                                                        este
+                                                        campo.
+                                                        <strong>
+                                                            Razas consideradas peligrosas:
+                                                            Pitbull Terrier, American Standffordshire Terrier,
+                                                            Rottweiler, Dogo
+                                                            Argentino, Fila Brasileño, Tosa Inu,
+                                                            Akita Inu, así como sus cruces u otras razas que resulten
+                                                            del
+                                                            cruce
+                                                            de alguna de ellas, como el
+                                                            Pampa Argentino, PitBull Mexicano, American Bully, Shorty
+                                                            Bull, Akita
+                                                            americano, Red Nose, etc.
+                                                        </strong><br>También en el caso de que el animal tenga todas o
+                                                        la mayoría
+                                                        de
+                                                        estas
+                                                        <u>características</u>
+                                                        .
+                                                    </label></div>
+                                            </div>
+                                            <div class="form-row mb-2">
+                                                <div class="col-md-2"><label for="fechNac">Fecha de
+                                                        nacimiento:</label><input type="date" id="fechNac"
+                                                        required="required" disabled="disabled" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-row mb-2">
+                                                <div class="col-md-3"><label for="capa">Capa:</label><input type="text"
+                                                        id="capa" required="required" disabled="disabled"
+                                                        class="form-control"></div>
+                                                <div class="col-md-2"><label for="pelo">Pelo:</label><select id="pelo"
+                                                        required="required" disabled="disabled" class="custom-select">
+                                                        <option value="">Seleccione pelo</option>
+                                                        <option value="alava">Corto</option>
+                                                        <option value="albacete">Medio</option>
+                                                        <option value="alicante">Largo</option>
+                                                    </select></div>
+                                            </div>
+                                            <div class="form-row mb-3">
+                                                <div class="col-md-3"><label>Género:</label>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="rdoMacho" name="genero" value="macho"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="rdoMacho" class="custom-control-label">Macho</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="rdoHembra" name="genero" value="hembra"
+                                                            disabled="disabled" class="custom-control-input"><label
+                                                            for="rdoHembra" class="custom-control-label">Hembra</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row mb-2">
+                                                <div class="col-md-3"><label for="capa">Nº de pasaporte
+                                                        animal:</label><input type="text" id="passport" maxlength="11"
+                                                        class="form-control"></div>
+                                                <div class="col-md-3"><label for="aptitud">Aptitud:</label><select
+                                                        id="aptitud" required="required" disabled="disabled"
+                                                        class="custom-select">
+                                                        <option value="">Seleccione aptitud</option>
+                                                        <option value="Compania">Compañía</option>
+                                                        <option value="Deportivo">Deportivo</option>
+                                                        <option value="Acompañamiento">Acompañamiento</option>
+                                                    </select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 mb-2">
+                                <div class="card border-primary h-100">
+                                    <h5 class="card-header border-primary">Datos última revisión</h5>
+                                    <div class="card-body">
+                                        <div class="form-group col-md-2"><label for="fechaRev">Fecha:</label><input
+                                                type="date" id="fechaRev" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="card border-primary h-100">
+                                                <h5 class="card-header border-primary">Colegiado</h5>
+                                                <div class="card-body">
+                                                    <div class="form-row">
+                                                        <div class="col-md-2 mb-2"><label
+                                                                for="vetNameUpdate">Nombre:</label><input type="text"
+                                                                id="vetNameUpdate" placeholder="Nombre del colegiado"
+                                                                class="form-control"></div>
+                                                        <div class="col-md-3 mb-2"><label
+                                                                for="vetSurnameUpDate">Apellidos:</label><input
+                                                                type="text" id="vetSurnameUpDate"
+                                                                placeholder="Apellidos del colegiado"
+                                                                class="form-control"></div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-3 mb-2"><label for="vetNumUpdate">Número de
+                                                                colegiado:</label><input type="text" id="vetNumUpdate"
+                                                                placeholder="Número del colegiado" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="col-md-3 mb-2"><label
+                                                                for="vetCol">Colegio:</label><select id="vetCol"
+                                                                required="required" class="custom-select">
+                                                                <option value="">Seleccione una provincia</option>
+                                                            </select></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3"><label for="estado">Estado:</label><select
+                                                id="estado" class="custom-select">
+                                                <option>Seleccione estado</option>
+                                                <option value="0">Bueno</option>
+                                                <option value="1">Malo</option>
+                                            </select></div>
+                                        <div id="lesiones" class="form-group col-md-6 mb-2"><label for="rdoLesionSi">Presenta
+                                                cicatrices\lesiones:</label>
+                                            <div class="custom-control custom-radio custom-control-inline"><input
+                                                    type="radio" id="rdoLesionSi" name="lesion" value="true"
+                                                    class="custom-control-input"><label for="rdoLesionSi"
+                                                    class="custom-control-label">SI</label></div>
+                                            <div class="custom-control custom-radio custom-control-inline"><input
+                                                    type="radio" id="rdoLesionNo" name="lesion" value="false"
+                                                    class="custom-control-input"><label for="rdoLesionNo"
+                                                    class="custom-control-label">No</label></div>
+                                        </div>
+                                        <div class="form-group col-md-3"><label for="numCertf">Nº
+                                                certificado:</label><input type="text" id="numCertf"
+                                                class="form-control"></div>
+                                        <div class="form-group col-md-12"><label
+                                                for="obsTextArea">Observaciones</label><textarea id="obsTextArea"
+                                                rows="3" class="form-control"></textarea></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 mb-2">
+                            <div class="card border-primary h-100">
+                                <h5 class="card-header border-primary">Propietario</h5>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div class="form-row mb-2">
+                                            <div class="col-md-2"><label for="propName">Nombre:</label><input
+                                                    type="text" id="propName" placeholder="Nombre del propietario"
+                                                    required="required" class="form-control"></div>
+                                            <div class="col-md-3"><label for="propSurname">Apellidos:</label><input
+                                                    type="text" id="propSurname" placeholder="Apellidos del propietario"
+                                                    required="required" class="form-control"></div>
+                                        </div>
+                                        <div class="form-row mb-2">
+                                            <div class="col-md-3"><label for="propId">DNI/Pasaporte/Tarjeta
+                                                    residente:</label><input type="text" id="propId"
+                                                    placeholder="Nº documento" required="required" maxlength="12"
+                                                    class="form-control"></div>
+                                        </div>
+                                        <div class="form-row mb-2">
+                                            <div class="col-md-2"><label for="propPhone">Teléfono:</label><input
+                                                    type="tel" pattern="^\d{2}\d{3}\d{4}$" id="propPhone"
+                                                    placeholder="Teléfono" required="required" maxlength="10"
+                                                    class="form-control"></div>
+                                        </div>
+                                        <div class="form-row mb-2">
+                                            <div class="col-md-3 mb-2"><label for="provProp">Provincia:</label><select
+                                                    id="provProp" required="required" class="custom-select">
+                                                    <option value="">Seleccione una provincia
+                                                    </option>
+                                                    <option value="VI">Álava</option>
+                                                    <option value="AB">Albacete</option>
+                                                    <option value="A">Alacant</option>
+                                                    <option value="AL">Almería</option>
+                                                    <option value="AV">Ávila</option>
+                                                    <option value="BA">Badajoz</option>
+                                                    <option value="PM">Illes Balears</option>
+                                                    <option value="B">Barcelona</option>
+                                                    <option value="BU">Burgos</option>
+                                                    <option value="CC">Cáceres</option>
+                                                    <option value="CA">Cádiz</option>
+                                                    <option value="CS">Castellón</option>
+                                                    <option value="CR">Ciudad Real</option>
+                                                    <option value="CO">Córdoba</option>
+                                                    <option value="C">A Coruña</option>
+                                                    <option value="CU">Cuenca</option>
+                                                    <option value="GI">Girona</option>
+                                                    <option value="GR">Granada</option>
+                                                    <option value="GU">Guadalajara</option>
+                                                    <option value="SS">Gipuzkoa</option>
+                                                    <option value="H">Huelva</option>
+                                                    <option value="HU">Huesca</option>
+                                                    <option value="J">Jaén</option>
+                                                    <option value="LE">León</option>
+                                                    <option value="L">Lleida</option>
+                                                    <option value="LO">La Rioja</option>
+                                                    <option value="LU">Lugo</option>
+                                                    <option value="M">Madrid</option>
+                                                    <option value="MA">Málaga</option>
+                                                    <option value="MU">Murcia</option>
+                                                    <option value="NA">Nafarroa</option>
+                                                    <option value="OR">Ourense</option>
+                                                    <option value="O">Asturias</option>
+                                                    <option value="P">Palencia</option>
+                                                    <option value="GC">Las Palmas</option>
+                                                    <option value="PO">Pontevedra</option>
+                                                    <option value="SA">Salamanca</option>
+                                                    <option value="TF">Sta. Cruz de Tenerife</option>
+                                                    <option value="S">Cantabria</option>
+                                                    <option value="SG">Segovia</option>
+                                                    <option value="SE">Sevilla</option>
+                                                    <option value="SO">Soria</option>
+                                                    <option value="T">Tarragona</option>
+                                                    <option value="TE">Teruel</option>
+                                                    <option value="TO">Toledo</option>
+                                                    <option value="V">Valéncia</option>
+                                                    <option value="VA">Valladolid</option>
+                                                    <option value="BI">Bizkaia</option>
+                                                    <option value="ZA">Zamora</option>
+                                                    <option value="Z">Zaragoza</option>
+                                                    <option value="CE">Ceuta</option>
+                                                    <option value="ML">Melilla</option>
+                                                </select></div>
+                                            <div class="col-md-3 mb-2"><label for="ciudadProp">Ciudad:</label><input
+                                                    type="text" id="ciudadProp" placeholder="Municipio"
+                                                    required="required" class="form-control"></div>
+                                            <div class="col-md-1 mb-2"><label for="cp">C.P:</label><input type="text"
+                                                    id="cp" placeholder="C.P." maxlength="5" required="required"
+                                                    class="form-control"></div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-3"><label for="propPais">País:</label><select
+                                                    id="propPais" required="required" class="custom-select">
+                                                    <option value="">Seleccione un país</option>
+                                                    <option value="DE">ALEMANIA</option>
+                                                    <option value="AT">AUSTRIA</option>
+                                                    <option value="BE">BELGICA</option>
+                                                    <option value="BG">BULGARIA</option>
+                                                    <option value="CY">CHIPRE</option>
+                                                    <option value="HR">CROACIA</option>
+                                                    <option value="DK">DINAMARCA</option>
+                                                    <option value="SK">ESLOVAQUIA</option>
+                                                    <option value="SI&nbsp;">ESLOVENIA</option>
+                                                    <option value="ES">ESPAÑA</option>
+                                                    <option value="EE">ESTONIA</option>
+                                                    <option value="FI">FINLANDIA</option>
+                                                    <option value="FR">FRANCIA</option>
+                                                    <option value="GR">GRECIA</option>
+                                                    <option value="HU">HUNGRIA</option>
+                                                    <option value="IE">IRLANDA</option>
+                                                    <option value="IT">ITALIA</option>
+                                                    <option value="LV">LETONIA</option>
+                                                    <option value="LT">LITUANIA</option>
+                                                    <option value="LU">LUXEMBURGO</option>
+                                                    <option value="MT">MALTA</option>
+                                                    <option value="NL">PAISES BAJOS (HOLANDA)</option>
+                                                    <option value="PL">POLONIA</option>
+                                                    <option value="PT">PORTUGAL</option>
+                                                    <option value="GB">REINO UNIDO</option>
+                                                    <option value="CZ">REPUBLICA CHECA</option>
+                                                    <option value="RO">RUMANIA</option>
+                                                </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right"><button type="submit" class="btn btn-primary">Modificar datos</button></div>
+                </form>
+            </div>
+        </div>
+        <footer class="py-5 pl-5 bg-dark" style="background-color: rgb(0, 123, 255) !important;">
+            <p class="m-0 text-left text-white"><a rel="license"
+                    href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons"
+                        src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+                        style="border-width: 0px;"></a>Copyright © Carlos Escario Bajo - 2019 <a href="./license.html"
+                    title="Licencia creative Commons" class="petfooter">Licencia Creative Commons</a></p>
+            <p class="m-0 text-left text-white">
+                Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+                    class="petfooter">Freepik</a>
+                from <a href="https://www.flaticon.com/" title="Flaticon" class="petfooter">www.flaticon.com</a> is
+                licensed by
+                <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank"
+                    class="petfooter">CC 3.0 BY</a></p>
+        </footer>
+    </div>
+    <script src="/dist/build.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/modern-business.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/fbaee2798b.js"></script>
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css"
+        media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css"
+        media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <script type="text/javascript" src="/app.js"></script>
+
+</body>
+
+</html>

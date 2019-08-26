@@ -25,9 +25,9 @@
             <div class="col-md-1">
               <input type="text" class="form-control-plaintext" readonly id="vetNum" v-model="vetId"/>
             </div>
-            <label for="vetCol" class="col-form-label font-weight-bold">{{ colegio }}</label>
+            <label for="vetColMod" class="col-form-label font-weight-bold">{{ colegio }}</label>
             <div class="col-md-2">
-              <input class="form-control-plaintext" id="vetCol" readonly v-model="vetCol"/>
+              <input class="form-control-plaintext" id="vetColMod" readonly v-model="vetColMod"/>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default {
       vetId: user.col_id,
       vetName: user.name,
       vetSurname: user.surname,
-      vetCol: user.col
+      vetColMod: user.col
     };
   }
 };
