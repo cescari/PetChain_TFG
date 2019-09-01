@@ -433,7 +433,7 @@
         </div>
       </div>
     </div>
-    <Modal v-if="myModal" :msgModal="modalMsg" @close="myModal=false" />
+    <Modal v-if="myModal" :msgModal="modalMsg" :titleModal="titleModal" :typeMsg="typeMsg" @close="myModal=false" />
   </div>
   <!-- Fin datos última revisión -->
 </template>
@@ -467,6 +467,7 @@ export default {
       fechaUltRev: new Date().toISOString().slice(0, 10),
       pura: true,
       myModal: false,
+      typeMsg:"Error",
       vetNameUpdate: null,
       vetSurnameUpDate: null,
       vetNumUpdate: null,
@@ -476,6 +477,7 @@ export default {
       lesion: false,
       numCertf: null,
       observaciones: null,
+      titleModal: "PetChain error",
       modalMsg:
         "La fecha de nacimiento debe ser anterior a la fecha de implantación del chip y de alta en la BBDD."
     };

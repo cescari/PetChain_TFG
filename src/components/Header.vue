@@ -31,10 +31,10 @@
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div
             class="carousel-item active bg-size-initial"
-            style="background-image: url('./img/logo.png')"
+            style="background-image: url('./img/logo.png');  max-height: 240px;"
           >
             <div class="carousel-caption d-none d-md-block">
-              <div>
+              <div> 
                 Logo made with
                 <a
                   href="https://www.designevo.com/en/"
@@ -44,21 +44,21 @@
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('./img/portara.jpg');">
+          <div class="carousel-item" style="background-image: url('./img/portara.jpg'); max-height: 240px;">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>Second Slide</h3>
               <p>This is a description for the second slide.</p>-->
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('./img/cat_1.jpg')">
+          <div class="carousel-item" style="background-image: url('./img/cat_1.jpg'); max-height: 240px;">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>Third Slide</h3>
               <p>This is a description for the third slide.</p>-->
             </div>
           </div>
           <!-- Slide Four - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('./img/dog_2.jpg')">
+          <div class="carousel-item" style="background-image: url('./img/dog_2.jpg'); max-height: 240px;">
             <div class="carousel-caption d-none d-md-block">
               <!-- <h3>Fourth Slide</h3>
               <p>This is a description for the fourth slide.</p>-->
@@ -118,7 +118,7 @@ export default {
 }
 @media (min-width: 768px) and (max-width: 1199.98px) {
   .carousel-item {
-    max-height: 200px !important;
+    max-height: 100px !important;
   }
 }
 </style>

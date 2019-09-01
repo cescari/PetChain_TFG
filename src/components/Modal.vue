@@ -11,22 +11,26 @@
     <div class="modal-wrapper">
       <div class="modal-container">
         <div class="modal-header">
-          <slot name="header">PetChain - Error</slot>
+          <slot name="header">{{ titleModal }}</slot>
         </div>
 
         <div class="modal-body">
           <slot name="body">
-            <div style="display: block; margin: auto; text-align: center;">
-              <img src="../../public/img/error.png" alt="Error" style="width: 8%;"/>
+            <div class="pb-3" style="display: block; margin: auto; text-align: center;">
+              <img src="../../public/img/error.png" alt="Error" style="width: 8%;" v-if="typeMsg === 'Error'"/>
+              <img src="../../public/img/send.png" alt="Error" style="width: 8%;" v-if="typeMsg === 'email'"/>
             </div>
-            {{ msgModal }}
-            
+            <label>{{ msgModal }}</label>
+            <div v-if="typeMsg === 'email'" class="form-group col-md-6">
+              <input type="email" placeholder="Introduza un email" class="form-control"/>
+            </div>
             </slot>
         </div>
 
         <div class="modal-footer">
           <slot name="footer">
             <button class="btn btn-primary" @click="$emit('close')">Cerrar</button>
+            <button class="btn btn-primary" v-if="typeMsg === 'email'" @click="$emit('send');">Enviar</button>
           </slot>
         </div>
       </div>
@@ -42,7 +46,7 @@ export default {
       showModal: false
     };
   },
-  props:['msgModal']
+  props:['msgModal', 'titleModal', 'typeMsg']
 };
 </script>
 <style scoped>

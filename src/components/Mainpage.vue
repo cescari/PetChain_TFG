@@ -2,8 +2,8 @@
 /* File: Mainpage.vue                                   */
 /* Author: Carlos Escario Bajo                          */
 /* Proyecto: TFG UNIR                                   */
-/* Date: 01/05/2019                                     */
-/* Version: 1.0                                         */
+/* Date: 10/08/2019                                     */
+/* Version: 2.0                                         */
 /* Webcomponent de la pagina inicial de PetChain        */
 /********************************************************/
 <template>
@@ -55,6 +55,20 @@
             <p class="card-text">
               <a href="/deletepet">
                 <img class="imgMenu" src="../../public/img/love.svg" alt="Baja de mascotas"/>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <h6>
+              <a href="/transferencias">Transferencias</a>
+            </h6>
+            <p class="card-text">
+              <a href="/deletepet">
+                <img class="imgMenu" src="../../public/img/currency-exchange.png" alt="Transferencias"/>
               </a>
             </p>
           </div>

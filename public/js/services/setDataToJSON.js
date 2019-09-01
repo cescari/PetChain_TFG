@@ -9,7 +9,6 @@
 var objectUpdate = {};
 
 export function setDataToJSON(_data, _this, _action) {
-    console.log(_data)
     _data["vetidentificador"].vetName = _this.$children[0].vetName;
     _data["vetidentificador"].vetId = _this.$children[0].vetId;
     _data["vetidentificador"].vetSurname = _this.$children[0].vetSurname;
