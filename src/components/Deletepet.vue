@@ -12,9 +12,9 @@
       <h1 class="mt-5">Baja de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
-        <div class="col-lg-2 col-sm-2 col-xs-2">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
           <div class="h-75 w-75 p-3">
-            <img class="card-img-top" src="../../public/img/love.svg" alt="Baja de mascotas" />
+            <img class="card-img-top" src="../../public/img/love.svg" alt="Baja de mascotas" style="width:40%;"/>
           </div>
         </div>
       </div>

@@ -11,10 +11,10 @@
     <form name="mainFrm" id="addPetfrm" action="POST" @submit.prevent="onSubmit" novalidate>
       <h1 class="mt-5">Alta de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
-      <div class="row">
-        <div class="col-lg-2 col-sm-2 col-xs-2">
+      <div class="ro align-items-center justify-content-center">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
           <div class="h-100">
-            <img class="card-img-top" src="../../public/img/collar.svg" alt style="width:75%;" />
+            <img class="card-img-top" src="../../public/img/collar.svg" alt style="width:50%;" />
           </div>
         </div>
       </div>

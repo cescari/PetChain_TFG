@@ -109,7 +109,7 @@ btn-secondary:focus {
 
 }
 
-@media (min-width: 360px) and (max-width: 768px) {
+@media (min-width: 360px) and (max-width: 991px) {
   #fontOut {
     display: none !important;
   }

@@ -9,12 +9,12 @@
 <template>
   <div class="container pb-5">
     <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
-      <h1 class="mt-5">Modificaci&oacute;n de mascotas</h1>
+      <h1 class="mt-5">Modificar mascota</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
-        <div class="col-lg-2 col-sm-2 col-xs-2 pb-2">
-          <div class="h-100">
-            <img class="card-img-top" src="../../public/img/pet.svg" alt style="width:60%;" />
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+          <div class="h-75 w-75 p-3">
+            <img class="card-img-top" src="../../public/img/pet.svg" alt="Modificar mascota" style="width:40%;" />
           </div>
         </div>
       </div>
