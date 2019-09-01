@@ -50,13 +50,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/licencia">Licencia</a>
           </li>
-          <li class="nav-item ml-5">
-            <a class="nav-link" href="/">Cerrar sesi&oacute;n</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/" >Cerrar sesi&oacute;n</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <i class="fas fa-sign-out-alt"></i>
+            <i id="fontOut" class="fas fa-sign-out-alt"></i>
           </li>
         </ul>
       </div>
@@ -93,7 +93,7 @@ btn-secondary:focus {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-@media (min-width: 768px) and (max-width: 1199.98px) {
+@media (min-width: 540px) and (max-width: 1199.98px) {
   nav {
     background-color: #007bff !important;
   }
@@ -102,6 +102,16 @@ btn-secondary:focus {
   }
   .navbar-brand {
     font-size: medium !important;
+  }
+  .container {
+    min-width: 100% !important;
+  }
+
+}
+
+@media (min-width: 360px) and (max-width: 768px) {
+  #fontOut {
+    display: none !important;
   }
 }
 </style>

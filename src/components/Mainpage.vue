@@ -79,7 +79,7 @@
 
     <!-- Features Section -->
     <div class="row mt-5 mb-4">
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <!-- <h2>Modern Business Features</h2> -->
         <h2>Petchain 1.0 le ofrece:</h2>
         <ul>
@@ -98,15 +98,7 @@
         </ul>
         <p>Mant&eacute;gase atento pronto llegar&aacute;n nuevas versiones!!</p>
       </div>
-      <!-- <div class="col-lg-4 mb-4">
-        <div class="p-3 bg-primary text-white rounded">
-          <p>
-            El primer sistema de gesti&oacute;n sanitaria animal basado en la Blockchain de Ethereum. Aqu&iacute;
-            tendr&aacute; toda la privacidad e inmutamilidad que le ofrece esta tecnolog&iacute;a. 
-          </p>
-        </div>
-      </div>-->
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-md-6 col-sm-6 d-flex align-items-center justify-content-center">
         <img class="img-fluid rounded" src="../../public/img/veterinarian.png" alt="veterinarian" style="width:75%; border: 1px solid silver;" />
       </div>
     </div>
