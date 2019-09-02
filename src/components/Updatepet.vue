@@ -31,15 +31,16 @@
         <button type="submit" class="btn btn-primary">Modificar datos</button>
       </div>
     </form>
+    <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash();"/>
   </div>
 </template>
 <script>
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
+import SelectPet from "@/components/SelectpetModal.vue"
 import { setJSONToData, setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
-import { isUndefined } from "util";
 
 var data = {};
 
@@ -48,15 +49,26 @@ export default {
   components: {
     vetidentificador,
     Mascota,
-    Propietario
+    Propietario,
+    SelectPet
+  },
+  data(){
+    return {
+      myModal: true
+    }
   },
   methods: {
     onSubmit: function() {
       setDataToJSON(data, this, 2)
+    },
+    getPetHash: function(){
+      var petId = document.getElementById('petHashID').value;
+      
+      this.myModal = false;
     }
   },
   mounted: function() {
-    getIPFSdata ('QmPyuLw1uxHyzXqxFgS7Zby5FjYpSsRv2ZXMXGyLMuTig6')
+    getIPFSdata ('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5')
       .then((response)=> {
         setJSONToData(JSON.parse(response), this);
         data = JSON.parse(response);

@@ -4,7 +4,7 @@
 /* Proyecto: TFG UNIR                                   */
 /* Date: 18/08/2019                                     */
 /* Version: 1.0                                         */
-/* Webcomponent para ventanas modales                   */
+/* Webcomponent para ventanas modales informativas      */
 /********************************************************/
 <template>
   <div class="modal-mask">

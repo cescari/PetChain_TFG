@@ -30,7 +30,12 @@ export function setDataInContract(_hash, _petId) {
         gasPrice: 3000000
     });
 }
-
+export function getDataFromContract(_petId){
+    return contract.getPet(_petId, {
+        from: fromAddress,
+        gasPrice: 3000000
+    });
+}
 function getDefaultAccount() {
     var userData = JSON.parse(JSON.stringify(sessionStorage.getItem('sessionUser')));
     return JSON.parse(userData).account;

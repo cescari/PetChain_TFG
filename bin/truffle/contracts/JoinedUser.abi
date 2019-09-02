@@ -1,0 +1,1 @@
+[{"constant":false,"inputs":[{"name":"_name","type":"string"},{"name":"_surname","type":"string"},{"name":"_userName","type":"string"}],"name":"join","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]

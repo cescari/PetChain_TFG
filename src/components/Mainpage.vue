@@ -19,7 +19,7 @@
     <!-- Portfolio Section -->
     <div class="row portfolio d-flex justify-content-center">
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <div class="card card-main">
+        <div class="card">
           <div class="card-square card-body align-items-center justify-content-center">
             <h6>
               <a href="/addpet">Alta de mascotas</a>
@@ -126,12 +126,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Small devices (portrait phones, less than 576px)*/
 .card-body {
   padding: 1rem !important;
 }
-.card-main {
+.card {
   margin: auto;
   text-align: center;
 }
