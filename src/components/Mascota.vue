@@ -16,7 +16,7 @@
             <div class="form-group">
               <div class="form-row mb-2">
                 <div class="col-md-3">
-                  <label for="petIdNumber">Número de identificación:</label>
+                  <label for="petIdNumber">Nº de identificaci&oacute;n:</label>
                   <input
                     type="text"
                     class="form-control"
@@ -25,6 +25,12 @@
                     v-model="petIdNumber"
                     required
                   />
+                </div>
+                <div class="col-md-1" v-if="update">
+                  <label for="btbSearch" style="visibility: hidden;">Buscar</label>
+                  <button id="btbSearch" title="Buscar mascota" type="button" class="btn btn-primary" aria-label="Buscar" @click="search();">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
                 </div>
                 <div class="col-md-2">
                   <label for="fechImplantacion">Microchip fecha:</label>
@@ -472,7 +478,7 @@ export default {
       vetSurnameUpDate: null,
       vetNumUpdate: null,
       vetProvUpdate: null,
-      provincias: null,
+      provincias: provincias,
       estado: null,
       lesion: false,
       numCertf: null,
@@ -495,6 +501,9 @@ export default {
     },
     onChange(event) {
       return event.target.value != 0;
+    },
+    search() {
+      this.$parent.search();
     }
   },
   props: ["update"]

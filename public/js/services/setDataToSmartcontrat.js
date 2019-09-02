@@ -12,7 +12,7 @@ const Web3 = require('web3');
 const url = 'http://127.0.0.1:7545';
 
 const fromAddress = getDefaultAccount();
-const petchain_Addr = '0x37d2306340c17ccf986f97677eb86adf32fe1978';
+const petchain_Addr = '0xe4c40fac187657410e9744ab08070963a5b3697b';
 const web3 = new Web3(new Web3.providers.HttpProvider(url));
 
 web3.eth.defaultAccount = fromAddress;

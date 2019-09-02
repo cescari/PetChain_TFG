@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="onSubmit">
+    
       <h1 class="mt-5">Baja de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
@@ -32,23 +32,31 @@
             <div class="card-body">
               <div class="form-group">
                 <div class="form-row mb-2">
-                  <div class="col-md-3">
-                    <label for="petIdNumber">N&uacute;mero de identificaci&oacute;n:</label>
+                  <div class="col-md-2">
+                    <label for="petIdNumber">Nº de identificación:</label>
                     <input
+                      v-model="petIdNumber"
                       type="text"
                       class="form-control"
                       id="petIdNumber"
                       placeholder="Numero de identificacion:"
                       required
+                      v-on:keyup.enter="getPetHash(petIdNumber);"
                     />
                   </div>
-                  <div class="col-md-3">
-                    <label for="fechImplantacion">Microchip implantado el d&iacute;a:</label>
-                    <input type="date" id="fechImplantacion" class="form-control" required />
+                  <div class="col-md-1" v-if="update">
+                    <label for="btbSearch" style="visibility: hidden;">Buscar</label>
+                    <button id="btbSearch" title="Buscar mascota" type="button" class="btn btn-primary" aria-label="Buscar" @click="myModal=true;">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
                   </div>
-                  <div class="col-md-3">
-                    <label for="fechalta">Alta en la base de datos:</label>
-                    <input type="date" id="fechalta" class="form-control" required />
+                  <div class="col-md-2">
+                    <label for="fechImplantacion">Microchip fecha:</label>
+                    <input type="date" id="fechImplantacion" v-model="fechImplantacion" class="form-control" disabled />
+                  </div>
+                  <div class="col-md-2">
+                    <label for="fechalta">Alta base de datos:</label>
+                    <input type="date" id="fechalta"  v-model="fechalta" class="form-control" disabled />
                   </div>
                 </div>
                 <div class="form-row mb-2">
@@ -56,10 +64,11 @@
                     <label for="petName">Nombre:</label>
                     <input
                       type="text"
+                      v-model="petName"
                       class="form-control"
                       id="petName"
                       placeholder="Nombre del animal"
-                      required
+                      disabled
                     />
                   </div>
                 </div>
@@ -71,18 +80,62 @@
       <div class="text-right">
         <button type="submit" class="btn btn-primary">Baja mascota</button>
       </div>
-    </form>
+    
+    <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
+    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet()" />
   </div>
 </template>
 <script>
 import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
+import SelectPet from "@/components/SelectpetModal.vue";
+import Confirm from "@/components/ConfirmModal.vue";
+import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
+import { getDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js"
 
 export default {
   name: "Deletepet",
+  data() {
+    return {
+      myModal: false,
+      confirmModal: false,
+      petIdNumber: null,
+      fechImplantacion: null,
+      fechalta: null,
+      petName: null,
+      msgTitle: 'Confirmar eliminación',
+      msgBody: 'ATENCION: Esta mascota será eliminada de la base de datos principal.¿Está Ud. seguro? Esta acción no podrá deshacerse.',
+      msgBtnConfirm: 'Eliminar'
+    }
+  },
   components: {
     vetidentificador,
-    Mascota
+    Mascota,
+    SelectPet,
+    Confirm
+  },
+  props: ["update"],
+  methods: {
+    getPetHash: function(_petId){
+      console.log(_petId);
+      getIPFSdata (getDataFromContract(_petId)[1])
+      .then((response)=> {
+        var data = JSON.parse(response);
+        this.petIdNumber = data.mascota.petIdNumber;
+        this.fechImplantacion = data.mascota.fechImplantacion;
+        this.fechalta = data.mascota.fechalta;
+        this.petName = data.mascota.petName;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+      this.myModal = false;
+    },
+
+    onSubmit: function(){
+      this.confirmModal = true;
+    }
   }
 };
 </script>

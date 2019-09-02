@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="onSubmit" novalidate>
+    <form name="mainFrm" action="POST" v-on:submit.prevent="onSubmit" novalidate>
       <h1 class="mt-5">Modificar mascota</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
@@ -41,6 +41,7 @@ import Propietario from "@/components/Propietario.vue";
 import SelectPet from "@/components/SelectpetModal.vue"
 import { setJSONToData, setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
+import { getDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js"
 
 var data = {};
 
@@ -63,19 +64,31 @@ export default {
     },
     getPetHash: function(){
       var petId = document.getElementById('petHashID').value;
-      
-      this.myModal = false;
-    }
-  },
-  mounted: function() {
-    getIPFSdata ('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5')
+
+      getIPFSdata (getDataFromContract(petId)[1])
       .then((response)=> {
         setJSONToData(JSON.parse(response), this);
         data = JSON.parse(response);
       })
       .catch((error) => {
         console.log(error);
+      });
+
+      this.myModal = false;
+    },
+    search: function(){
+      this.myModal = true;
+    }
+  },
+  mounted: function() {
+   /* getIPFSdata ('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5')
+      .then((response)=> {
+        setJSONToData(JSON.parse(response), this);
+        data = JSON.parse(response);
       })
+      .catch((error) => {
+        console.log(error);
+      });*/
   }
 };
 </script>

@@ -9,9 +9,12 @@
         <div class="modal-body">
         <form name="petIdFrm" @submit.prevent="onSubmit">
           <slot name="body">
-            <div class="pb-3" style="display: block; margin: auto; text-align: center;"></div>
-            <label>Introduzca el identificador de la mascota</label>
-            <input id="petHashID" type="text" v-model="petId" placeholder="Introduza identificador" class="form-control" required/>
+            <div class="ml-2">
+              <label>Introduzca el identificador de la mascota</label>
+            </div>
+            <div class="pb-3 col-md-4 form-group">
+              <input id="petHashID" type="text" v-model="petId" placeholder="Introduza id." class="form-control" required/>
+            </div>
           </slot>
         </form>
         </div>
@@ -19,7 +22,7 @@
         <div class="modal-footer">
           <slot name="footer">
             <button class="btn btn-primary" @click="$emit('close')">Cerrar</button>
-            <button type="submmit" class="btn btn-primary" @click="$emit('getHash');">Enviar</button>
+            <button type="submmit" class="btn btn-primary" @click="$emit('getHash', petId);">Enviar</button>
           </slot>
         </div>
       </div>

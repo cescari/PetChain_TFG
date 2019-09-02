@@ -1,7 +1,7 @@
 <template>
   <div>
     <Menu />
-    <Deletepet />
+    <Deletepet :update="true"/>
   </div>
 </template>
 <script>
