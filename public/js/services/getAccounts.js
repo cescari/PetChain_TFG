@@ -12,7 +12,7 @@ web3.eth.getAccounts(function (_error, _result) {
     else {
         if (_result.length > 0) {
             for (var i = 0; i < _result.length; i++) {
-                users[i].account = _result[i];
+                users[i]['account'] = _result[i];
             }
             sessionStorage.setItem('sessionAccounts', _result);
             localStorage.setItem('users', JSON.stringify(users));

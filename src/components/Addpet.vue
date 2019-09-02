@@ -41,6 +41,7 @@ import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { setDataInContract } from "../../public/js/services/setDataToSmartcontrat.js";
 
+
 export default {
   name: "Addpet",
   components: {
@@ -61,6 +62,7 @@ export default {
       setDataToJSON(data, this, 1);
       const PET_ID = this.$children[1].petIdNumber;
 
+      //setDataInContract('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5', '12345B');
       setIPFSdata(JSON.stringify(data))
         .then(response => {
           setDataInContract(response, PET_ID);
@@ -70,5 +72,5 @@ export default {
         });
     }
   }
-};
+}
 </script>

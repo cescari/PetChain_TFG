@@ -18,10 +18,11 @@ contract PetChain {
     
     mapping(string => Petinfo) private pet;
     
-    function setPet(string _pet_id, string _data_hash) public {
-        Petinfo storage petInfo = pet[ _pet_id];
+    function setPet(string _pet_id, string _data_hash) public returns (bool){
+        Petinfo storage petInfo = pet[_pet_id];
         petInfo.pet_id = _pet_id;
-        petInfo.data_hash =_data_hash;
+        petInfo.data_hash = _data_hash;
+        return true;
     }
     
     function getPet(string _pet_id) public view returns (string, string) {

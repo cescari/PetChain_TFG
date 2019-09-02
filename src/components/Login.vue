@@ -96,7 +96,7 @@ export default {
       var psw = this.password;
 
       var user = _.find(users, function(user) {
-        return user.userName === userEmail || {};
+        return user.userName === userEmail;
       });
 
       if (user.psw != psw || user == null) {

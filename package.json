@@ -14,7 +14,7 @@
     "parse-json": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "web3": "^0.20.6"
+    "web3": "^0.20.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
