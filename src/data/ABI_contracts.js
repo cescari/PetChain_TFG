@@ -46,3 +46,52 @@ export const petchain_ABI = [
       "type": "function"
     }
   ]
+
+  export const joinedUser_ABI = [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_surname",
+          "type": "string"
+        },
+        {
+          "name": "_userName",
+          "type": "string"
+        }
+      ],
+      "name": "join",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_userName",
+          "type": "string"
+        }
+      ],
+      "name": "joinedUser",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]

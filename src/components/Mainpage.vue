@@ -116,13 +116,35 @@
       </div>
     </div>
     <!-- /.row -->
+    <JoinedModal @send="setJoinUser();" v-if="modalJoined"/>
   </div>
   <!-- /.container -->
 </template>
 
 <script>
+import JoinUserModal from '@/components/JoinUserModal.vue'
+import { setJoinedUser, getJoinedUser } from '../../public/js/services/setDataToSmartcontrat.js';
+
 export default {
-  name: "mainpage"
+  name: "mainpage",
+  data() {
+    return {
+      modalJoined: false
+    }
+  },
+  components: {
+    JoinedModal: JoinUserModal
+  },
+  methods: {
+    setJoinUser: function(){
+      if(!getJoinedUser()){ 
+        this.modalJoined = !setJoinedUser();
+      }
+    }
+  },
+  mounted() {
+    this.modalJoined = !getJoinedUser();
+  }
 };
 </script>
 

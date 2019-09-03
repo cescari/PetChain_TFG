@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: getAccounts.js                                 */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Obtiene las cuentas desplegadas en la Blockchain     */
+/********************************************************/
 import users from '@/data/users.json';
 
 const Web3 = require('web3');

@@ -31,7 +31,7 @@
         <button type="submit" class="btn btn-primary">Modificar datos</button>
       </div>
     </form>
-    <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash();"/>
+    <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
   </div>
 </template>
 <script>
@@ -55,17 +55,15 @@ export default {
   },
   data(){
     return {
-      myModal: true
+      myModal: false
     }
   },
   methods: {
     onSubmit: function() {
       setDataToJSON(data, this, 2)
     },
-    getPetHash: function(){
-      var petId = document.getElementById('petHashID').value;
-
-      getIPFSdata (getDataFromContract(petId)[1])
+    getPetHash: function(_petId){
+      getIPFSdata (getDataFromContract(_petId)[1])
       .then((response)=> {
         setJSONToData(JSON.parse(response), this);
         data = JSON.parse(response);
@@ -79,16 +77,6 @@ export default {
     search: function(){
       this.myModal = true;
     }
-  },
-  mounted: function() {
-   /* getIPFSdata ('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5')
-      .then((response)=> {
-        setJSONToData(JSON.parse(response), this);
-        data = JSON.parse(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });*/
   }
 };
 </script>

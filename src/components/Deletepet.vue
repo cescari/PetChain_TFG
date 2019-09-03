@@ -117,7 +117,7 @@ export default {
   props: ["update"],
   methods: {
     getPetHash: function(_petId){
-      console.log(_petId);
+      //console.log(_petId);
       getIPFSdata (getDataFromContract(_petId)[1])
       .then((response)=> {
         var data = JSON.parse(response);

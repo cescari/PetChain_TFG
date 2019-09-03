@@ -1,27 +1,20 @@
-/********************************************************/
-/* File: Modal.vue                                      */
-/* Author: Carlos Escario Bajo                          */
-/* Proyecto: TFG UNIR                                   */
-/* Date: 18/08/2019                                     */
-/* Version: 1.0                                         */
-/* Webcomponent para ventanas modales informativas      */
-/********************************************************/
 <template>
-  <div class="modal-mask">
+      <div class="modal-mask">
     <div class="modal-wrapper">
       <div class="modal-container">
         <div class="modal-header">
-          <slot name="header">{{ titleModal }}</slot>
+          <slot name="header">Registro en la Blockchain de Petchain</slot>
         </div>
 
         <div class="modal-body">
           <slot name="body">
             <div class="pb-3" style="display: block; margin: auto; text-align: center;">
-              <img src="../../public/img/error.png" alt="Error" style="width: 8%;" v-if="typeMsg === 'Error'"/>
-              <img src="../../public/img/send.png" alt="Error" style="width: 8%;" v-if="typeMsg === 'email'"/>
+              <img src="../../public/img/error.png" alt="Error" style="width: 8%;"/>
             </div>
-            <label>{{ msgModal }}</label>
-            <div v-if="typeMsg === 'email'" class="form-group col-md-6">
+            <label>Se ha detectado que Ud. no está registrado como usuario en la Blockchain de Gestión de 
+                mascotas. Registre su e-mail para poder participar en la aplicación.
+            </label>
+            <div class="form-group col-md-5">
               <input type="email" placeholder="Introduza un email" class="form-control"/>
             </div>
             </slot>
@@ -29,25 +22,27 @@
 
         <div class="modal-footer">
           <slot name="footer">
-            <button class="btn btn-primary" @click="$emit('close')">Cerrar</button>
-            <button class="btn btn-primary" v-if="typeMsg === 'email'" @click="$emit('send');">Enviar</button>
+            <button class="btn btn-primary" @click="logout">Cerrar</button>
+            <button class="btn btn-primary" @click="$emit('send');">Enviar</button>
           </slot>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 export default {
-  name: "modal",
-  data() {
-    return {
-      showModal: false
-    };
-  },
-  props:['msgModal', 'titleModal', 'typeMsg']
-};
+    data() {
+        return{
+            
+        }
+    },
+    methods: {
+        logout: function() {
+            this.$router.push('/');
+        }
+    }
+}
 </script>
 <style scoped>
 .modal-mask {
