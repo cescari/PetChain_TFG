@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="confirmModal = true;">
+    <form name="mainFrm" action="POST" @submit.prevent="onSubmit">
       <h1 class="mt-5">{{ pageTitle }}</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      this.confirmModal = true;
+      if(!this.$props.consultaPet)this.confirmModal = true;
     },
     getPetHash: function(_petId){
       getIPFSdata (getDataFromContract(_petId)[1])

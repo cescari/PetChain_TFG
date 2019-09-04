@@ -6,7 +6,8 @@
         "name": "Carlos",
         "surname": "Escario Bajo",
         "col_id": 12345,
-        "col": "Madrid",
+        "colegio": "Madrid",
+        "cold_cod": "M",
         "rol": "admin"
     },
     {
@@ -16,7 +17,8 @@
         "name": "Iciar",
         "surname": "García Ochoa",
         "col_id": 1105,
-        "col": "Avila",
+        "colegio": "Avila",
+        "cold_cod": "AV",
         "rol": "admin"
     },
     {
@@ -26,7 +28,8 @@
         "name": "Pedro",
         "surname": "Escario Bajo",
         "col_id": 12345,
-        "col": "Madrid",
+        "colegio": "Madrid",
+        "cold_cod":"M",
         "rol": "admin"
     },
     {
@@ -36,7 +39,8 @@
         "name": "Pablo",
         "surname": "Ibarra Sanz",
         "col_id": 12345,
-        "col": "Madrid",
+        "colegio": "Madrid",
+        "cold_cod":"M",
         "rol": "admin"
     },
     {
@@ -46,7 +50,8 @@
         "name": "Samuel",
         "surname": "Sanchez Rol",
         "col_id": 12345,
-        "col": "Madrid",
+        "colegio": "Madrid",
+        "cold_cod":"M",
         "rol": "admin"
     },
     {
@@ -56,7 +61,8 @@
         "name": "Carolina",
         "surname": "Gomez Cirujano",
         "col_id": 12345,
-        "col": "Ciudad Real",
+        "colegio": "Ciudad Real",
+        "cold_cod": "CR",
         "rol": "admin"
     },
     {
@@ -66,7 +72,8 @@
         "name": "Carolina",
         "surname": "Perez Lopez",
         "col_id": 12345,
-        "col": "Lugo",
+        "colegio": "Lugo",
+        "cold_cod": "LU",
         "rol": "admin"
     },
     {
@@ -76,7 +83,8 @@
         "name": "Sergio",
         "surname": "Aguirre Bases",
         "col_id": 12345,
-        "col": "Teruel",
+        "colegio": "Teruel",
+        "cold_cod": "TE",
         "rol": "admin"
     },
     {
@@ -86,7 +94,8 @@
         "name": "Laura Marta",
         "surname": "Paz Perez",
         "col_id": 12345,
-        "col": "Soria",
+        "colegio": "Soria",
+        "cold_cod": "SO",
         "rol": "admin"
     },
     {
@@ -96,7 +105,8 @@
         "name": "Rodrigo",
         "surname": "Soriano Cabo",
         "col_id": 12345,
-        "col": "Segovia",
+        "colegio": "Segovia",
+        "cold_cod": "SG",
         "rol": "admin"
     }
 ]

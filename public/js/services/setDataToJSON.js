@@ -57,6 +57,13 @@ export function setDataToJSON(_data, _this, _action) {
 }
 
 export function setJSONToData(_data, _this){
+    const sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
+
+    _this.$children[0].vetName =_data["vetidentificador"].vetName;
+    _this.$children[0].vetId =_data["vetidentificador"].vetId;
+    _this.$children[0].vetSurname =_data["vetidentificador"].vetSurname;
+    _this.$children[0].vetCol =_data["vetidentificador"].vetCol;
+
     _this.$children[1].petName = _data["mascota"].petName;
     _this.$children[1].petIdNumber = _data["mascota"].petIdNumber
     _this.$children[1].fechImplantacion = _data["mascota"].fechImplantacion;
@@ -72,7 +79,10 @@ export function setJSONToData(_data, _this){
     _this.$children[1].passport = _data["mascota"].passport;
     _this.$children[1].aptitud = _data["mascota"].aptitud;
 
-   
+    _this.$children[1].vetNameUpdate = sesionUser.name;
+    _this.$children[1].vetNumUpdate = sesionUser.col_id;
+    _this.$children[1].vetProvUpdate = sesionUser.cold_cod
+    _this.$children[1].vetSurnameUpDate = sesionUser.surname
 
     _this.$children[2].propName = _data["propietario"].propName;
     _this.$children[2].propSurname = _data["propietario"].propSurname;

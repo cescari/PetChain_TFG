@@ -46,10 +46,10 @@ export default {
       apellidos: "Apellidos: ",
       num_col: "Nº de colegiado: ",
       colegio: "Colegio: ",
-      vetId: user.col_id,
-      vetName: user.name,
-      vetSurname: user.surname,
-      vetColMod: user.col
+      vetId: null,
+      vetName: null,
+      vetSurname: null,
+      vetColMod: null
     };
   }
 };
