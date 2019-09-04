@@ -23,6 +23,7 @@
                     id="petIdNumber"
                     placeholder="Número de identificación:"
                     v-model="petIdNumber"
+                    v-on:keypress.enter="$parent.getPetHash(petIdNumber);"
                     required
                   />
                 </div>

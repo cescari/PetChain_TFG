@@ -18,6 +18,7 @@
           <slot name="footer">
             <button class="btn btn-primary" @click="$emit('close')">Cerrar</button>
             <button
+              v-if="!error"
               type="submmit"
               class="btn btn-primary"
               @click="$emit('setConfirm');"
@@ -33,13 +34,10 @@ export default {
   data() {
     return {
       showModal: false,
-      petId: null,
-      msgTitle: msgTitle,
-      msgBody: msgBody,
-      msgBtnConfirm: msgBtnConfirm
+      petId: null
     };
   },
-  props: ["msgBody", "msgTitle", "msgBtnConfirm"]
+  props: ["msgBody", "msgTitle", "msgBtnConfirm","error"]
 };
 </script>
 <style scoped>

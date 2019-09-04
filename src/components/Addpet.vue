@@ -62,14 +62,14 @@ export default {
       setDataToJSON(data, this, 1);
       const PET_ID = this.$children[1].petIdNumber;
 
-      //setDataInContract('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5', '12345B');
-      setIPFSdata(JSON.stringify(data))
+      setDataInContract('QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5', '12345B');
+      /*setIPFSdata(JSON.stringify(data))
         .then(response => {
           setDataInContract(response, PET_ID);
         })
         .catch(error => {
           console.log(error);
-        });
+        });*/
     }
   }
 }

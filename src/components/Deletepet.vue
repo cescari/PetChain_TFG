@@ -25,62 +25,63 @@
         <li class="breadcrumb-item active">Baja de mascotas</li>
       </ol>
       <vetidentificador />
-      <div class="row">
-        <div class="col-lg-12 mb-2">
-          <div class="card border-primary h-100">
-            <h4 class="card-header border-primary">Animal</h4>
-            <div class="card-body">
-              <div class="form-group">
-                <div class="form-row mb-2">
-                  <div class="col-md-2">
-                    <label for="petIdNumber">Nº de identificación:</label>
-                    <input
-                      v-model="petIdNumber"
-                      type="text"
-                      class="form-control"
-                      id="petIdNumber"
-                      placeholder="Numero de identificacion:"
-                      required
-                      v-on:keyup.enter="getPetHash(petIdNumber);"
-                    />
+      <form name="deleteFrm" @submit.prevent="onSubmit();">
+        <div class="row">
+          <div class="col-lg-12 mb-2">
+            <div class="card border-primary h-100">
+              <h4 class="card-header border-primary">Animal</h4>
+              <div class="card-body">
+                <div class="form-group">
+                  <div class="form-row mb-2">
+                    <div class="col-md-2">
+                      <label for="petIdNumber">Nº de identificación:</label>
+                      <input
+                        v-model="petIdNumber"
+                        type="text"
+                        class="form-control"
+                        id="petIdNumber"
+                        placeholder="Numero de identificacion:"
+                        required
+                        v-on:keypress.prevent="getPetHash(petIdNumber);"
+                      />
+                    </div>
+                    <div class="col-md-1" v-if="update">
+                      <label for="btbSearch" style="visibility: hidden;">Buscar</label>
+                      <button id="btbSearch" title="Buscar mascota" type="button" class="btn btn-primary" aria-label="Buscar" @click="myModal=true;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="fechImplantacion">Microchip fecha:</label>
+                      <input type="date" id="fechImplantacion" v-model="fechImplantacion" class="form-control" disabled />
+                    </div>
+                    <div class="col-md-2">
+                      <label for="fechalta">Alta base de datos:</label>
+                      <input type="date" id="fechalta"  v-model="fechalta" class="form-control" disabled />
+                    </div>
                   </div>
-                  <div class="col-md-1" v-if="update">
-                    <label for="btbSearch" style="visibility: hidden;">Buscar</label>
-                    <button id="btbSearch" title="Buscar mascota" type="button" class="btn btn-primary" aria-label="Buscar" @click="myModal=true;">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  <div class="col-md-2">
-                    <label for="fechImplantacion">Microchip fecha:</label>
-                    <input type="date" id="fechImplantacion" v-model="fechImplantacion" class="form-control" disabled />
-                  </div>
-                  <div class="col-md-2">
-                    <label for="fechalta">Alta base de datos:</label>
-                    <input type="date" id="fechalta"  v-model="fechalta" class="form-control" disabled />
-                  </div>
-                </div>
-                <div class="form-row mb-2">
-                  <div class="col-md-3">
-                    <label for="petName">Nombre:</label>
-                    <input
-                      type="text"
-                      v-model="petName"
-                      class="form-control"
-                      id="petName"
-                      placeholder="Nombre del animal"
-                      disabled
-                    />
+                  <div class="form-row mb-2">
+                    <div class="col-md-3">
+                      <label for="petName">Nombre:</label>
+                      <input
+                        type="text"
+                        v-model="petName"
+                        class="form-control"
+                        id="petName"
+                        placeholder="Nombre del animal"
+                        disabled
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="text-right">
-        <button type="submit" class="btn btn-primary">Baja mascota</button>
-      </div>
-    
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary" @submit="onSubmit();">Baja mascota</button>
+        </div>
+      </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
     <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet()" />
   </div>

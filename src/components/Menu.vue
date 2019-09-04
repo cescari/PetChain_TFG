@@ -42,7 +42,7 @@
             </div>
           </div>
           <li class="nav-item">
-            <a class="nav-link" href="/contacto">Transferencias</a>
+            <a class="nav-link" href="/transfers">Transferencias</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/contacto">Contacto</a>

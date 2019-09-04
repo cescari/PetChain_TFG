@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: Addpetview.vue                                 */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/05/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para la modificacion de la mascota      */
+/********************************************************/
 <template>
   <div>
     <Menu />
@@ -12,9 +20,6 @@ export default {
   components: {
     Menu,
     Addpet
-  },
-  props: {
-    headerVisible: false
   }
 };
 </script>

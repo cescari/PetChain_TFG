@@ -1,29 +1,26 @@
 /********************************************************/
-/* File: UpdatePetview.vue                              */
+/* File: Transfersview.vue                              */
 /* Author: Carlos Escario Bajo                          */
 /* Proyecto: TFG UNIR                                   */
-/* Date: 01/05/2019                                     */
+/* Date: 01/08/2019                                     */
 /* Version: 1.0                                         */
-/* Webcomponent para la visualización del la ventana de */
-/* modificación de Petchain                             */
+/* Webcomponent view para la visualización de           */
+/* tranferencias en ETH                                 */
 /********************************************************/
 <template>
   <div>
     <Menu />
-    <Updatepet />
+    <Transfers />
   </div>
 </template>
 <script>
 import Menu from "@/components/Menu.vue";
-import Updatepet from "@/components/Updatepet.vue";
+import Transfers from "@/components/Transfers.vue";
 
 export default {
   components: {
     Menu,
-    Updatepet
-  },
-  props: {
-    headerVisible: false
+    Transfers
   }
 };
 </script>
