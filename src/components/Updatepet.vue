@@ -8,13 +8,13 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="onSubmit();">
-      <h1 class="mt-5">Modificar mascota</h1>
+    <form name="mainFrm" action="POST" @submit.prevent="confirmModal = true;">
+      <h1 class="mt-5">{{ pageTitle }}</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
           <div class="h-75 w-75 p-3">
-            <img class="card-img-top" src="../../public/img/pet.svg" alt="Modificar mascota" style="width:40%;" />
+            <img class="card-img-top" src="../../public/img/pet.svg" alt="pageTitle" style="width:40%;" />
           </div>
         </div>
       </div>
@@ -22,17 +22,18 @@
         <li class="breadcrumb-item">
           <a href="/main">Inicio</a>
         </li>
-        <li class="breadcrumb-item active">Modificaci&oacute;n de mascotas</li>
+        <li class="breadcrumb-item active">{{ pageTitle }}</li>
       </ol>
       <vetidentificador />
-      <Mascota :update="true" />
-      <Propietario />
+      <Mascota :update="true" :consulta="consultaPet"/>
+      <Propietario :consulta="consultaPet"/>
       <div class="text-right">
-        <button type="submit" class="btn btn-primary" @submit="onSubmit();">Modificar datos</button>
+        <button type="submit" class="btn btn-primary" @submit="confirmModal = true;">Modificar datos</button>
       </div>
     </form>
+    <!-- <button class="btn btn-primary" @click="transfer()">Transfer</button> -->
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
-    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" :error="true" @close="confirmModal=false" @setConfirm="updatePet()" />
+    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" :error="false" @close="confirmModal=false" @setConfirm="updatePet($event);" />
   </div>
 </template>
 <script>
@@ -43,7 +44,7 @@ import SelectPet from "@/components/SelectpetModal.vue";
 import Confirm from "@/components/ConfirmModal.vue";
 import { setJSONToData, setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
-import { getDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js"
+import { getDataFromContract, setDataInContract, registerTX } from "../../public/js/services/setDataToSmartcontrat.js"
 
 var data = {};
 
@@ -67,9 +68,7 @@ export default {
   },
   methods: {
     onSubmit: function() {
-      forms[0].setAttribute('novalidate', false)
       this.confirmModal = true;
-      //setDataToJSON(data, this, 2)
     },
     getPetHash: function(_petId){
       getIPFSdata (getDataFromContract(_petId)[1])
@@ -89,8 +88,22 @@ export default {
       this.myModal = true;
     },
     updatePet: function () {
+      this.confirmModal = false;
       setDataToJSON(data, this, 2);
+        const PET_ID = this.$children[1].petIdNumber;
+        setIPFSdata(JSON.stringify(data))
+          .then(response => {
+            console.log(response);
+            setDataInContract(response, PET_ID);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
+    transfer: function(){
+      registerTX();
     }
-  }
+  },
+  props: ["consultaPet","pageTitle"]
 };
 </script>

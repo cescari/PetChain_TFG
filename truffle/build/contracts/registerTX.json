@@ -1,0 +1,1438 @@
+{
+  "contractName": "registerTX",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_toAddr",
+          "type": "address"
+        },
+        {
+          "name": "_fromAddr",
+          "type": "address"
+        },
+        {
+          "name": "_txHASH",
+          "type": "string"
+        }
+      ],
+      "name": "setTX",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_toAddr",
+          "type": "address"
+        }
+      ],
+      "name": "getTX",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506104b5806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f259701b14610051578063fbfd22a61461010d575b600080fd5b34801561005d57600080fd5b50610092600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101b6565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d25780820151818401526020810190506100b7565b50505050905090810190601f1680156100ff5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561011957600080fd5b506101b4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509192919290505050610310565b005b60606101c06103b4565b6000808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040805190810160405290816000820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102f85780601f106102cd576101008083540402835291602001916102f8565b820191906000526020600020905b8154815290600101906020018083116102db57829003601f168201915b50505050508152505090508060200151915050919050565b60008060008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000209050828160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550818160010190805190602001906103ad9291906103e4565b5050505050565b6040805190810160405280600073ffffffffffffffffffffffffffffffffffffffff168152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061042557805160ff1916838001178555610453565b82800160010185558215610453579182015b82811115610452578251825591602001919060010190610437565b5b5090506104609190610464565b5090565b61048691905b8082111561048257600081600090555060010161046a565b5090565b905600a165627a7a723058208e7da7372b8cd11f7f733bebd041e1d43e8ca593c625c3c6431f1a494e29436d0029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f259701b14610051578063fbfd22a61461010d575b600080fd5b34801561005d57600080fd5b50610092600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101b6565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d25780820151818401526020810190506100b7565b50505050905090810190601f1680156100ff5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561011957600080fd5b506101b4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080601f0160208091040260200160405190810160405280939291908181526020018383808284378201915050505050509192919290505050610310565b005b60606101c06103b4565b6000808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040805190810160405290816000820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001600182018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102f85780601f106102cd576101008083540402835291602001916102f8565b820191906000526020600020905b8154815290600101906020018083116102db57829003601f168201915b50505050508152505090508060200151915050919050565b60008060008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000209050828160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550818160010190805190602001906103ad9291906103e4565b5050505050565b6040805190810160405280600073ffffffffffffffffffffffffffffffffffffffff168152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061042557805160ff1916838001178555610453565b82800160010185558215610453579182015b82811115610452578251825591602001919060010190610437565b5b5090506104609190610464565b5090565b61048691905b8082111561048257600081600090555060010161046a565b5090565b905600a165627a7a723058208e7da7372b8cd11f7f733bebd041e1d43e8ca593c625c3c6431f1a494e29436d0029",
+  "sourceMap": "498:483:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;498:483:0;;;;;;;",
+  "deployedSourceMap": "498:483:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;838:141;;8:9:-1;5:2;;;30:1;27;20:12;5:2;838:141:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;838:141:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;640:193;;8:9:-1;5:2;;;30:1;27;20:12;5:2;640:193:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;838:141;891:6;909:15;;:::i;:::-;927:5;:14;933:7;927:14;;;;;;;;;;;;;;;909:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;959:5;:12;;;951:21;;838:141;;;;:::o;640:193::-;725:16;744:5;:14;750:7;744:14;;;;;;;;;;;;;;;725:33;;785:9;768:5;:14;;;:26;;;;;;;;;;;;;;;;;;819:7;804:5;:12;;:22;;;;;;;;;;;;:::i;:::-;;640:193;;;;:::o;498:483::-;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "/********************************************************/\n/* File: registerTX.sol                                 */\n/* Author: Carlos Escario Bajo                          */\n/* Proyecto: TFG UNIR                                   */\n/* Date: 20/08/2019                                     */\n/* Version: 1.0                                         */\n/* Smartcontract de registro para el historial de TX    */\n/********************************************************/\npragma solidity ^0.4.24;\n\ncontract registerTX {\n    struct TX {\n        address fromAddr;\n        string txHASH;\n    }\n    mapping ( address => TX ) private txReg;\n    function setTX (address _toAddr, address _fromAddr, string _txHASH) public {\n        TX storage toReg = txReg[_toAddr];\n        toReg.fromAddr = _fromAddr;\n        toReg.txHASH = _txHASH;\n    }\n    function getTX(address _toAddr) public view returns (string) {\n        TX memory toReg = txReg[_toAddr];\n        return (toReg.txHASH);\n    }\n}",
+  "sourcePath": "/home/cescari/grive/UNIR/GRADO INGENIERIA INFORMATICA/TFG/Proyecto/PetChain_TFG/PetChain_TFG/truffle/contracts/regiserTX.sol",
+  "ast": {
+    "absolutePath": "/home/cescari/grive/UNIR/GRADO INGENIERIA INFORMATICA/TFG/Proyecto/PetChain_TFG/PetChain_TFG/truffle/contracts/regiserTX.sol",
+    "exportedSymbols": {
+      "registerTX": [
+        57
+      ]
+    },
+    "id": 58,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "472:24:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 57,
+        "linearizedBaseContracts": [
+          57
+        ],
+        "name": "registerTX",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "registerTX.TX",
+            "id": 6,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "fromAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "544:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "544:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "txHASH",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "570:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "570:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "TX",
+            "nodeType": "StructDefinition",
+            "scope": 57,
+            "src": "524:66:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 10,
+            "name": "txReg",
+            "nodeType": "VariableDeclaration",
+            "scope": 57,
+            "src": "595:39:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+              "typeString": "mapping(address => struct registerTX.TX)"
+            },
+            "typeName": {
+              "id": 9,
+              "keyType": {
+                "id": 7,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "605:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "595:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                "typeString": "mapping(address => struct registerTX.TX)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 8,
+                "name": "TX",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 6,
+                "src": "616:2:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                  "typeString": "struct registerTX.TX"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 37,
+              "nodeType": "Block",
+              "src": "715:118:0",
+              "statements": [
+                {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "toReg",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 38,
+                      "src": "725:16:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                        "typeString": "struct registerTX.TX"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 19,
+                        "name": "TX",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 6,
+                        "src": "725:2:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 24,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 21,
+                      "name": "txReg",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "744:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                        "typeString": "mapping(address => struct registerTX.TX storage ref)"
+                      }
+                    },
+                    "id": 23,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 22,
+                      "name": "_toAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "750:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "744:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TX_$6_storage",
+                      "typeString": "struct registerTX.TX storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "725:33:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 29,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 25,
+                        "name": "toReg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "768:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX storage pointer"
+                        }
+                      },
+                      "id": 27,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "fromAddr",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3,
+                      "src": "768:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 28,
+                      "name": "_fromAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14,
+                      "src": "785:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "768:26:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 30,
+                  "nodeType": "ExpressionStatement",
+                  "src": "768:26:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 35,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 31,
+                        "name": "toReg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "804:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX storage pointer"
+                        }
+                      },
+                      "id": 33,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "txHASH",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5,
+                      "src": "804:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 34,
+                      "name": "_txHASH",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 16,
+                      "src": "819:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "804:22:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 36,
+                  "nodeType": "ExpressionStatement",
+                  "src": "804:22:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 38,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setTX",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12,
+                  "name": "_toAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "656:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "656:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "_fromAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "673:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "673:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "_txHASH",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "692:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "692:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "655:52:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "715:0:0"
+            },
+            "scope": 57,
+            "src": "640:193:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 55,
+              "nodeType": "Block",
+              "src": "899:80:0",
+              "statements": [
+                {
+                  "assignments": [
+                    46
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 46,
+                      "name": "toReg",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 56,
+                      "src": "909:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TX_$6_memory_ptr",
+                        "typeString": "struct registerTX.TX"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 45,
+                        "name": "TX",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 6,
+                        "src": "909:2:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 50,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "txReg",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "927:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                        "typeString": "mapping(address => struct registerTX.TX storage ref)"
+                      }
+                    },
+                    "id": 49,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 48,
+                      "name": "_toAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "933:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "927:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TX_$6_storage",
+                      "typeString": "struct registerTX.TX storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "909:32:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 51,
+                          "name": "toReg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "959:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_TX_$6_memory_ptr",
+                            "typeString": "struct registerTX.TX memory"
+                          }
+                        },
+                        "id": 52,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "txHASH",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 5,
+                        "src": "959:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "id": 53,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "958:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "functionReturnParameters": 44,
+                  "id": 54,
+                  "nodeType": "Return",
+                  "src": "951:21:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 56,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getTX",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 41,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 40,
+                  "name": "_toAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "853:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 39,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "853:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "852:17:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "891:6:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 42,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "891:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:8:0"
+            },
+            "scope": 57,
+            "src": "838:141:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 58,
+        "src": "498:483:0"
+      }
+    ],
+    "src": "472:509:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/cescari/grive/UNIR/GRADO INGENIERIA INFORMATICA/TFG/Proyecto/PetChain_TFG/PetChain_TFG/truffle/contracts/regiserTX.sol",
+    "exportedSymbols": {
+      "registerTX": [
+        57
+      ]
+    },
+    "id": 58,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "472:24:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 57,
+        "linearizedBaseContracts": [
+          57
+        ],
+        "name": "registerTX",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "registerTX.TX",
+            "id": 6,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "fromAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "544:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "544:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "txHASH",
+                "nodeType": "VariableDeclaration",
+                "scope": 6,
+                "src": "570:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "570:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "TX",
+            "nodeType": "StructDefinition",
+            "scope": 57,
+            "src": "524:66:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 10,
+            "name": "txReg",
+            "nodeType": "VariableDeclaration",
+            "scope": 57,
+            "src": "595:39:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+              "typeString": "mapping(address => struct registerTX.TX)"
+            },
+            "typeName": {
+              "id": 9,
+              "keyType": {
+                "id": 7,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "605:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "595:25:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                "typeString": "mapping(address => struct registerTX.TX)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 8,
+                "name": "TX",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 6,
+                "src": "616:2:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                  "typeString": "struct registerTX.TX"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 37,
+              "nodeType": "Block",
+              "src": "715:118:0",
+              "statements": [
+                {
+                  "assignments": [
+                    20
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 20,
+                      "name": "toReg",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 38,
+                      "src": "725:16:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                        "typeString": "struct registerTX.TX"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 19,
+                        "name": "TX",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 6,
+                        "src": "725:2:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 24,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 21,
+                      "name": "txReg",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "744:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                        "typeString": "mapping(address => struct registerTX.TX storage ref)"
+                      }
+                    },
+                    "id": 23,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 22,
+                      "name": "_toAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "750:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "744:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TX_$6_storage",
+                      "typeString": "struct registerTX.TX storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "725:33:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 29,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 25,
+                        "name": "toReg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "768:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX storage pointer"
+                        }
+                      },
+                      "id": 27,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "fromAddr",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3,
+                      "src": "768:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 28,
+                      "name": "_fromAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 14,
+                      "src": "785:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "768:26:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 30,
+                  "nodeType": "ExpressionStatement",
+                  "src": "768:26:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 35,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 31,
+                        "name": "toReg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 20,
+                        "src": "804:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX storage pointer"
+                        }
+                      },
+                      "id": 33,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "txHASH",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5,
+                      "src": "804:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_storage",
+                        "typeString": "string storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 34,
+                      "name": "_txHASH",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 16,
+                      "src": "819:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string memory"
+                      }
+                    },
+                    "src": "804:22:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "id": 36,
+                  "nodeType": "ExpressionStatement",
+                  "src": "804:22:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 38,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "setTX",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12,
+                  "name": "_toAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "656:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "656:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "_fromAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "673:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "673:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "name": "_txHASH",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 38,
+                  "src": "692:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "692:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "655:52:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "715:0:0"
+            },
+            "scope": 57,
+            "src": "640:193:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 55,
+              "nodeType": "Block",
+              "src": "899:80:0",
+              "statements": [
+                {
+                  "assignments": [
+                    46
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 46,
+                      "name": "toReg",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 56,
+                      "src": "909:15:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TX_$6_memory_ptr",
+                        "typeString": "struct registerTX.TX"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 45,
+                        "name": "TX",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 6,
+                        "src": "909:2:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_TX_$6_storage_ptr",
+                          "typeString": "struct registerTX.TX"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 50,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 47,
+                      "name": "txReg",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "927:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_TX_$6_storage_$",
+                        "typeString": "mapping(address => struct registerTX.TX storage ref)"
+                      }
+                    },
+                    "id": 49,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 48,
+                      "name": "_toAddr",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 40,
+                      "src": "933:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "927:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TX_$6_storage",
+                      "typeString": "struct registerTX.TX storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "909:32:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 51,
+                          "name": "toReg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 46,
+                          "src": "959:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_TX_$6_memory_ptr",
+                            "typeString": "struct registerTX.TX memory"
+                          }
+                        },
+                        "id": 52,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "txHASH",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 5,
+                        "src": "959:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "id": 53,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "958:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "functionReturnParameters": 44,
+                  "id": 54,
+                  "nodeType": "Return",
+                  "src": "951:21:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 56,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getTX",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 41,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 40,
+                  "name": "_toAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "853:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 39,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "853:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "852:17:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 43,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56,
+                  "src": "891:6:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 42,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "891:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:8:0"
+            },
+            "scope": 57,
+            "src": "838:141:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 58,
+        "src": "498:483:0"
+      }
+    ],
+    "src": "472:509:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x55acf62241cf64d66006c6d96d425156817dcd0c",
+      "transactionHash": "0xe9df42d78f70c5f9404a1f2dcfd9f393286abf4d18eb9b554120eb4dc9bd8d2e"
+    }
+  },
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-09-04T14:43:12.192Z"
+}

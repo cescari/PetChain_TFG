@@ -5,6 +5,7 @@ import Main from './views/Mainview.vue'
 import Addpet from './views/AddPetview.vue'
 import Updatepet from './views/UpdatePetview.vue'
 import Deletepet from './views/DeletePetview.vue'
+import Consultapet from './views/Consultaview.vue'
 import Transfers from './views/Transfersview.vue'
 import Contacto from './views/Contactoview.vue'
 import Licencia from './views/Licenciaview.vue'
@@ -39,6 +40,11 @@ export default new Router({
       path: '/deletepet',
       name: 'deletepet',
       component: Deletepet
+    },
+    {
+      path: '/consultapet',
+      name: 'consultapet',
+      component: Consultapet
     },
     {
       path: '/transfers',

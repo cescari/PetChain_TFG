@@ -21,13 +21,14 @@
                     type="text"
                     class="form-control"
                     id="petIdNumber"
+                    ref="petIdNumber"
                     placeholder="Número de identificación:"
                     v-model="petIdNumber"
                     v-on:keypress.enter="$parent.getPetHash(petIdNumber);"
                     required
                   />
                 </div>
-                <div class="col-md-1" v-if="update">
+                <div class="col-md-1" v-if="update || consulta">
                   <label for="btbSearch" style="visibility: hidden;">Buscar</label>
                   <button id="btbSearch" title="Buscar mascota" type="button" class="btn btn-primary" aria-label="Buscar" @click="search();">
                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -41,7 +42,7 @@
                     class="form-control"
                     v-model="fechImplantacion"
                     required
-                    :disabled="update"
+                    :disabled="update || consulta"
                     @change="checKDates()"
                   />
                 </div>
@@ -53,7 +54,7 @@
                     class="form-control"
                     v-model="fechalta"
                     required
-                    :disabled="update"
+                    :disabled="update || consulta"
                     @change="checKDates()"
                   />
                 </div>
@@ -67,6 +68,7 @@
                     id="petName"
                     v-model="petName"
                     placeholder="Nombre del animal"
+                    :disabled="update || consulta"
                     required
                   />
                 </div>
@@ -84,7 +86,7 @@
                       class="custom-control-input"
                       @click="pura=true"
                       v-model="raza"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="raza">Raza canina pura.</label>
                   </div>
@@ -97,7 +99,7 @@
                       class="custom-control-input"
                       @click="pura=false"
                       v-model="raza"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="cruceDesc">
                       Cruce de razas caninas
@@ -113,7 +115,7 @@
                       class="custom-control-input"
                       @click="pura=true"
                       v-model="raza"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="cruceCon">
                       Cruce de razas caninas,
@@ -130,7 +132,7 @@
                         @change="razaOtraDis = onChange($event)"
                         v-model="razaPet"
                         required
-                        :disabled="update || !pura"
+                        :disabled="update || consulta || !pura"
                       >
                         <option selected value="0">Seleccione una raza</option>
                         <option value="Dogo aleman">Dogo alem&aacute;n</option>
@@ -159,7 +161,7 @@
                         required
                         v-model="razaOtra"
                         size="10"
-                        :disabled="update || !pura || razaOtraDis"
+                        :disabled="update || consulta || !pura || razaOtraDis"
                       />
                     </div>
                     <div class="col-md-12 mt-2">
@@ -183,7 +185,7 @@
                       value="dangerYes"
                       v-model="danger"
                       class="custom-control-input"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="rdoYes">Si</label>
                   </div>
@@ -195,7 +197,7 @@
                       value="dangerNo"
                       v-model="danger"
                       class="custom-control-input"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="rdoNo">No</label>
                   </div>
@@ -236,7 +238,7 @@
                     v-model="fechNac"
                     required
                     @change="checKDates()"
-                    :disabled="update"
+                    :disabled="update || consulta"
                   />
                 </div>
               </div>
@@ -249,7 +251,7 @@
                     class="form-control"
                     v-model="capa"
                     required
-                    :disabled="update"
+                    :disabled="update || consulta"
                   />
                 </div>
 
@@ -260,7 +262,7 @@
                     id="pelo"
                     v-model="pelo"
                     required
-                    :disabled="update"
+                    :disabled="update || consulta"
                   >
                     <option selected value>Seleccione pelo</option>
                     <option value="alava">Corto</option>
@@ -280,7 +282,7 @@
                       value="macho"
                       v-model="genero"
                       class="custom-control-input"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="rdoMacho">Macho</label>
                   </div>
@@ -292,7 +294,7 @@
                       value="hembra"
                       v-model="genero"
                       class="custom-control-input"
-                      :disabled="update"
+                      :disabled="update || consulta"
                     />
                     <label class="custom-control-label" for="rdoHembra">Hembra</label>
                   </div>
@@ -306,6 +308,7 @@
                     id="passport"
                     class="form-control"
                     maxlength="11"
+                    :disabled="update || consulta"
                     v-model="passport"
                   />
                 </div>
@@ -317,7 +320,7 @@
                     id="aptitud"
                     v-model="aptitud"
                     required
-                    :disabled="update"
+                    :disabled="update || consulta"
                   >
                     <option selected value>Seleccione aptitud</option>
                     <option value="Compania">Compañ&iacute;a</option>
@@ -332,7 +335,7 @@
       </div>
     </div>
     <!-- Datos de la última revisión -->
-    <div v-if="update" class="row">
+    <div v-if="update || consulta" class="row">
       <div class="col-lg-12 mb-2">
         <div class="card border-primary h-100">
           <h5 class="card-header border-primary">Datos &uacute;ltima revisi&oacute;n</h5>
@@ -354,6 +357,7 @@
                         id="vetNameUpdate"
                         v-model="vetNameUpdate"
                         placeholder="Nombre del colegiado"
+                        :disabled="consulta"
                       />
                     </div>
                     <div class="col-md-3 mb-2">
@@ -364,6 +368,7 @@
                         id="vetSurnameUpDate"
                         v-model="vetSurnameUpDate"
                         placeholder="Apellidos del colegiado"
+                        :disabled="consulta"
                       />
                     </div>
                   </div>
@@ -376,13 +381,14 @@
                         id="vetNumUpdate"
                         v-model="vetNumUpdate"
                         placeholder="Número del colegiado"
+                        :disabled="consulta"
                       />
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="col-md-3 mb-2">
                       <label for="vetCol">Colegio:</label>
-                      <select class="custom-select" id="vetCol" required v-model="vetProvUpdate">
+                      <select class="custom-select" id="vetCol" :disabled="consulta" required v-model="vetProvUpdate">
                         <option selected>Seleccione una provincia</option>
                         <option
                           v-for="prov in provincias"
@@ -397,7 +403,7 @@
             </div>
             <div class="form-group col-md-3">
               <label for="estado">Estado:</label>
-              <select class="custom-select" id="estado" v-model="estado">
+              <select class="custom-select" id="estado" v-model="estado" :disabled="consulta">
                 <option>Seleccione estado</option>
                 <option value="0">Bueno</option>
                 <option value="1">Malo</option>
@@ -412,6 +418,7 @@
                   name="lesion"
                   v-model="lesion"
                   value="true"
+                  :disabled="consulta"
                   class="custom-control-input"
                 />
                 <label class="custom-control-label" for="rdoLesionSi">SI</label>
@@ -423,6 +430,7 @@
                   name="lesion"
                   v-model="lesion"
                   value="false"
+                  :disabled="consulta"
                   class="custom-control-input"
                 />
                 <label class="custom-control-label" for="rdoLesionNo">No</label>
@@ -430,11 +438,11 @@
             </div>
             <div class="form-group col-md-3">
               <label for="numCertf">Nº certificado:</label>
-              <input type="text" id="numCertf" class="form-control" v-model="numCertf" />
+              <input type="text" id="numCertf" class="form-control" v-model="numCertf" :disabled="consulta"/>
             </div>
             <div class="form-group col-md-12">
               <label for="obsTextArea">Observaciones</label>
-              <textarea class="form-control" id="obsTextArea" rows="3" v-model="observaciones"></textarea>
+              <textarea class="form-control" id="obsTextArea" rows="3" v-model="observaciones" :disabled="consulta"></textarea>
             </div>
           </div>
         </div>
@@ -507,7 +515,7 @@ export default {
       this.$parent.search();
     }
   },
-  props: ["update"]
+  props: ["update", "consulta"]
 };
 </script>
 <style>

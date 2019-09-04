@@ -11,8 +11,8 @@ import { petchain_ABI, joinedUser_ABI } from '@/data/ABI_contracts.js';
 const Web3 = require('web3');
 const url = 'http://127.0.0.1:7545';
 
-const petchain_Addr = '0xe4c40fac187657410e9744ab08070963a5b3697b';
-const joineduser_Addr = '0x37d2306340c17ccf986f97677eb86adf32fe1978';
+const petchain_Addr = '0xa88f1b3242413a574a9497e0d48cc4fba23adc75';
+const joineduser_Addr = '0xa88f1b3242413a574a9497e0d48cc4fba23adc75';
 const web3 = new Web3(new Web3.providers.HttpProvider(url));
 
 const contract = web3.eth.contract(petchain_ABI).at(petchain_Addr);
@@ -72,4 +72,15 @@ function getDefaultAccount() {
         return obj.userName == sesionUser.userName; 
     });
     return userData[userIndex].account;
+}
+
+export function registerTX() {
+    const fromAddress = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddress;
+
+    web3.eth.sendTransaction({
+        from: '0x7C83b59Ad20b66D34Fd086E63178C9BCD96E123d',
+        to:  fromAddress,
+        value: 3e18
+      })
 }

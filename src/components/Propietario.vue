@@ -23,6 +23,7 @@
                   placeholder="Nombre del propietario"
                   v-model="propName"
                   required
+                  :disabled="consulta"
                 />
               </div>
               <div class="col-md-3">
@@ -34,6 +35,7 @@
                   placeholder="Apellidos del propietario"
                   v-model="propSurname"
                   required
+                  :disabled="consulta"
                 />
               </div>
             </div>
@@ -46,6 +48,7 @@
                   id="propId"
                   placeholder="Nº documento"
                   required
+                  :disabled="consulta"
                   v-model="propId"
                   maxlength="12"
                 />
@@ -61,6 +64,7 @@
                   id="propPhone"
                   placeholder="Teléfono"
                   required
+                  :disabled="consulta"
                   v-model="propPhone"
                   maxlength="10"
                 />
@@ -69,7 +73,8 @@
             <div class="form-row mb-2">
               <div class="col-md-3 mb-2">
                 <label for="provProp">Provincia:</label>
-                <select class="custom-select" id="provProp" v-model="provProp" required>
+                <select class="custom-select" id="provProp" v-model="provProp" required
+                :disabled="consulta">
                   <option selected value="">Seleccione una provincia</option>
                   <option v-for="prov in provincias" :key="prov.code" :value="prov.code">{{ prov.name}}</option>
                 </select>
@@ -83,6 +88,7 @@
                   placeholder="Municipio"
                   v-model="ciudadProp"
                   required
+                  :disabled="consulta"
                 />
               </div>
               <div class="col-md-1 mb-2">
@@ -95,13 +101,15 @@
                   maxlength="5"
                   v-model="cp"
                   required
+                  :disabled="consulta"
                 />
               </div>
             </div>
             <div class="form-row">
               <div class="col-md-3">
                 <label for="propPais">Pa&iacute;s:</label>
-                <select class="custom-select" id="propPais" v-model="propPais" required>
+                <select class="custom-select" id="propPais" v-model="propPais" required
+                :disabled="consulta">
                   <option selected value="">Seleccione un pa&iacute;s</option>
                   <option v-for="pais in paisesProp" :key="pais.CODIGO" :value="pais.SIGLA">{{ pais.PAIS }}</option>
                 </select>
@@ -134,7 +142,8 @@ export default {
         pais: null,
         paisesProp: paisesProp
       }
-    }
+    },
+    props:['consulta']
 }
 </script>
 

@@ -38,6 +38,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <a class="dropdown-item" href="/addpet">Alta de mascotas</a>
               <a class="dropdown-item" href="/updatepet">Modificaci&oacute;n de mascotas</a>
+              <a class="dropdown-item" href="/consultapet">Consulta de mascotas</a>
               <a class="dropdown-item" href="/deletepet">Baja de mascotas</a>
             </div>
           </div>
