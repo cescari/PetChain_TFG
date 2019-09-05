@@ -28,7 +28,8 @@
       <Mascota :update="false" />
       <Propietario />
       <div class="text-right">
-        <button type="submit" class="btn btn-primary">Alta mascota</button>
+        <button id="btnCancel" class="btn btn-primary mr-2" @click="$router.push('main')">Cancelar</button>
+        <button id="btnSubmit" type="submit" class="btn btn-primary">Alta mascota</button>
       </div>
     </form>
   </div>

@@ -8,14 +8,24 @@
 /************************************************************/
 var objectUpdate = {};
 
+/*vetCol_prop: "Teruel"
+​
+vetId_prop: 12345
+​
+vetName_prop: "Sergio"
+​
+vetSurname_prop: "Aguirre Bases"
+​
+vetaccount_prop: */
+
 export function setDataToJSON(_data, _this, _action) {
     var sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
-
-    _data["vetidentificador"].vetName = _this.$children[0].vetName;
-    _data["vetidentificador"].vetId = _this.$children[0].vetId;
-    _data["vetidentificador"].vetSurname = _this.$children[0].vetSurname;
-    _data["vetidentificador"].vetCol = _this.$children[0].vetCol;
-    _data["vetidentificador"].account = sesionUser.account;
+    
+    _data["vetidentificador"].vetName = _this.$children[0]._props.vetName_prop;
+    _data["vetidentificador"].vetId = _this.$children[0]._props.vetId_prop;
+    _data["vetidentificador"].vetSurname = _this.$children[0]._props.vetSurname_prop;
+    _data["vetidentificador"].vetCol = _this.$children[0]._props.vetCol_prop;
+    _data["vetidentificador"].account = _this.$children[0]._props.vetaccount_prop;
 
     _data["mascota"].petIdNumber = _this.$children[1].petIdNumber;
     _data["mascota"].fechImplantacion = _this.$children[1].fechImplantacion;
@@ -55,7 +65,7 @@ export function setDataToJSON(_data, _this, _action) {
     _data["propietario"].ciudadProp = _this.$children[2].ciudadProp;
     _data["propietario"].cp = _this.$children[2].cp;
     _data["propietario"].propPais = _this.$children[2].propPais;
-
+    console.log('_data' ,_data)
     return _data;
 }
 

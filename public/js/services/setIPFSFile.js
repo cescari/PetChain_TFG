@@ -10,7 +10,7 @@ import { Promise, resolve, reject } from 'q';
 /*********************************************************/
 const IPFS = require('ipfs-mini');
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-//const ipfs = new IPFS({ host: '127.0.0.1', port: 5001, protocol: 'http' });
+//const ipfs = new IPFS({ host: '/ip4/127.0.0.1/tcp/', port: 5001, protocol: 'http' });
 
 export function setIPFSdata(_data) {
     return new Promise((resolve, reject) => {

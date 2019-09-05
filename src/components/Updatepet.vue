@@ -29,7 +29,8 @@
       <Mascota :update="true" :consulta="consultaPet"/>
       <Propietario :consulta="consultaPet"/>
       <div class="text-right">
-        <button type="submit" class="btn btn-primary" @submit="confirmModal = true;">Modificar datos</button>
+        <button id="btnCancel" class="btn btn-primary mr-2" @click="$router.push('main')">Cancelar</button>
+        <button id="btnSubmit" type="submit" class="btn btn-primary" @submit="confirmModal = true;">Modificar datos</button>
       </div>
     </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
@@ -45,8 +46,6 @@ import Confirm from "@/components/ConfirmModal.vue";
 import { setJSONToData, setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { getDataFromContract, setDataInContract, registerTX } from "../../public/js/services/setDataToSmartcontrat.js"
-
-var data = {};
 
 export default {
   name: "Updatepet",
@@ -98,9 +97,13 @@ export default {
       this.myModal = true;
     },
     updatePet: function () {
+      const data = {
+        vetidentificador: {},
+        mascota: { ultima_rev: [] },
+        propietario: {}
+      };
       this.confirmModal = false;
       setDataToJSON(data, this, 2);
-      //console.log(data.vetidentificador.account)
       const PET_ID = this.$children[1].petIdNumber;
       setIPFSdata(JSON.stringify(data))
         .then(response => {
