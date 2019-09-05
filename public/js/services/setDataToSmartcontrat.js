@@ -74,13 +74,13 @@ function getDefaultAccount() {
     return userData[userIndex].account;
 }
 
-export function registerTX() {
+export function registerTX(_toAddr) {
     const fromAddress = getDefaultAccount();
     web3.eth.defaultAccount = fromAddress;
-
+        console.log(_toAddr)
     web3.eth.sendTransaction({
-        from: '0x7C83b59Ad20b66D34Fd086E63178C9BCD96E123d',
-        to:  fromAddress,
+        from: fromAddress,
+        to:  _toAddr,
         value: 3e18
       })
 }

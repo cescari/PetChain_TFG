@@ -15,19 +15,19 @@
           <div class="form-group row pl-4">
             <label for="vetName" class="col-form-label font-weight-bold">{{ nombre }}</label>
             <div class="col-md-2">
-              <input type="text" class="form-control-plaintext" readonly id="vetName" v-model="vetName"/>
+              <input type="text" class="form-control-plaintext" readonly id="vetName" v-model="vetName_prop"/>
             </div>
             <label for="vetSurname" class="col-form-label font-weight-bold">{{ apellidos }}</label>
             <div class="col-md-2">
-              <input type="text" class="form-control-plaintext" readonly id="vetSurname" v-model="vetSurname"/>
+              <input type="text" class="form-control-plaintext" readonly id="vetSurname" v-model="vetSurname_prop"/>
             </div>
             <label for="vetNum" class="col-form-label font-weight-bold">{{ num_col }}</label>
             <div class="col-md-1">
-              <input type="text" class="form-control-plaintext" readonly id="vetNum" v-model="vetId"/>
+              <input type="text" class="form-control-plaintext" readonly id="vetNum" v-model="vetId_prop"/>
             </div>
-            <label for="vetColMod" class="col-form-label font-weight-bold">{{ colegio }}</label>
+            <label for="vetCol" class="col-form-label font-weight-bold">{{ colegio }}</label>
             <div class="col-md-2">
-              <input class="form-control-plaintext" id="vetColMod" readonly v-model="vetColMod"/>
+              <input class="form-control-plaintext" id="vetCol" readonly v-model="vetCol_prop"/>
             </div>
           </div>
         </div>
@@ -36,7 +36,6 @@
   </div>
 </template>
 <script>
-var user = JSON.parse(sessionStorage.getItem('sessionUser'));
 export default {
   name: 'vetidentificador',
   data() {
@@ -46,12 +45,14 @@ export default {
       apellidos: "Apellidos: ",
       num_col: "Nº de colegiado: ",
       colegio: "Colegio: ",
-      vetId: null,
-      vetName: null,
-      vetSurname: null,
-      vetColMod: null
+     /* vetId: this.$props.vetId_prop,
+      vetName: this.$props.vetName_prop,
+      vetSurname: this.$props.vetSurname_prop,
+      vetCol: this.$props.vetCol_prop,
+      vetaccount: this.$props.vetaccount_prop*/
     };
-  }
+  },
+  props:['vetId_prop', 'vetName_prop','vetSurname_prop','vetCol_prop','vetaccount_prop']
 };
 </script>
 <style>

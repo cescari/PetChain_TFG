@@ -9,10 +9,13 @@
 var objectUpdate = {};
 
 export function setDataToJSON(_data, _this, _action) {
+    var sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
+
     _data["vetidentificador"].vetName = _this.$children[0].vetName;
     _data["vetidentificador"].vetId = _this.$children[0].vetId;
     _data["vetidentificador"].vetSurname = _this.$children[0].vetSurname;
     _data["vetidentificador"].vetCol = _this.$children[0].vetCol;
+    _data["vetidentificador"].account = sesionUser.account;
 
     _data["mascota"].petIdNumber = _this.$children[1].petIdNumber;
     _data["mascota"].fechImplantacion = _this.$children[1].fechImplantacion;
@@ -52,17 +55,17 @@ export function setDataToJSON(_data, _this, _action) {
     _data["propietario"].ciudadProp = _this.$children[2].ciudadProp;
     _data["propietario"].cp = _this.$children[2].cp;
     _data["propietario"].propPais = _this.$children[2].propPais;
-    
+
     return _data;
 }
 
 export function setJSONToData(_data, _this){
     const sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
 
-    _this.$children[0].vetName =_data["vetidentificador"].vetName;
+    /*_this.$children[0].vetName =_data["vetidentificador"].vetName;
     _this.$children[0].vetId =_data["vetidentificador"].vetId;
     _this.$children[0].vetSurname =_data["vetidentificador"].vetSurname;
-    _this.$children[0].vetCol =_data["vetidentificador"].vetCol;
+    _this.$children[0].vetCol =_data["vetidentificador"].vetCol;*/
 
     _this.$children[1].petName = _data["mascota"].petName;
     _this.$children[1].petIdNumber = _data["mascota"].petIdNumber

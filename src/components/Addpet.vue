@@ -24,7 +24,7 @@
         </li>
         <li class="breadcrumb-item active">Alta de mascotas</li>
       </ol>
-      <vetidentificador />
+      <vetidentificador :vetId_prop="sessionUser.col_id" :vetName_prop="sessionUser.name" :vetSurname_prop="sessionUser.surname" :vetCol_prop="sessionUser.colegio" :vetaccount_prop="sessionUser.account"/>
       <Mascota :update="false" />
       <Propietario />
       <div class="text-right">
@@ -41,13 +41,17 @@ import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 import { setIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { setDataInContract } from "../../public/js/services/setDataToSmartcontrat.js";
 
-
 export default {
   name: "Addpet",
   components: {
     vetidentificador,
     Mascota,
     Propietario
+  },
+  data(){
+    return {
+      sessionUser: JSON.parse(sessionStorage.getItem('sessionUser'))
+    }
   },
   mounted() {
     this.$parent.mainView = true;
