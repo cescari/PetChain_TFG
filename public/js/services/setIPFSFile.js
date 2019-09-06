@@ -18,7 +18,6 @@ export function setIPFSdata(_data) {
             if (_error) {
                 reject(_error);
             } else {
-                //return console.log('https://ipfs.infura.io/ipfs/' + _hash);
                 resolve(_hash);
             }
         });

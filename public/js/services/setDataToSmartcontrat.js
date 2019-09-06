@@ -6,7 +6,7 @@
 /* Version: 2.0                                             */
 /* Javascript para guardar el HASH en la red de Ethereum    */
 /************************************************************/
-import { petchain_ABI, joinedUser_ABI } from '@/data/ABI_contracts.js';
+import { petchain_ABI, joinedUser_ABI, registerTX_ABI } from '@/data/ABI_contracts.js';
 
 const Web3 = require('web3');
 const url = 'http://127.0.0.1:7545';
@@ -19,49 +19,72 @@ const web3 = new Web3(new Web3.providers.HttpProvider(url));
 
 const contract = web3.eth.contract(petchain_ABI).at(petchain_Addr);
 const contractUser = web3.eth.contract(joinedUser_ABI).at(joineduser_Addr);
+const contractTX = web3.eth.contract(registerTX_ABI).at(registerTX_Addr);
+
+
 
 export function setDataInContract(_hash, _petId) {
-    const fromAddress = getDefaultAccount();
-    web3.eth.defaultAccount = fromAddress;
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
 
     contract.setPet(_petId, _hash, {
-        from: fromAddress,
+        from: fromAddr,
         gas: 3000000
     });
 
     contract.getPet(_petId, {
-        from: fromAddress,
+        from: fromAddr,
         gas: 3000000
     });
 }
+
+export function setTXDataInContract(_addrTo, _hash, ){
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
+
+    contractTX.setTX(_addrTo, fromAddr, _hash, {
+        from: fromAddr,
+        gas: 300000
+    });
+}
+
+export function getTXDataFromContract(_addrTo) {
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
+    return contractTX.getTX(_addrTo, {
+        from: fromAddr,
+        gas: 300000
+    });
+}
+
 export function getDataFromContract(_petId){
-    const fromAddress = getDefaultAccount();
-    web3.eth.defaultAccount = fromAddress;
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
 
     return contract.getPet(_petId, {
-        from: fromAddress,
+        from: fromAddr,
         gas: 3000000
     });
 }
 
 export function getJoinedUser(){
-    const fromAddress = getDefaultAccount();
-    web3.eth.defaultAccount = fromAddress;
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
     
     const sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
     return contractUser.joinedUser((sesionUser.userName).toString(),{
-        from: fromAddress,
+        from: fromAddr,
         gas: 3000000
     });
 }
 
 export function setJoinedUser(){
-    const fromAddress = getDefaultAccount();
-    web3.eth.defaultAccount = fromAddress;
+    const fromAddr = getDefaultAccount();
+    web3.eth.defaultAccount = fromAddr;
 
     const sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
     return contractUser.join((sesionUser.name).toString(), (sesionUser.surname).toString(), (sesionUser.userName).toString(), {
-        from: fromAddress,
+        from: fromAddr,
         gas: 3000000
     });
 }
@@ -78,7 +101,6 @@ function getDefaultAccount() {
 
 export function registerTX(_toAddr) {
     web3.eth.defaultAccount = getDefaultAccount();
-        console.log(_toAddr)
     web3.eth.sendTransaction({
         from: web3.eth.defaultAccount,
         to:  _toAddr,

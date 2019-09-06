@@ -7,16 +7,7 @@
 /* Javascript para la composicion del objeto JSON a enviar  */
 /************************************************************/
 var objectUpdate = {};
-
-/*vetCol_prop: "Teruel"
-​
-vetId_prop: 12345
-​
-vetName_prop: "Sergio"
-​
-vetSurname_prop: "Aguirre Bases"
-​
-vetaccount_prop: */
+var tx = {};
 
 export function setDataToJSON(_data, _this, _action) {
     var sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
@@ -42,7 +33,6 @@ export function setDataToJSON(_data, _this, _action) {
     _data["mascota"].passport = _this.$children[1].passport;
     _data["mascota"].aptitud = _this.$children[1].aptitud;
     
-
      if (_action == 2){
         objectUpdate.fechaUltRev = _this.$children[1].fechaUltRev;
         objectUpdate.vetNameUpdate = _this.$children[1].vetNameUpdate;
@@ -65,17 +55,12 @@ export function setDataToJSON(_data, _this, _action) {
     _data["propietario"].ciudadProp = _this.$children[2].ciudadProp;
     _data["propietario"].cp = _this.$children[2].cp;
     _data["propietario"].propPais = _this.$children[2].propPais;
-    console.log('_data' ,_data)
+
     return _data;
 }
 
 export function setJSONToData(_data, _this){
     const sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
-
-    /*_this.$children[0].vetName =_data["vetidentificador"].vetName;
-    _this.$children[0].vetId =_data["vetidentificador"].vetId;
-    _this.$children[0].vetSurname =_data["vetidentificador"].vetSurname;
-    _this.$children[0].vetCol =_data["vetidentificador"].vetCol;*/
 
     _this.$children[1].petName = _data["mascota"].petName;
     _this.$children[1].petIdNumber = _data["mascota"].petIdNumber
@@ -104,4 +89,13 @@ export function setJSONToData(_data, _this){
     _this.$children[2].provProp = _data["propietario"].provProp;
     _this.$children[2].ciudadProp = _data["propietario"].ciudadProp;
     _this.$children[2].cp =_data["propietario"].cp;
+}
+
+export function setDataToJSON_TX(_data, _this){
+    _data.from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
+    tx.tx_date =  new Date().toISOString().slice(0, 10);
+    tx.pet_id = _this.$children[1].petIdNumber;
+    tx.amount = 3e18;
+    _data.tx[_data.tx.length] = tx;
+    return _data;
 }

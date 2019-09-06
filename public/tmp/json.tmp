@@ -2,28 +2,28 @@
   "from": "XXXXX03030dfkff32hOxx",
   "tx": [
     {
-      "cuando": "01/02/2019",
+      "tx_date": "01/02/2019",
       "pet_id": "12345-AA",
       "nombre": "Chula",
-      "cantidad": "3ETH"
+      "amount": "3ETH"
     },
     {
-      "cuando": "01/02/2019",
+      "tx_date": "01/02/2019",
       "pet_id": "98765-BB",
       "nombre": "Atom",
-      "cantidad": "3ETH"
+      "amount": "3ETH"
     },
     {
-      "cuando": "01/02/2019",
+      "tx_date": "01/02/2019",
       "pet_id": "98485-BB",
       "nombre": "Tara",
-      "cantidad": "3ETH"
+      "amount": "3ETH"
     },
     {
-      "cuando": "01/03/2019",
+      "tx_date": "01/03/2019",
       "pet_id": "98265-ZZ",
       "nombre": "Chola",
-      "cantidad": "3ETH"
+      "amount": "3ETH"
     }
   ]
 }
