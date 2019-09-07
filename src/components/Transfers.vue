@@ -50,7 +50,7 @@
 import { getIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { getTXDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js";
 
-const toAddr = JSON.parse(sessionStorage.getItem("sessionUser")).account;
+//const toAddr = JSON.parse(sessionStorage.getItem("sessionUser")).account;
 export default {
   name: "Tranfers",
   data() {

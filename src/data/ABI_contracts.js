@@ -105,10 +105,6 @@ export const registerTX_ABI = [
         "type": "address"
       },
       {
-        "name": "_fromAddr",
-        "type": "address"
-      },
-      {
         "name": "_txHASH",
         "type": "string"
       }

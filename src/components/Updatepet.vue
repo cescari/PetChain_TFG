@@ -9,17 +9,17 @@
 <template>
   <div class="container pb-5">
     <form name="mainFrm" action="POST" @submit.prevent="onSubmit">
-      <h1 class="mt-5">{{ pageTitle }}</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <h1 class="mt-3">{{ pageTitle }}</h1>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div class="h-75 w-75 p-3">
             <img
               v-if="!consultaPet"
               class="card-img-top"
               src="../../public/img/pet.svg"
               alt="pageTitle"
-              style="width:40%;"
+              style="width:20%;"
             />
             <img
               v-if="consultaPet"
@@ -62,6 +62,7 @@
       </div>
     </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);" />
+    <Success v-if="successModal" @close="success();"/>
     <Confirm
       v-if="confirmModal"
       :msgTitle="msgTitle"
@@ -79,6 +80,7 @@ import Mascota from "@/components/Mascota.vue";
 import Propietario from "@/components/Propietario.vue";
 import SelectPet from "@/components/SelectpetModal.vue";
 import Confirm from "@/components/ConfirmModal.vue";
+import Success from "@/components/SuccessModal.vue";
 import {
   setJSONToData,
   setDataToJSON,
@@ -102,12 +104,14 @@ export default {
     Mascota,
     Propietario,
     SelectPet,
-    Confirm
+    Confirm,
+    Success
   },
   data() {
     return {
       myModal: false,
       confirmModal: false,
+      successModal: false,
       msgTitle: "Confirmar modificación",
       msgBody:
         "ATENCION: Los datos de esta mascota van a ser modificados.¿Está Ud. seguro? Esta acción no podrá deshacerse.",
@@ -162,6 +166,7 @@ export default {
       setIPFSdata(JSON.stringify(data))
         .then(response => {
           setDataInContract(response, PET_ID);
+          this.successModal = true;
           registerTX(data.vetidentificador.account);
         })
         .catch(error => {
@@ -177,6 +182,10 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    success() {
+      this.successModal = false;
+      this.$router.push("/main");
     }
   },
   props: ["consultaPet", "pageTitle"]

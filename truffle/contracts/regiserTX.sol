@@ -10,13 +10,13 @@ pragma solidity ^0.4.24;
 
 contract registerTX {
     struct TX {
-        address fromAddr;
+        //address fromAddr;
         string txHASH;
     }
     mapping ( address => TX ) private txReg;
-    function setTX (address _toAddr, address _fromAddr, string _txHASH) public {
+    function setTX (address _toAddr, string _txHASH) public {
         TX storage toReg = txReg[_toAddr];
-        toReg.fromAddr = _fromAddr;
+       // toReg.fromAddr = _fromAddr;
         toReg.txHASH = _txHASH;
     }
     function getTX(address _toAddr) public view returns (string) {

@@ -9,9 +9,9 @@
 <template>
   <div class="container pb-5">
     
-      <h1 class="mt-5">Baja de mascotas</h1>
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
+      <h1 class="mt-3">Baja de mascotas</h1>
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
           <div class="h-75 w-75 p-3">
             <img class="card-img-top" src="../../public/img/love.svg" alt="Baja de mascotas" style="width:40%;"/>
@@ -56,8 +56,8 @@
                       <input type="date" id="fechImplantacion" v-model="fechImplantacion" class="form-control" disabled />
                     </div>
                     <div class="col-md-2">
-                      <label for="fechalta">Alta base de datos:</label>
-                      <input type="date" id="fechalta"  v-model="fechalta" class="form-control" disabled />
+                      <label for="fechaBaja">Fecha baja:</label>
+                      <input type="date" id="fechaBaja"  v-model="fechaBaja" class="form-control" disabled />
                     </div>
                   </div>
                   <div class="form-row mb-2">
@@ -72,6 +72,15 @@
                         disabled
                       />
                     </div>
+                    <div class="col-md-3">
+                    <label for="petCausaBaja">Causa del fallecimiento:</label>
+                      <select class="custom-select" id="selBaja" v-model="selBaja">
+                        <option>Seleccione una opcion</option>
+                        <option value="0">Eutanasia</option>
+                        <option value="1">Accidente</option>
+                        <option value="1">Enfermedad</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -83,7 +92,7 @@
         </div>
       </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
-    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet()" />
+    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet($event)" />
   </div>
 </template>
 <script>
@@ -102,8 +111,9 @@ export default {
       confirmModal: false,
       petIdNumber: null,
       fechImplantacion: null,
-      fechalta: null,
+      fechaBaja: new Date().toISOString().slice(0, 10),
       petName: null,
+      selBaja: null,
       msgTitle: 'Confirmar eliminación',
       msgBody: 'ATENCION: Esta mascota será eliminada de la base de datos principal.¿Está Ud. seguro? Esta acción no podrá deshacerse.',
       msgBtnConfirm: 'Eliminar'
@@ -117,6 +127,9 @@ export default {
   },
   props: ["update"],
   methods: {
+    onSubmit: function() {
+      if (!this.$props.consultaPet) this.confirmModal = true;
+    },
     getPetHash: function(_petId){
       //console.log(_petId);
       getIPFSdata (getDataFromContract(_petId)[1])
@@ -124,7 +137,7 @@ export default {
         var data = JSON.parse(response);
         this.petIdNumber = data.mascota.petIdNumber;
         this.fechImplantacion = data.mascota.fechImplantacion;
-        this.fechalta = data.mascota.fechalta;
+        this.fechaBaja = new Date().toISOString().slice(0, 10);
         this.petName = data.mascota.petName;
       })
       .catch((error) => {
@@ -132,10 +145,6 @@ export default {
       });
 
       this.myModal = false;
-    },
-
-    onSubmit: function(){
-      this.confirmModal = true;
     }
   }
 };

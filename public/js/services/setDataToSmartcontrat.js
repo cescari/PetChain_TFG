@@ -32,17 +32,17 @@ export function setDataInContract(_hash, _petId) {
         gas: 3000000
     });
 
-    contract.getPet(_petId, {
+    /*contract.getPet(_petId, {
         from: fromAddr,
         gas: 3000000
-    });
+    });*/
 }
 
 export function setTXDataInContract(_addrTo, _hash, ){
     const fromAddr = getDefaultAccount();
     web3.eth.defaultAccount = fromAddr;
 
-    contractTX.setTX(_addrTo, fromAddr, _hash, {
+    contractTX.setTX(_addrTo, _hash, {
         from: fromAddr,
         gas: 300000
     });
