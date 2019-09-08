@@ -11,7 +11,7 @@
     <form name="mainFrm" action="POST" @submit.prevent="onSubmit">
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
-        <h1 class="mt-3">{{ pageTitle }}</h1>
+        <h1 class="mt-3 pt-3 pl-3">{{ pageTitle }}</h1>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div class="h-75 w-75 p-3">
             <img
@@ -26,7 +26,7 @@
               class="card-img-top"
               src="../../public/img/search.png"
               alt="pageTitle"
-              style="width:40%;"
+              style="width:20%;"
             />
           </div>
         </div>
@@ -50,25 +50,25 @@
         <button
           id="btnCancel"
           class="btn btn-primary mr-2"
-          disabled
           @click="$router.push('main')"
-        >Cancelar</button>
+        >{{ msgBtnCancelar }}</button>
         <button
+          v-if="showBtnSubmit"
           id="btnSubmit"
           type="submit"
           class="btn btn-primary"
           @submit="confirmModal = true;"
-        >Modificar datos</button>
+        >{{ msgBtnSubmit }}</button>
       </div>
     </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);" />
-    <Success v-if="successModal" @close="success();"/>
+    <Success v-if="successModal" @close="success();" />
     <Confirm
       v-if="confirmModal"
       :msgTitle="msgTitle"
       :msgBody="msgBody"
       :msgBtnConfirm="msgBtnConfirm"
-      :error="false"
+      :error="error"
       @close="confirmModal=false"
       @setConfirm="updatePet($event);"
     />
@@ -97,6 +97,11 @@ import {
   setTXDataInContract
 } from "../../public/js/services/setDataToSmartcontrat.js";
 
+var data = {};
+var data_tx = {
+  tx: []
+};
+
 export default {
   name: "Updatepet",
   components: {
@@ -112,10 +117,13 @@ export default {
       myModal: false,
       confirmModal: false,
       successModal: false,
+      error: false,
       msgTitle: "Confirmar modificación",
-      msgBody:
-        "ATENCION: Los datos de esta mascota van a ser modificados.¿Está Ud. seguro? Esta acción no podrá deshacerse.",
+      msgBody: "ATENCION: Los datos de esta mascota van a ser modificados.¿Está Ud. seguro? Esta acción no podrá deshacerse.",
       msgBtnConfirm: "Modificar",
+      msgBtnSubmit: "Modificar datos",
+      msgBtnCancelar: "Cancelar",
+      showBtnSubmit: true,
       vetId: null,
       vetName: null,
       vetSurname: null,
@@ -130,18 +138,30 @@ export default {
     getPetHash: function(_petId) {
       getIPFSdata(getDataFromContract(_petId)[1])
         .then(response => {
-          setJSONToData(JSON.parse(response), this);
-          this.vetId = JSON.parse(response).vetidentificador.vetId;
-          this.vetName = JSON.parse(response).vetidentificador.vetName;
-          this.vetSurname = JSON.parse(response).vetidentificador.vetSurname;
-          this.vetCol = JSON.parse(response).vetidentificador.vetCol;
-          this.vetAccount = JSON.parse(response).vetidentificador.account;
+          console.log('response ' + response)
+          data = JSON.parse(response);
+          if(data.action != 3 || this.$props.consultaPet){
+            setJSONToData(JSON.parse(response), this);
+            this.vetId = JSON.parse(response).vetidentificador.vetId;
+            this.vetName = JSON.parse(response).vetidentificador.vetName;
+            this.vetSurname = JSON.parse(response).vetidentificador.vetSurname;
+            this.vetCol = JSON.parse(response).vetidentificador.vetCol;
+            this.vetAccount = JSON.parse(response).vetidentificador.account;
+          } else {
+          console.log(this.$props.consultaPet)
+            this.$children[1].petIdNumber = null;
+            this.error = true;
+            this.confirmModal = true;
+            this.msgBtnConfirm = 'Cerrar';
+            this.msgTitle = "Error en la búsqueda";
+            this.msgBody = "ATENCION: Esta mascota está dada de baja en la base de datos. Sus datos no pueden ser modificados."
+            //this.$router.push("/main");
+          }
         })
         .catch(error => {
           this.confirmModal = true;
           this.msgTitle = "Error en la búsqueda";
-          this.msgBody =
-            "El identificador introducido no corresponde con ninguna mascota.";
+          this.msgBody = "El identificador introducido no corresponde con ninguna mascota.";
         });
 
       this.myModal = false;
@@ -150,16 +170,6 @@ export default {
       this.myModal = true;
     },
     updatePet: function() {
-      const data = {
-        vetidentificador: {},
-        mascota: { ultima_rev: [] },
-        propietario: {}
-      };
-
-      const data_tx = {
-        tx: []
-      };
-
       this.confirmModal = false;
       setDataToJSON(data, this, 2);
       const PET_ID = this.$children[1].petIdNumber;
@@ -170,17 +180,19 @@ export default {
           registerTX(data.vetidentificador.account);
         })
         .catch(error => {
-          console.log(error);
+          this.confirmModal = true;
+          this.msgTitle = "Error en el almacenamiento";
+          this.msgBody = "Se ha producido un error en el almacenamiento de los datos en la IPFS. Contacte con su Administrador";
         });
       setDataToJSON_TX(data_tx, this);
-      //console.log(data_tx)
       setIPFSdata(JSON.stringify(data_tx))
         .then(response => {
-          console.log('response: ' + response[0].hash);
           setTXDataInContract(data.vetidentificador.account, response[0].hash);
         })
         .catch(error => {
-          console.log(error);
+          this.confirmModal = true;
+          this.msgTitle = "Error la TX";
+          this.msgBody = "Se ha producido un error en la TX de ETH. Contacte con su Administrador";
         });
     },
     success() {
@@ -188,6 +200,12 @@ export default {
       this.$router.push("/main");
     }
   },
-  props: ["consultaPet", "pageTitle"]
+  props: ["consultaPet", "pageTitle"],
+  mounted() {
+    if(this.$props.consultaPet) {
+      this.showBtnSubmit = false;
+      this.msgBtnCancelar = "Aceptar";
+    }
+  }
 };
 </script>

@@ -76,9 +76,9 @@
                     <label for="petCausaBaja">Causa del fallecimiento:</label>
                       <select class="custom-select" id="selBaja" v-model="selBaja">
                         <option>Seleccione una opcion</option>
-                        <option value="0">Eutanasia</option>
-                        <option value="1">Accidente</option>
-                        <option value="1">Enfermedad</option>
+                        <option value="1">Eutanasia</option>
+                        <option value="2">Accidente</option>
+                        <option value="3">Enfermedad</option>
                       </select>
                     </div>
                   </div>
@@ -92,7 +92,8 @@
         </div>
       </form>
     <SelectPet v-if="myModal" @close="myModal=false" @getHash="getPetHash($event);"/>
-    <Confirm v-if="confirmModal" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet($event)" />
+    <Confirm v-if="confirmModal" :error="error" :msgTitle="msgTitle" :msgBody="msgBody" :msgBtnConfirm="msgBtnConfirm" @close="confirmModal=false" @setConfirm="deletePet($event)" />
+    <Success v-if="successModal" @close="success();" />
   </div>
 </template>
 <script>
@@ -100,9 +101,12 @@ import vetidentificador from "@/components/Vet_identificador.vue";
 import Mascota from "@/components/Mascota.vue";
 import SelectPet from "@/components/SelectpetModal.vue";
 import Confirm from "@/components/ConfirmModal.vue";
+import Success from "@/components/SuccessModal.vue";
 import { setIPFSdata, getIPFSdata } from "../../public/js/services/setIPFSFile.js";
-import { getDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js"
+import { getDataFromContract, setDataInContract } from "../../public/js/services/setDataToSmartcontrat.js";
+import { setDataToJSON } from "../../public/js/services/setDataToJSON.js";
 
+var data = {};
 export default {
   name: "Deletepet",
   data() {
@@ -111,19 +115,22 @@ export default {
       confirmModal: false,
       petIdNumber: null,
       fechImplantacion: null,
+      successModal: false,
       fechaBaja: new Date().toISOString().slice(0, 10),
       petName: null,
       selBaja: null,
       msgTitle: 'Confirmar eliminación',
       msgBody: 'ATENCION: Esta mascota será eliminada de la base de datos principal.¿Está Ud. seguro? Esta acción no podrá deshacerse.',
-      msgBtnConfirm: 'Eliminar'
+      msgBtnConfirm: 'Eliminar',
+      error: false
     }
   },
   components: {
     vetidentificador,
     Mascota,
     SelectPet,
-    Confirm
+    Confirm,
+    Success
   },
   props: ["update"],
   methods: {
@@ -131,20 +138,43 @@ export default {
       if (!this.$props.consultaPet) this.confirmModal = true;
     },
     getPetHash: function(_petId){
-      //console.log(_petId);
       getIPFSdata (getDataFromContract(_petId)[1])
       .then((response)=> {
-        var data = JSON.parse(response);
+        data = JSON.parse(response);
         this.petIdNumber = data.mascota.petIdNumber;
         this.fechImplantacion = data.mascota.fechImplantacion;
         this.fechaBaja = new Date().toISOString().slice(0, 10);
         this.petName = data.mascota.petName;
       })
       .catch((error) => {
-        console.log(error);
+        this.error = true,
+        this.confirmModal = true;
+        this.msgTitle = "Error en la búsqueda";
+        this.msgBody = "El identificador introducido no corresponde con ninguna mascota.";
+        this.petIdNumber = '';
       });
-
       this.myModal = false;
+    },
+    deletePet: function(){
+      this.confirmModal = false;
+      setDataToJSON(data, this, 3);
+      const PET_ID = this.petIdNumber;
+      setIPFSdata(JSON.stringify(data))
+        .then(response => {
+          setDataInContract(response[0].hash, PET_ID);
+          this.successModal = true;
+          //registerTX(data.vetidentificador.account);
+        })
+        .catch(error => {
+          console.log(error);
+          this.confirmModal = true;
+          this.msgTitle = "Error en el almacenamiento";
+          this.msgBody = "Se ha producido un error en el almacenamiento de los datos en la IPFS. Contacte con su Administrador";
+        });
+    },
+    success() {
+      this.successModal = false;
+      this.$router.push("/main");
     }
   }
 };

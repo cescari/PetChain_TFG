@@ -90,7 +90,7 @@ export default {
    // llenar: function(){
       //QmdkVKGUDJqWSzZNQfYuJnbGV7F7txkmxQo2dM3cRZMtmZ
       //getIPFSdata(getTXDataFromContract(toAddr))
-      getIPFSdata('QmdkVKGUDJqWSzZNQfYuJnbGV7F7txkmxQo2dM3cRZMtmZ')
+      getIPFSdata('QmWGhXHbUMC51S9GrCN4DA7bWNYH9s1r4eSCuzYsLeiaCE')
       .then(response => {
         console.log(JSON.parse(response).from)
         this.from = JSON.parse(response).from;
