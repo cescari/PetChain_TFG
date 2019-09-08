@@ -8,9 +8,13 @@ import { Promise, resolve, reject } from 'q';
 /* Version: 1.0                                          */
 /* Servicio I/O de ficheros a la IPFS               */
 /*********************************************************/
-const IPFS = require('ipfs-mini');
-const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+//const IPFS = require('ipfs-mini');
+//const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 //const ipfs = new IPFS({ host: '/ip4/127.0.0.1/tcp/', port: 5001, protocol: 'http' });
+
+var ipfsClient = require('ipfs-http-client')
+var ipfs = ipfsClient('localhost', '5001', { protocol: 'http' }) // leaving out the arguments will default to these values
+
 
 export function setIPFSdata(_data) {
     return new Promise((resolve, reject) => {

@@ -9,7 +9,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "file-saver": "^2.0.2",
-    "ipfs-mini": "^1.1.5",
+    "ipfs-http-client": "^35.1.0",
     "jquery": "^3.4.1",
     "parse-json": "^5.0.0",
     "vue": "^2.6.10",

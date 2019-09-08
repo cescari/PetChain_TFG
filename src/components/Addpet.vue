@@ -83,8 +83,8 @@ export default {
       const PET_ID = this.$children[1].petIdNumber;
       setIPFSdata(JSON.stringify(data))
         .then(response => {
-          console.log(response + ' ' + PET_ID);
-          setDataInContract(response, PET_ID);
+          console.log(response[0].hash + ' ' + PET_ID);
+          setDataInContract(response[0].hash, PET_ID);
           this.successModal = true;
         })
         .catch(error => {

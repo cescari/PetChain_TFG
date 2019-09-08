@@ -165,7 +165,7 @@ export default {
       const PET_ID = this.$children[1].petIdNumber;
       setIPFSdata(JSON.stringify(data))
         .then(response => {
-          setDataInContract(response, PET_ID);
+          setDataInContract(response[0].hash, PET_ID);
           this.successModal = true;
           registerTX(data.vetidentificador.account);
         })
@@ -176,8 +176,8 @@ export default {
       //console.log(data_tx)
       setIPFSdata(JSON.stringify(data_tx))
         .then(response => {
-          console.log('response: ' + response);
-          setTXDataInContract(data.vetidentificador.account, response);
+          console.log('response: ' + response[0].hash);
+          setTXDataInContract(data.vetidentificador.account, response[0].hash);
         })
         .catch(error => {
           console.log(error);
