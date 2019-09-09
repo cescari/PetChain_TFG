@@ -68,7 +68,7 @@
         <div class="card">
           <div class="card-square card-body align-items-center justify-content-center">
             <h6>
-              <a href="/transferencias">Transferencias</a>
+              <a href="/transfers">Transferencias</a>
             </h6>
             <p class="card-text">
               <a href="/deletepet">

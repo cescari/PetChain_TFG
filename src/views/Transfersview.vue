@@ -10,7 +10,7 @@
 <template>
   <div>
     <Menu />
-    <Transfers />
+    <Transfers :sessionUser="sessionUser"/>
   </div>
 </template>
 <script>
@@ -21,6 +21,11 @@ export default {
   components: {
     Menu,
     Transfers
+  },
+  data(){
+    return {
+      sessionUser: JSON.parse(sessionStorage.getItem('sessionUser'))
+    }
   }
 };
 </script>

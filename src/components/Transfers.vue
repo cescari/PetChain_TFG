@@ -9,9 +9,9 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <h1 class="mt-5">Transferencias ETH</h1>
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
+      <h1 class="mt-5 pl-2">Transferencias ETH</h1>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <div class="h-75 w-75 p-3">
           <img
@@ -50,58 +50,27 @@
 import { getIPFSdata } from "../../public/js/services/setIPFSFile.js";
 import { getTXDataFromContract } from "../../public/js/services/setDataToSmartcontrat.js";
 
-//const toAddr = JSON.parse(sessionStorage.getItem("sessionUser")).account;
 export default {
   name: "Tranfers",
   data() {
     return {
       from: null,
-      items: [
-        /* {
-          'tx_date': "01/02/2019",
-          'pet_id': "12345-AA",
-          'nombre': "Chula",
-          'amount': "3ETH"
-        },
-        {
-          'tx_date': "01/02/2019",
-          'pet_id': "98765-BB",
-          'nombre': "Atom",
-          'amount': "3ETH"
-        },
-        {
-          'tx_date': "01/02/2019",
-          'pet_id': "98485-BB",
-          'nombre': "Tara",
-          'amount': "3ETH"
-        },
-        {
-          'tx_date': "01/03/2019",
-          'pet_id': "98265-ZZ",
-          'nombre': "Chola",
-          'amount': "3ETH"
-        }*/
-      ],
+      items: [],
       columns: ["Fecha", "ID Mascota", "Nombre mascota", "Cantidad"],
       item_id: ["tx_date", "pet_id", "nombre", "amount"]
     };
   },
   created: function() {
-   // llenar: function(){
-      //QmdkVKGUDJqWSzZNQfYuJnbGV7F7txkmxQo2dM3cRZMtmZ
-      //getIPFSdata(getTXDataFromContract(toAddr))
-      getIPFSdata('QmWGhXHbUMC51S9GrCN4DA7bWNYH9s1r4eSCuzYsLeiaCE')
+      getIPFSdata(getTXDataFromContract(this.$props.sessionUser.account))
       .then(response => {
-        console.log(JSON.parse(response).from)
         this.from = JSON.parse(response).from;
         this.items = JSON.parse(response).tx;
       })
       .catch(error => {
         console.log(error);
       });
-   // }
-    
-  }
+  },
+  props:['sessionUser']
 };
 </script>
 <style scoped>
