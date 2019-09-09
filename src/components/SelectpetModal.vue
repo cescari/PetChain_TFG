@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: SelecpetModal.vue                              */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 10/08/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent modal para la busqueda de una mascota   */
+/********************************************************/
 <template>
   <div class="modal-mask">
     <div class="modal-wrapper">

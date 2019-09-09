@@ -94,6 +94,7 @@ import {
   getDataFromContract,
   setDataInContract,
   registerTX,
+  getTXDataFromContract,
   setTXDataInContract
 } from "../../public/js/services/setDataToSmartcontrat.js";
 
@@ -136,6 +137,7 @@ export default {
       if (!this.$props.consultaPet) this.confirmModal = true;
     },
     getPetHash: function(_petId) {
+      /*Datos de la mascota */
       getIPFSdata(getDataFromContract(_petId)[1])
         .then(response => {
           console.log('response ' + response)
@@ -148,20 +150,28 @@ export default {
             this.vetCol = JSON.parse(response).vetidentificador.vetCol;
             this.vetAccount = JSON.parse(response).vetidentificador.account;
           } else {
-          console.log(this.$props.consultaPet)
             this.$children[1].petIdNumber = null;
             this.error = true;
             this.confirmModal = true;
             this.msgBtnConfirm = 'Cerrar';
             this.msgTitle = "Error en la búsqueda";
             this.msgBody = "ATENCION: Esta mascota está dada de baja en la base de datos. Sus datos no pueden ser modificados."
-            //this.$router.push("/main");
           }
         })
         .catch(error => {
           this.confirmModal = true;
           this.msgTitle = "Error en la búsqueda";
           this.msgBody = "El identificador introducido no corresponde con ninguna mascota.";
+        });
+      /* Array de TX */
+      getIPFSdata(getTXDataFromContract(this.vetAccount))
+        .then(response => {
+          data_tx = JSON.parse(response);
+        })
+        .catch(error => {
+          this.confirmModal = true;
+          this.msgTitle = "Error en la búsqueda";
+          this.msgBody = "El dirección introducida no está registrada en la BlockChain.";
         });
 
       this.myModal = false;
@@ -171,8 +181,10 @@ export default {
     },
     updatePet: function() {
       this.confirmModal = false;
+      /* Datos mascota --> JSON */
       setDataToJSON(data, this, 2);
       const PET_ID = this.$children[1].petIdNumber;
+      /* JSON mascota --> IPFS */
       setIPFSdata(JSON.stringify(data))
         .then(response => {
           setDataInContract(response[0].hash, PET_ID);
@@ -184,7 +196,9 @@ export default {
           this.msgTitle = "Error en el almacenamiento";
           this.msgBody = "Se ha producido un error en el almacenamiento de los datos en la IPFS. Contacte con su Administrador";
         });
+      /* Datos TX --> JSON */
       setDataToJSON_TX(data_tx, this);
+      /* JSON TX --> IPFS */
       setIPFSdata(JSON.stringify(data_tx))
         .then(response => {
           setTXDataInContract(data.vetidentificador.account, response[0].hash);

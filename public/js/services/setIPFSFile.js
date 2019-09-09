@@ -1,5 +1,3 @@
-import { Promise, resolve, reject } from 'q';
-
 /*********************************************************/
 /* File: setIPFSFile.js                                  */
 /* Author: Carlos Escario Bajo                           */
@@ -8,14 +6,11 @@ import { Promise, resolve, reject } from 'q';
 /* Version: 1.0                                          */
 /* Servicio I/O de ficheros a la IPFS               */
 /*********************************************************/
-//const IPFS = require('ipfs-mini');
-//const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-//const ipfs = new IPFS({ host: '/ip4/127.0.0.1/tcp/', port: 5001, protocol: 'http' });
-
+import { Promise, resolve, reject } from 'q';
 var ipfsClient = require('ipfs-http-client')
-var ipfs = ipfsClient('localhost', '5001', { protocol: 'http' }) // leaving out the arguments will default to these values
+var ipfs = ipfsClient('localhost', '5001', { protocol: 'http' });
 
-
+/* Envia el JSON a la IPFS */
 export function setIPFSdata(_data) {
     return new Promise((resolve, reject) => {
         ipfs.add(_data, (_error, _hash) => {
@@ -27,8 +22,7 @@ export function setIPFSdata(_data) {
         });
     });
 }
-//https://ipfs.infura.io/ipfs/QmcK1hAc9sYTHJZcr68HxdHLCPMFgSn9QMSSar7j85TFg5
-
+/* Busca el fichero en la IPFS */
 export function getIPFSdata(_hash) {
     return new Promise((resolve, reject) => {
         ipfs.cat(_hash, (_error, _result) => {

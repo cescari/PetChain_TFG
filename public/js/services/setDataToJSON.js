@@ -103,6 +103,7 @@ export function setDataToJSON_TX(_data, _this) {
     //_data.from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
     tx.tx_date = new Date().toISOString().slice(0, 10);
     tx.tx_from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
+    tx.pet_name = _this.$children[1].petName;
     tx.pet_id = _this.$children[1].petIdNumber;
     tx.amount = 3e18;
     _data.tx[_data.tx.length] = tx;

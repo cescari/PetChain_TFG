@@ -1,3 +1,11 @@
+/***************************************************************/
+/* File: JoinUserModal.vue                                     */
+/* Author: Carlos Escario Bajo                                 */
+/* Proyecto: TFG UNIR                                          */
+/* Date: 10/05/2019                                            */
+/* Version: 1.0                                                */
+/* Webcomponent para el registro del usuario en la Blockchain  */
+/***************************************************************/
 <template>
   <div class="modal-mask">
     <div class="modal-wrapper">

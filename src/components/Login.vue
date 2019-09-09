@@ -1,5 +1,5 @@
 /********************************************************/
-/* File: login.vue                                      */
+/* File: Login.vue                                      */
 /* Author: Carlos Escario Bajo                          */
 /* Proyecto: TFG UNIR                                   */
 /* Date: 01/05/2019                                     */

@@ -30,7 +30,7 @@
       <li class="breadcrumb-item active">Transferencias ETH</li>
     </ol>
     <div>
-    <label>{{from}}</label>
+    <label>Destinatario: {{ vetName }}&nbsp;{{ vetSurname }} / {{ addrTo }}</label>
     </div>
     <table class="table">
       <thead>
@@ -44,6 +44,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="col-md-12">
+      <p class="h5 text-right">Total ETH: {{ total }}</p>
+    </div>
   </div>
 </template>
 <script>
@@ -54,21 +57,34 @@ export default {
   name: "Tranfers",
   data() {
     return {
+      vetName: this.$props.sessionUser.name,
+      vetSurname: this.$props.sessionUser.surname,
+      addrTo: this.$props.sessionUser.account,
+      total:null,
       from: null,
       items: [],
-      columns: ["Fecha", "ID Mascota", "Nombre mascota", "Cantidad"],
-      item_id: ["tx_date", "pet_id", "nombre", "amount"]
+      columns: ["Fecha", "ID Mascota", "Nombre mascota", "Dirección", "Cantidad (weis)"],
+      item_id: ["tx_date", "pet_id", "pet_name", "tx_from", "amount"]
     };
   },
   created: function() {
       getIPFSdata(getTXDataFromContract(this.$props.sessionUser.account))
       .then(response => {
-        this.from = JSON.parse(response).from;
+        //console.log(JSON.parse(response))
         this.items = JSON.parse(response).tx;
+        this.total = getTotal(this.items)/1e18;
       })
       .catch(error => {
         console.log(error);
       });
+
+      function getTotal(_items){
+        let aux= 0;
+        for(let i of _items){
+          aux += parseInt(i.amount);
+        }
+        return aux;
+      }
   },
   props:['sessionUser']
 };
