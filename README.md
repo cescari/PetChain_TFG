@@ -2,33 +2,9 @@
 
 # PetChain
 ```
-
-Sistema para la gestión de mascotas
+Sistema para la gestión de mascotas diseñado para le Trabajo de Fin de Grado de la UNIR
 ```
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+<img src="./public/img/logo_2.png" />
 ```
 
 ### Customize configuration
