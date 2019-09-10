@@ -44,12 +44,7 @@ export default {
       nombre: "Nombre: ",
       apellidos: "Apellidos: ",
       num_col: "Nº de colegiado: ",
-      colegio: "Colegio: ",
-     /* vetId: this.$props.vetId_prop,
-      vetName: this.$props.vetName_prop,
-      vetSurname: this.$props.vetSurname_prop,
-      vetCol: this.$props.vetCol_prop,
-      vetaccount: this.$props.vetaccount_prop*/
+      colegio: "Colegio: "
     };
   },
   props:['vetId_prop', 'vetName_prop','vetSurname_prop','vetCol_prop','vetaccount_prop']

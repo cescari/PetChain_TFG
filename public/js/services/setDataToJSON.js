@@ -6,9 +6,8 @@
 /* Version: 2.0                                             */
 /* Javascript para la composicion del objeto JSON a enviar  */
 /************************************************************/
-var objectUpdate = {};
-var tx = {};
 
+var objectUpdate = {};
 export function setDataToJSON(_data, _this, _action) {
     var sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));
     _data.action = _action;
@@ -63,7 +62,6 @@ export function setDataToJSON(_data, _this, _action) {
         _data["mascota"].selBaja = _this.selBaja;
         _data["mascota"]._action = 3;
     }
-    console.log(_data)
     return _data;
 }
 
@@ -89,6 +87,7 @@ export function setJSONToData(_data, _this) {
     _this.$children[1].vetNumUpdate = sesionUser.col_id;
     _this.$children[1].vetProvUpdate = sesionUser.cold_cod
     _this.$children[1].vetSurnameUpDate = sesionUser.surname
+    _this.$children[1].vetAccount = sesionUser.account;
 
     _this.$children[2].propName = _data["propietario"].propName;
     _this.$children[2].propSurname = _data["propietario"].propSurname;
@@ -100,13 +99,14 @@ export function setJSONToData(_data, _this) {
 }
 
 export function setDataToJSON_TX(_data, _this) {
-    //_data.from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
-    tx.tx_date = new Date().toISOString().slice(0, 10);
-    tx.tx_from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
-    tx.pet_name = _this.$children[1].petName;
-    tx.pet_id = _this.$children[1].petIdNumber;
-    tx.amount = 3e18;
-    _data.tx[_data.tx.length] = tx;
-
-    return _data;
+    var txTo = {};
+    var data_aux = JSON.parse(_data);
+    txTo.tx_date = new Date().toISOString().slice(0, 10);
+    txTo.tx_from = JSON.parse(sessionStorage.getItem('sessionUser')).account;
+    txTo.pet_name = _this.$children[1].petName;
+    txTo.pet_id = _this.$children[1].petIdNumber;
+    txTo.amount = 3e18;
+    data_aux.txObj[data_aux.txObj.length] = JSON.parse(JSON.stringify(txTo));
+    
+    return data_aux;
 }

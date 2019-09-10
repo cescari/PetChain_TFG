@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="tr-body" v-for="(item, index) in items" :key="index">
+        <tr class="tr-body" v-for="(item, index) in items.txObj" :key="index">
           <td v-for="(column, indexColumn) in item_id" :key="indexColumn">{{item[column]}}</td>
         </tr>
       </tbody>
@@ -47,6 +47,7 @@
     <div class="col-md-12">
       <p class="h5 text-right">Total ETH: {{ total }}</p>
     </div>
+    {{ getData() }}
   </div>
 </template>
 <script>
@@ -67,24 +68,29 @@ export default {
       item_id: ["tx_date", "pet_id", "pet_name", "tx_from", "amount"]
     };
   },
-  created: function() {
-      getIPFSdata(getTXDataFromContract(this.$props.sessionUser.account))
+  methods: {
+
+    getData: function(){
+       getIPFSdata(getTXDataFromContract(this.$props.sessionUser.account))
       .then(response => {
         //console.log(JSON.parse(response))
-        this.items = JSON.parse(response).tx;
+        this.items = JSON.parse(response);
         this.total = getTotal(this.items)/1e18;
       })
       .catch(error => {
         console.log(error);
       });
-
-      function getTotal(_items){
+    },
+    getTotal: function(_items){
         let aux= 0;
         for(let i of _items){
-          aux += parseInt(i.amount);
+          //aux += parseInt(i.amount);
+          console.log(i)
         }
         return aux;
       }
+     
+
   },
   props:['sessionUser']
 };

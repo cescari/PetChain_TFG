@@ -8,7 +8,7 @@
 /********************************************************/
 <template>
   <div class="container pb-5">
-    <form name="mainFrm" action="POST" @submit.prevent="onSubmit">
+    <form name="mainFrm" action="POST" @submit.prevent="onSubmit();">
       <!-- Page Heading/Breadcrumbs -->
       <div class="row">
         <h1 class="mt-3 pt-3 pl-3">{{ pageTitle }}</h1>
@@ -93,14 +93,16 @@ import {
 import {
   getDataFromContract,
   setDataInContract,
+  sendTransfer,
   registerTX,
   getTXDataFromContract,
   setTXDataInContract
 } from "../../public/js/services/setDataToSmartcontrat.js";
+import { stringify } from "querystring";
 
 var data = {};
 var data_tx = {
-  tx: []
+  txObj: []
 };
 
 export default {
@@ -120,7 +122,8 @@ export default {
       successModal: false,
       error: false,
       msgTitle: "Confirmar modificación",
-      msgBody: "ATENCION: Los datos de esta mascota van a ser modificados.¿Está Ud. seguro? Esta acción no podrá deshacerse.",
+      msgBody:
+        "ATENCION: Los datos de esta mascota van a ser modificados.¿Está Ud. seguro? Esta acción no podrá deshacerse.",
       msgBtnConfirm: "Modificar",
       msgBtnSubmit: "Modificar datos",
       msgBtnCancelar: "Cancelar",
@@ -132,7 +135,7 @@ export default {
       vetAccount: null
     };
   },
-  methods: {
+   methods: {
     onSubmit: function() {
       if (!this.$props.consultaPet) this.confirmModal = true;
     },
@@ -140,15 +143,31 @@ export default {
       /*Datos de la mascota */
       getIPFSdata(getDataFromContract(_petId)[1])
         .then(response => {
-          console.log('response ' + response)
-          data = JSON.parse(response);
+          data = response.toString('utf8');
+          console.log('data ' + data);
           if(data.action != 3 || this.$props.consultaPet){
-            setJSONToData(JSON.parse(response), this);
-            this.vetId = JSON.parse(response).vetidentificador.vetId;
-            this.vetName = JSON.parse(response).vetidentificador.vetName;
-            this.vetSurname = JSON.parse(response).vetidentificador.vetSurname;
-            this.vetCol = JSON.parse(response).vetidentificador.vetCol;
-            this.vetAccount = JSON.parse(response).vetidentificador.account;
+            setJSONToData(JSON.parse(data), this);
+            this.vetId = JSON.parse(data).vetidentificador.vetId;
+            this.vetName = JSON.parse(data).vetidentificador.vetName;
+            this.vetSurname = JSON.parse(data).vetidentificador.vetSurname;
+            this.vetCol = JSON.parse(data).vetidentificador.vetCol;
+            this.vetAccount = JSON.parse(data).vetidentificador.account;
+
+            getIPFSdata(getTXDataFromContract(this.vetAccount))
+            .then(response => {
+              data_tx = response.toString('utf8');
+              console.log('data_tx ' + data_tx)
+            })
+            .catch(error => {
+            /* this.confirmModal = true;
+              this.error = true;
+              this.msgTitle = "Error en la búsqueda";
+              this.msgBody = "El dirección introducida no está registrada en la BlockChain.";*/
+              console.log(error)
+            });
+
+
+
           } else {
             this.$children[1].petIdNumber = null;
             this.error = true;
@@ -160,20 +179,13 @@ export default {
         })
         .catch(error => {
           this.confirmModal = true;
+          this.error = true;
           this.msgTitle = "Error en la búsqueda";
           this.msgBody = "El identificador introducido no corresponde con ninguna mascota.";
+          console.log(error)
         });
       /* Array de TX */
-      getIPFSdata(getTXDataFromContract(this.vetAccount))
-        .then(response => {
-          data_tx = JSON.parse(response);
-        })
-        .catch(error => {
-          this.confirmModal = true;
-          this.msgTitle = "Error en la búsqueda";
-          this.msgBody = "El dirección introducida no está registrada en la BlockChain.";
-        });
-
+      
       this.myModal = false;
     },
     search: function() {
@@ -182,32 +194,40 @@ export default {
     updatePet: function() {
       this.confirmModal = false;
       /* Datos mascota --> JSON */
-      setDataToJSON(data, this, 2);
-      const PET_ID = this.$children[1].petIdNumber;
+      const data_pet = setDataToJSON(JSON.parse(data), this, 2);
       /* JSON mascota --> IPFS */
-      setIPFSdata(JSON.stringify(data))
+      setIPFSdata(JSON.stringify(data_pet))
         .then(response => {
+          const PET_ID = this.$children[1].petIdNumber;
           setDataInContract(response[0].hash, PET_ID);
           this.successModal = true;
-          registerTX(data.vetidentificador.account);
+          registerTX(data_pet.vetidentificador.account);
+
+            /* Datos TX --> JSON */
+          
+          /* JSON TX --> IPFS */
+          setIPFSdata(JSON.stringify(setDataToJSON_TX(data_tx, this)))
+            .then(response => {
+              setTXDataInContract(data_pet.vetidentificador.account, response[0].hash);
+            })
+            .catch(error => {
+            /* this.confirmModal = true;
+              this.error = true;
+              this.msgTitle = "Error la TX";
+              this.msgBody = "Se ha producido un error en la TX de ETH. Contacte con su Administrador";*/
+              console.log(error)
+            });
+
+
         })
         .catch(error => {
+          console.log(error)
           this.confirmModal = true;
+          this.error = true;
           this.msgTitle = "Error en el almacenamiento";
           this.msgBody = "Se ha producido un error en el almacenamiento de los datos en la IPFS. Contacte con su Administrador";
         });
-      /* Datos TX --> JSON */
-      setDataToJSON_TX(data_tx, this);
-      /* JSON TX --> IPFS */
-      setIPFSdata(JSON.stringify(data_tx))
-        .then(response => {
-          setTXDataInContract(data.vetidentificador.account, response[0].hash);
-        })
-        .catch(error => {
-          this.confirmModal = true;
-          this.msgTitle = "Error la TX";
-          this.msgBody = "Se ha producido un error en la TX de ETH. Contacte con su Administrador";
-        });
+      
     },
     success() {
       this.successModal = false;
@@ -216,7 +236,7 @@ export default {
   },
   props: ["consultaPet", "pageTitle"],
   mounted() {
-    if(this.$props.consultaPet) {
+    if (this.$props.consultaPet) {
       this.showBtnSubmit = false;
       this.msgBtnCancelar = "Aceptar";
     }

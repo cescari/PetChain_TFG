@@ -34,3 +34,7 @@ export function getIPFSdata(_hash) {
         });
     });
 }
+/*
+export function getIPFSdata(_hash) {
+    return ipfs.get('QmSYz9ExUrDeowxc4sxDJ84FhcvrmKBNeaM2hWdoesQ4ug');
+}*/

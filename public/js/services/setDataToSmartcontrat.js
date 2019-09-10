@@ -7,6 +7,7 @@
 /* Javascript para guardar el HASH en la red de Ethereum    */
 /************************************************************/
 import { petchain_ABI, joinedUser_ABI, registerTX_ABI } from '@/data/ABI_contracts.js';
+import { Promise, resolve, reject } from 'q';
 
 const Web3 = require('web3');
 const url = 'http://127.0.0.1:7545';
@@ -39,6 +40,7 @@ export function setDataInContract(_hash, _petId) {
 }
 
 export function setTXDataInContract(_addrTo, _hash, ){
+    console.log(_addrTo + ' '  + _hash)
     const fromAddr = getDefaultAccount();
     web3.eth.defaultAccount = fromAddr;
 
@@ -48,6 +50,7 @@ export function setTXDataInContract(_addrTo, _hash, ){
     });
 }
 
+
 export function getTXDataFromContract(_addrTo) {
     const fromAddr = getDefaultAccount();
     web3.eth.defaultAccount = fromAddr;
@@ -56,6 +59,18 @@ export function getTXDataFromContract(_addrTo) {
         gas: 300000
     });
 }
+
+/*export function getTXDataFromContract(_addrTo) {
+    return new Promise((resolve, reject) => {
+        const fromAddr = getDefaultAccount();
+        web3.eth.defaultAccount = fromAddr;
+        return contractTX.getTX(_addrTo, {
+            from: fromAddr,
+            gas: 300000
+        });
+    });
+}*/
+
 
 export function getDataFromContract(_petId){
     const fromAddr = getDefaultAccount();
@@ -97,6 +112,15 @@ function getDefaultAccount() {
         return obj.userName == sesionUser.userName; 
     });
     return userData[userIndex].account;
+}
+
+export function sendTransfer(_toAddr) {
+    web3.eth.defaultAccount = getDefaultAccount();
+    web3.eth.sendTransaction({
+        from: web3.eth.defaultAccount,
+        to:  _toAddr,
+        value: 3e18
+      })
 }
 
 export function registerTX(_toAddr) {
