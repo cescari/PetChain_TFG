@@ -159,15 +159,8 @@ export default {
               console.log('data_tx ' + data_tx)
             })
             .catch(error => {
-            /* this.confirmModal = true;
-              this.error = true;
-              this.msgTitle = "Error en la búsqueda";
-              this.msgBody = "El dirección introducida no está registrada en la BlockChain.";*/
               console.log(error)
             });
-
-
-
           } else {
             this.$children[1].petIdNumber = null;
             this.error = true;
@@ -184,8 +177,6 @@ export default {
           this.msgBody = "El identificador introducido no corresponde con ninguna mascota.";
           console.log(error)
         });
-      /* Array de TX */
-      
       this.myModal = false;
     },
     search: function() {
@@ -202,23 +193,18 @@ export default {
           setDataInContract(response[0].hash, PET_ID);
           this.successModal = true;
           registerTX(data_pet.vetidentificador.account);
-
-            /* Datos TX --> JSON */
-          
           /* JSON TX --> IPFS */
           setIPFSdata(JSON.stringify(setDataToJSON_TX(data_tx, this)))
             .then(response => {
               setTXDataInContract(data_pet.vetidentificador.account, response[0].hash);
             })
             .catch(error => {
-            /* this.confirmModal = true;
+              this.confirmModal = true;
               this.error = true;
               this.msgTitle = "Error la TX";
-              this.msgBody = "Se ha producido un error en la TX de ETH. Contacte con su Administrador";*/
+              this.msgBody = "Se ha producido un error en la TX de ETH. Contacte con su Administrador";
               console.log(error)
             });
-
-
         })
         .catch(error => {
           console.log(error)
@@ -227,7 +213,6 @@ export default {
           this.msgTitle = "Error en el almacenamiento";
           this.msgBody = "Se ha producido un error en el almacenamiento de los datos en la IPFS. Contacte con su Administrador";
         });
-      
     },
     success() {
       this.successModal = false;

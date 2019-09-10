@@ -1,3 +1,11 @@
+/********************************************************/
+/* File: ConfirmModal.vue                               */
+/* Author: Carlos Escario Bajo                          */
+/* Proyecto: TFG UNIR                                   */
+/* Date: 01/09/2019                                     */
+/* Version: 1.0                                         */
+/* Webcomponent para la ventana de confirmacion         */
+/********************************************************/
 <template>
   <div class="modal-mask">
     <div class="modal-wrapper">

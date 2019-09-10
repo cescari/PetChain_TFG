@@ -6,7 +6,6 @@
 /* Version: 2.0                                             */
 /* Javascript para la composicion del objeto JSON a enviar  */
 /************************************************************/
-
 var objectUpdate = {};
 export function setDataToJSON(_data, _this, _action) {
     var sesionUser = JSON.parse(sessionStorage.getItem('sessionUser'));

@@ -47,7 +47,7 @@
     <div class="col-md-12">
       <p class="h5 text-right">Total ETH: {{ total }}</p>
     </div>
-    {{ getData() }}
+    {{getData()}}
   </div>
 </template>
 <script>
@@ -69,28 +69,15 @@ export default {
     };
   },
   methods: {
-
     getData: function(){
        getIPFSdata(getTXDataFromContract(this.$props.sessionUser.account))
       .then(response => {
-        //console.log(JSON.parse(response))
         this.items = JSON.parse(response);
-        this.total = getTotal(this.items)/1e18;
       })
       .catch(error => {
         console.log(error);
-      });
-    },
-    getTotal: function(_items){
-        let aux= 0;
-        for(let i of _items){
-          //aux += parseInt(i.amount);
-          console.log(i)
-        }
-        return aux;
-      }
-     
-
+      })
+    }
   },
   props:['sessionUser']
 };

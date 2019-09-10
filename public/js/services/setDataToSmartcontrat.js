@@ -32,11 +32,6 @@ export function setDataInContract(_hash, _petId) {
         from: fromAddr,
         gas: 3000000
     });
-
-    /*contract.getPet(_petId, {
-        from: fromAddr,
-        gas: 3000000
-    });*/
 }
 
 export function setTXDataInContract(_addrTo, _hash, ){
@@ -59,18 +54,6 @@ export function getTXDataFromContract(_addrTo) {
         gas: 300000
     });
 }
-
-/*export function getTXDataFromContract(_addrTo) {
-    return new Promise((resolve, reject) => {
-        const fromAddr = getDefaultAccount();
-        web3.eth.defaultAccount = fromAddr;
-        return contractTX.getTX(_addrTo, {
-            from: fromAddr,
-            gas: 300000
-        });
-    });
-}*/
-
 
 export function getDataFromContract(_petId){
     const fromAddr = getDefaultAccount();

@@ -163,7 +163,6 @@ export default {
         .then(response => {
           setDataInContract(response[0].hash, PET_ID);
           this.successModal = true;
-          //registerTX(data.vetidentificador.account);
         })
         .catch(error => {
           console.log(error);
