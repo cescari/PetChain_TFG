@@ -2,8 +2,8 @@
 
 # PetChain
 ```
-Sistema para la gestión de mascotas diseñado para el Trabajo de Fin de Grado de Escuela Superior
-de Ing. y Tecnología de la UNIR
+Sistema de Gestión de mascotas diseñado para el Trabajo de Fin de Grado de Escuela Superior
+de Ing. y Tecnología de la UNIR.
 ```
 <p align="center">
 <img src="./public/img/logo_2.png" align="center"/>
