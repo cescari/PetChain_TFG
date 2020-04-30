@@ -10,7 +10,7 @@
     "core-js": "^2.6.5",
     "file-saver": "^2.0.2",
     "ipfs-http-client": "^35.1.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "parse-json": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
